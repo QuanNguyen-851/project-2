@@ -21,3 +21,4 @@ Route::get('/', function () {
 //components
 Route::get('buttons', [ComponentsController::class, 'buttons']);
 Route::get('grid', [ComponentsController::class, 'grid']);
+Route::get('icons', [ComponentsController::class, 'icons']);

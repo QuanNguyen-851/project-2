@@ -14,4 +14,8 @@ class ComponentsController extends Controller
     {
         return View('components.grid');
     }
+    public function icons()
+    {
+        return View('components.icons');
+    }
 }

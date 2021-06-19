@@ -66,10 +66,11 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+            {{-- sinh viên --}}
             <li>
                 <a data-toggle="collapse" href="#componentsExamples">
-                    <i class="pe-7s-plugin"></i>
-                    <p>Components
+                    <i class="pe-7s-study"></i>
+                    <p>Sinh Viên
                        <b class="caret"></b>
                     </p>
                 </a>
@@ -106,7 +107,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="components/icons.html">
+                            <a href="icons">
                                 <span class="sidebar-mini">I</span>
                                 <span class="sidebar-normal">Icons</span>
                             </a>
@@ -120,10 +121,11 @@
                     </ul>
                 </div>
             </li>
+            {{-- lớp --}}
             <li>
                 <a data-toggle="collapse" href="#formsExamples">
                     <i class="pe-7s-note2"></i>
-                    <p>Forms
+                    <p>lớp
                        <b class="caret"></b>
                     </p>
                 </a>
@@ -156,10 +158,11 @@
                     </ul>
                 </div>
             </li>
+            {{-- thống kê --}}
             <li>
                 <a data-toggle="collapse" href="#tablesExamples">
-                    <i class="pe-7s-news-paper"></i>
-                    <p>Tables
+                    <i class="pe-7s-graph1"></i>
+                    <p>Thống kê
                        <b class="caret"></b>
                     </p>
                 </a>
@@ -192,10 +195,11 @@
                     </ul>
                 </div>
             </li>
+            {{-- nhân viên --}}
             <li>
                 <a data-toggle="collapse" href="#mapsExamples">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Maps
+                    <i class="pe-7s-users"></i>
+                    <p>Nhân Viên
                        <b class="caret"></b>
                     </p>
                 </a>
