@@ -8,12 +8,12 @@
     -->
 
     <div class="logo">
-        {{-- <a href="/" class="simple-text logo-mini">
-            
-        </a> --}}
+        <a href="/" class="simple-text logo-mini" style="margin-left: 40px;">
+            Mi
+        </a>
 
         <a href="/" class="simple-text logo-normal">
-            <img id='bkacad' style='width: 125px; width: 163px;margin-left: 47px;'
+            <img id='bkacad' style='width: 118px; margin-left: 10px;'
              src="../assets/img/logo_1591255072.png">
         </a>
     </div>
@@ -60,7 +60,7 @@
         </div>
 
         <ul class="nav">
-            <li class="active">
+            <li class="collapse">
                 <a href="/">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
@@ -68,9 +68,23 @@
             </li>
             {{-- sinh viên --}}
             <li>
+                <a href="{{ route('students.index') }}">
+                    <i class="pe-7s-study"></i>
+                    <p>Sinh Viên</p>
+                </a>
+            </li>
+            {{-- lớp --}}
+            <li>
+                <a href="calendar.html">
+                    <i class="pe-7s-date"></i>
+                    <p>Lớp</p>
+                </a>
+            </li>
+            {{-- khóa --}}
+            <li>
                 <a data-toggle="collapse" href="#componentsExamples">
                     <i class="pe-7s-study"></i>
-                    <p>Sinh Viên
+                    <p>khóa
                        <b class="caret"></b>
                     </p>
                 </a>
@@ -79,49 +93,92 @@
                         <li>
                             <a href="buttons">
                                 <span class="sidebar-mini">B</span>
-                                <span class="sidebar-normal">Buttons</span>
+                                <span class="sidebar-normal">Đang theo học</span>
                             </a>
                         </li>
                         <li>
                             <a href="grid">
                                 <span class="sidebar-mini">GS</span>
-                                <span class="sidebar-normal">Grid System</span>
+                                <span class="sidebar-normal">Đã tốt nghiệp</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </li>
+            
+            {{-- thống kê --}}
+            <li>
+                <a data-toggle="collapse" href="#tablesExamples">
+                    <i class="pe-7s-graph1"></i>
+                    <p>Thống kê
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="tablesExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="tables/regular.html">
+                                <span class="sidebar-mini">RT</span>
+                                <span class="sidebar-normal">Theo tháng</span>
                             </a>
                         </li>
                         <li>
-                            <a href="components/panels.html">
-                                <span class="sidebar-mini">P</span>
-                                <span class="sidebar-normal">Panels</span>
+                            <a href="tables/extended.html">
+                                <span class="sidebar-mini">ET</span>
+                                <span class="sidebar-normal">Theo lớp</span>
                             </a>
                         </li>
                         <li>
-                            <a href="components/sweet-alert.html">
-                                <span class="sidebar-mini">SA</span>
-                                <span class="sidebar-normal">Sweet Alert</span>
+                            <a href="tables/bootstrap-table.html">
+                                <span class="sidebar-mini">BT</span>
+                                <span class="sidebar-normal">Nợ học phí</span>
                             </a>
                         </li>
                         <li>
-                            <a href="components/notifications.html">
-                                <span class="sidebar-mini">N</span>
-                                <span class="sidebar-normal">Notifications</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="icons">
-                                <span class="sidebar-mini">I</span>
-                                <span class="sidebar-normal">Icons</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="components/typography.html">
-                                <span class="sidebar-mini">T</span>
-                                <span class="sidebar-normal">Typography</span>
+                            <a href="tables/datatables.net.html">
+                                <span class="sidebar-mini">DT</span>
+                                <span class="sidebar-normal">DataTables.net</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
-            {{-- lớp --}}
+
+            {{-- nhân viên --}}
+            <li>
+                <a data-toggle="collapse" href="#mapsExamples">
+                    <i class="pe-7s-users"></i>
+                    <p>Nhân Viên
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="mapsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="maps/google.html">
+                                <span class="sidebar-mini">GM</span>
+                                <span class="sidebar-normal">Giáo vụ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maps/vector.html">
+                                <span class="sidebar-mini">VM</span>
+                                <span class="sidebar-normal">Kế toán</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </li>
+            {{-- Học Bổng --}}
+            <li>
+                <a href="calendar.html">
+                    <i class="pe-7s-date"></i>
+                    <p>Học bổng</p>
+                </a>
+            </li>
+                     {{-- lớp --}}
             <li>
                 <a data-toggle="collapse" href="#formsExamples">
                     <i class="pe-7s-note2"></i>
@@ -158,87 +215,7 @@
                     </ul>
                 </div>
             </li>
-            {{-- thống kê --}}
-            <li>
-                <a data-toggle="collapse" href="#tablesExamples">
-                    <i class="pe-7s-graph1"></i>
-                    <p>Thống kê
-                       <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse" id="tablesExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="tables/regular.html">
-                                <span class="sidebar-mini">RT</span>
-                                <span class="sidebar-normal">Regular Tables</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tables/extended.html">
-                                <span class="sidebar-mini">ET</span>
-                                <span class="sidebar-normal">Extended Tables</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tables/bootstrap-table.html">
-                                <span class="sidebar-mini">BT</span>
-                                <span class="sidebar-normal">Bootstrap Table</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tables/datatables.net.html">
-                                <span class="sidebar-mini">DT</span>
-                                <span class="sidebar-normal">DataTables.net</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            {{-- nhân viên --}}
-            <li>
-                <a data-toggle="collapse" href="#mapsExamples">
-                    <i class="pe-7s-users"></i>
-                    <p>Nhân Viên
-                       <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse" id="mapsExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="maps/google.html">
-                                <span class="sidebar-mini">GM</span>
-                                <span class="sidebar-normal">Google Maps</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="maps/vector.html">
-                                <span class="sidebar-mini">VM</span>
-                                <span class="sidebar-normal">Vector maps</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="maps/fullscreen.html">
-                                <span class="sidebar-mini">FSM</span>
-                                <span class="sidebar-normal">Full Screen Map</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="charts.html">
-                    <i class="pe-7s-graph1"></i>
-                    <p>Charts</p>
-                </a>
-            </li>
-
-            <li>
-                <a href="calendar.html">
-                    <i class="pe-7s-date"></i>
-                    <p>Calendar</p>
-                </a>
-            </li>
+            
             <li>
                 <a data-toggle="collapse" href="#pagesExamples">
                     <i class="pe-7s-gift"></i>
