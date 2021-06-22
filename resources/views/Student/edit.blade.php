@@ -139,7 +139,7 @@
     <div class="col-md-6" >
 
         <div class="card">
-            <div class="header">Thông tin sinh viên</div>
+            
                 <div class="content">
                     
                     {{-- mức học bổng --}}
@@ -175,8 +175,8 @@
                     </div>
                 </div>
             </div>
-            <div  class="card" style="text-align: center;">
-                <button type="submit" name="btn" class="btn btn-fill btn-info">Submit</button>
+            <div  style="text-align: center;">
+                <button type="submit" name="btn" class="btn btn-fill btn-info">Update</button>
 
                
             </div>

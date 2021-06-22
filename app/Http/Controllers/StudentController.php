@@ -27,6 +27,7 @@ class StudentController extends Controller
                 ->join('course', 'course.id', '=', 'classbk.idCourse')
                 ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
                 ->where('student.name', 'LIKE', "%$search%")
+                ->orwhere('classbk.name', 'LIKE', "%$search%")
                 ->where('student.disable', '!=', '1')
                 ->where('course.id', '=', $course[$i]->id)
                 ->get();
@@ -36,6 +37,7 @@ class StudentController extends Controller
             ->join('course', 'course.id', '=', 'classbk.idCourse')
             ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
             ->where('student.name', 'LIKE', "%$search%")
+            ->orwhere('classbk.name', 'LIKE', "%$search%")
             ->where('student.disable', '!=', '1')
             ->paginate(1000);
 
