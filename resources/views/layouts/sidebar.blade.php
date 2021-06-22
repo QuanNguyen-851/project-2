@@ -1,6 +1,6 @@
 
 
-<div class="sidebar" data-color="azure" data-image="../assets/img/full-screen-image-3.jpg">
+<div class="sidebar" data-color="azure" data-image="{{ asset('assets') }}/img/full-screen-image-3.jpg">
     <!--
 
         Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
@@ -15,7 +15,7 @@
 
         <a href="/" class="simple-text logo-normal">
             <img id='bkacad' style='width: 118px; margin-left: 10px;'
-             src="../assets/img/logo_1591255072.png">
+             src="{{ asset('assets') }}/img/logo_1591255072.png">
         </a>
     </div>
 
@@ -23,7 +23,7 @@
         <div class="user">
             <div class="info">
                 <div class="photo">
-                    <img src="../assets/img/default-avatar.png" />
+                    <img src="{{ asset('assets') }}/img/default-avatar.png" />
                 </div>
 
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">

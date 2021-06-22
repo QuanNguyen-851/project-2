@@ -1,9 +1,6 @@
 @extends('layouts.layout')
 @section('main')
     <h1>danh sách sinh viên</h1>
- 
-    
-    
         <div class="table-responsive">
             <div class="card">
                 <div class="row">
@@ -70,12 +67,12 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-link btn-sm">
+                                                        <a rel="tooltip" title="View Profile" class="btn btn-info btn-link btn-sm" href="{{ route('students.show', $item->id) }}" >
                                                             <i class="fa fa-user"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm">
+                                                        </a>
+                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
-                                                        </button>
+                                                        </a>
                                                         <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
                                                             <i class="fa fa-times"></i>
                                                         </button>
