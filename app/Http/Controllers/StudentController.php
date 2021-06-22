@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Student as ModelsStudent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,12 +18,30 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-
-        $student = ModelsStudent::where('name', 'like', "%$search%")->get();
+        $course = Course::orderBy('id', 'desc')->skip(0)->take(3)->get();
+        for ($i = 0; $i < 3; $i++) {
+            $student[$i] = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
+                ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
+                ->join('course', 'course.id', '=', 'classbk.idCourse')
+                ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
+                ->where('student.name', 'LIKE', "%$search%")
+                ->where('student.disable', '!=', '1')
+                ->where('course.id', '=', $course[$i]->id)
+                ->get();
+        }
+        $allstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
+            ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
+            ->join('course', 'course.id', '=', 'classbk.idCourse')
+            ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
+            ->where('student.name', 'LIKE', "%$search%")
+            ->where('student.disable', '!=', '1')
+            ->paginate(1000);
 
         return view('Student.index', [
+            "listall" => $allstudents,
             "list" => $student,
             "search" => $search,
+            "course" => $course,
         ]);
     }
 

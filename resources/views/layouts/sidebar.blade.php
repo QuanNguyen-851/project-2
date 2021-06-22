@@ -1,4 +1,5 @@
 
+
 <div class="sidebar" data-color="azure" data-image="../assets/img/full-screen-image-3.jpg">
     <!--
 
@@ -60,22 +61,22 @@
         </div>
 
         <ul class="nav">
-            <li class="collapse">
-                <a href="/">
+            <li >
+                <a  href="/">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             {{-- sinh viên --}}
             <li>
-                <a href="{{ route('students.index') }}">
-                    <i class="pe-7s-study"></i>
+                <a  href="{{ route('students.index') }}">
+                    <i class="pe-7s-user-female"></i>
                     <p>Sinh Viên</p>
                 </a>
             </li>
             {{-- lớp --}}
             <li>
-                <a href="calendar.html">
+                <a href="calendr.html">
                     <i class="pe-7s-date"></i>
                     <p>Lớp</p>
                 </a>

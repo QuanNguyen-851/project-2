@@ -31,8 +31,8 @@
     <div class="wrapper">
         
         <div class="main-panel">
-            {{-- thanh sidebar bên trái --}}
-            @include('layouts.sidebar')
+           {{-- thanh sidebar bên trái --}}
+            @include('layouts.sidebar') 
             {{-- thanh navbar trên cùng --}}
             @include('layouts.navbar')
             <div class="main-content">
@@ -41,10 +41,10 @@
                         @yield('main')
                 </div>
             </div>
+            
+        </div>
             {{-- thanh footer --}}
             @include('layouts.footer')
-        </div>
-            
     </div>
 
 </body>

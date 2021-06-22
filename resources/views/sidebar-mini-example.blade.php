@@ -30,256 +30,263 @@
 <body class="sidebar-mini">
 
 <div class="wrapper">
-    <div class="sidebar" data-color="orange" data-image="../assets/img/full-screen-image-3.jpg">
-        <!--
+    
+<div class="sidebar" data-color="azure" data-image="../assets/img/full-screen-image-3.jpg">
+    <!--
 
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
 
-        -->
+    -->
 
-		<div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                Ct
-            </a>
+    <div class="logo">
+        <a href="/" class="simple-text logo-mini" style="margin-left: 40px;">
+            Mi
+        </a>
 
-			<a href="http://www.creative-tim.com" class="simple-text logo-normal">
-				Creative Tim
-			</a>
-        </div>
-
-    	<div class="sidebar-wrapper">
-
-			<div class="user">
-				<div class="info">
-					<div class="photo">
-	                    <img src="../assets/img/default-avatar.png" />
-	                </div>
-
-					<a data-toggle="collapse" href="#collapseExample" class="collapsed">
-						<span>
-							Tania Andrew
-	                        <b class="caret"></b>
-						</span>
-                    </a>
-
-					<div class="collapse" id="collapseExample">
-						<ul class="nav">
-							<li>
-								<a href="#pablo">
-									<span class="sidebar-mini">MP</span>
-									<span class="sidebar-normal">My Profile</span>
-								</a>
-							</li>
-
-							<li>
-								<a href="#pablo">
-									<span class="sidebar-mini">EP</span>
-									<span class="sidebar-normal">Edit Profile</span>
-								</a>
-							</li>
-
-							<li>
-								<a href="#pablo">
-									<span class="sidebar-mini">S</span>
-									<span class="sidebar-normal">Settings</span>
-								</a>
-							</li>
-						</ul>
-                    </div>
-				</div>
-            </div>
-
-			<ul class="nav">
-                <li class="active">
-                    <a href="#">
-                        <i class="pe-7s-graph"></i>
-                        <p>Single Link</p>
-                    </a>
-                </li>
-                <li>
-                    <a data-toggle="collapse" href="#componentsExamples">
-                        <i class="pe-7s-plugin"></i>
-                        <p>Menu with links
-                           <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="componentsExamples">
-                        <ul class="nav">
-                            <li>
-								<a href="#pablo">
-									<span class="sidebar-mini">L1</span>
-									<span class="sidebar-normal">Link 1</span>
-								</a>
-							</li>
-                            <li>
-								<a href="#pablo">
-									<span class="sidebar-mini">L2</span>
-									<span class="sidebar-normal">Link 2</span>
-								</a>
-							</li>
-                            <li>
-								<a href="#pablo">
-									<span class="sidebar-mini">L3</span>
-									<span class="sidebar-normal">Link 3</span>
-								</a>
-							</li>
-                        </ul>
-                    </div>
-                </li>
-
-            </ul>
-    	</div>
+        <a href="/" class="simple-text logo-normal">
+            <img id='bkacad' style='width: 118px; margin-left: 10px;'
+             src="../assets/img/logo_1591255072.png">
+        </a>
     </div>
 
-    <div class="main-panel">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-				<div class="navbar-minimize">
-					<button id="minimizeSidebar" class="btn btn-warning btn-fill btn-round btn-icon">
-						<i class="fa fa-ellipsis-v visible-on-sidebar-regular"></i>
-						<i class="fa fa-navicon visible-on-sidebar-mini"></i>
-					</button>
-				</div>
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+    <div class="sidebar-wrapper">
+        <div class="user">
+            <div class="info">
+                <div class="photo">
+                    <img src="../assets/img/default-avatar.png" />
                 </div>
-                <div class="collapse navbar-collapse">
 
-                    <form class="navbar-form navbar-left navbar-search-form" role="search">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" value="" class="form-control" placeholder="Search...">
-                        </div>
-                    </form>
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span>
+                        Tania Andrew
+                        <b class="caret"></b>
+                    </span>
+                </a>
 
-                    <ul class="nav navbar-nav navbar-right">
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
                         <li>
-                            <a href="charts.html">
-                                <i class="fa fa-line-chart"></i>
-                                <p>Stats</p>
+                            <a href="#pablo">
+                                <span class="sidebar-mini">MP</span>
+                                <span class="sidebar-normal">My Profile</span>
                             </a>
                         </li>
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-gavel"></i>
-                                <p class="hidden-md hidden-lg">
-                                    Actions
-                                    <b class="caret"></b>
-                                </p>
+                        <li>
+                            <a href="#pablo">
+                                <span class="sidebar-mini">EP</span>
+                                <span class="sidebar-normal">Edit Profile</span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Create New Post</a></li>
-                                <li><a href="#">Manage Something</a></li>
-                                <li><a href="#">Do Nothing</a></li>
-                                <li><a href="#">Submit to live</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Another Action</a></li>
-                            </ul>
                         </li>
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-bell-o"></i>
-                                <span class="notification">5</span>
-                                <p class="hidden-md hidden-lg">
-    								Notifications
-    								<b class="caret"></b>
-    							</p>
+                        <li>
+                            <a href="#pablo">
+                                <span class="sidebar-mini">S</span>
+                                <span class="sidebar-normal">Settings</span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                            </ul>
                         </li>
-
-                        <li class="dropdown dropdown-with-icons">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-list"></i>
-                                <p class="hidden-md hidden-lg">
-    								More
-    								<b class="caret"></b>
-    							</p>
-                            </a>
-                            <ul class="dropdown-menu dropdown-with-icons">
-                                <li>
-                                    <a href="#">
-                                        <i class="pe-7s-mail"></i> Messages
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="pe-7s-help1"></i> Help Center
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="pe-7s-tools"></i> Settings
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <i class="pe-7s-lock"></i> Lock Screen
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-danger">
-                                        <i class="pe-7s-close-circle"></i>
-                                        Log out
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
                     </ul>
                 </div>
             </div>
-        </nav>
-
-
-        <div class="main-content">
-            <div class="container-fluid">
-
-
-                    <!--      here you can write your content for the main area                     -->
-
-
-
-            </div>
         </div>
 
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
+        <ul class="nav">
+            <li class="collapse">
+                <a href="/">
+                    <i class="pe-7s-graph"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            {{-- sinh viên --}}
+            <li>
+                <a href="{{ route('students.index') }}">
+                    <i class="pe-7s-user-female"></i>
+                    <p>Sinh Viên</p>
+                </a>
+            </li>
+            {{-- lớp --}}
+            <li>
+                <a href="calendar.html">
+                    <i class="pe-7s-date"></i>
+                    <p>Lớp</p>
+                </a>
+            </li>
+            {{-- khóa --}}
+            <li>
+                <a data-toggle="collapse" href="#componentsExamples">
+                    <i class="pe-7s-study"></i>
+                    <p>khóa
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="componentsExamples">
+                    <ul class="nav">
                         <li>
-                            <a href="#">
-                                Home
+                            <a href="buttons">
+                                <span class="sidebar-mini">B</span>
+                                <span class="sidebar-normal">Đang theo học</span>
                             </a>
                         </li>
-
-                        <!--        here you can add more links for the footer                       -->
+                        <li>
+                            <a href="grid">
+                                <span class="sidebar-mini">GS</span>
+                                <span class="sidebar-normal">Đã tốt nghiệp</span>
+                            </a>
+                        </li>
+                        
                     </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>
+                </div>
+            </li>
+            
+            {{-- thống kê --}}
+            <li>
+                <a data-toggle="collapse" href="#tablesExamples">
+                    <i class="pe-7s-graph1"></i>
+                    <p>Thống kê
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="tablesExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="tables/regular.html">
+                                <span class="sidebar-mini">RT</span>
+                                <span class="sidebar-normal">Theo tháng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tables/extended.html">
+                                <span class="sidebar-mini">ET</span>
+                                <span class="sidebar-normal">Theo lớp</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tables/bootstrap-table.html">
+                                <span class="sidebar-mini">BT</span>
+                                <span class="sidebar-normal">Nợ học phí</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tables/datatables.net.html">
+                                <span class="sidebar-mini">DT</span>
+                                <span class="sidebar-normal">DataTables.net</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
+            {{-- nhân viên --}}
+            <li>
+                <a data-toggle="collapse" href="#mapsExamples">
+                    <i class="pe-7s-users"></i>
+                    <p>Nhân Viên
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="mapsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="maps/google.html">
+                                <span class="sidebar-mini">GM</span>
+                                <span class="sidebar-normal">Giáo vụ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maps/vector.html">
+                                <span class="sidebar-mini">VM</span>
+                                <span class="sidebar-normal">Kế toán</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </li>
+            {{-- Học Bổng --}}
+            <li>
+                <a href="calendar.html">
+                    <i class="pe-7s-date"></i>
+                    <p>Học bổng</p>
+                </a>
+            </li>
+                     {{-- lớp --}}
+            <li>
+                <a data-toggle="collapse" href="#formsExamples">
+                    <i class="pe-7s-note2"></i>
+                    <p>lớp
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="formsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="forms/regular.html">
+                                <span class="sidebar-mini">Rf</span>
+                                <span class="sidebar-normal">Regular Forms</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms/extended.html">
+                                <span class="sidebar-mini">Ef</span>
+                                <span class="sidebar-normal">Extended Forms</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms/validation.html">
+                                <span class="sidebar-mini">Vf</span>
+                                <span class="sidebar-normal">Validation Forms</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms/wizard.html">
+                                <span class="sidebar-mini">W</span>
+                                <span class="sidebar-normal">Wizard</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <li>
+                <a data-toggle="collapse" href="#pagesExamples">
+                    <i class="pe-7s-gift"></i>
+                    <p>Pages
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="pagesExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="pages/user.html">
+                                <span class="sidebar-mini">UP</span>
+                                <span class="sidebar-normal">User Page</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/login.html">
+                                <span class="sidebar-mini">LP</span>
+                                <span class="sidebar-normal">Login Page</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/register.html">
+                                <span class="sidebar-mini">RP</span>
+                                <span class="sidebar-normal">Register Page</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/lock.html">
+                                <span class="sidebar-mini">LSP</span>
+                                <span class="sidebar-normal">Lock Screen Page</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </div>
+</div>
 </div>
 
 
