@@ -92,7 +92,7 @@
                 <div class="collapse" id="componentsExamples">
                     <ul class="nav">
                         <li>
-                            <a href="buttons">
+                            <a href="{{route('course.index')}}">
                                 <span class="sidebar-mini">B</span>
                                 <span class="sidebar-normal">Đang theo học</span>
                             </a>

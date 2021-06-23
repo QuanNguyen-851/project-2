@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ComponentsController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,6 @@ Route::get('students/{id}/hide', [StudentController::class, 'hide'])->name('stud
 //CLASS
 Route::resource('class', ClassController::class);
 Route::get('class/{id}/hide', [ClassController::class, 'hide'])->name('class.hide');
+
+// Course
+Route::resource('course', CourseController::class);
