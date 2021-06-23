@@ -1,9 +1,6 @@
 @extends('layouts.layout')
 @section('main')
     <h1>danh sách sinh viên</h1>
- 
-    
-    
         <div class="table-responsive">
             <div class="card">
                 <div class="row">
@@ -16,9 +13,12 @@
                                              <input type="text" value="{{ $search}}" name ="search" class="form-control" placeholder="Search...">
                                         </div>
                                     </form>
-                                    <button class="btn btn-primary btn-fill" style="float: right;margin-right: 15px;">
-                                        <i class="pe-7s-plus" > Thêm</i>
-                                    </button>
+                                    
+                                    <form action="">
+                                        <button type="submit" name="btn"class="btn btn-primary btn-fill" style="float: right;margin-right: 15px;" >Đồng ý</button>
+                                        <input type="file" name="file" class="form-control" style="float: right;width: 25%;" messages="ssdhf">
+                                        
+                                    </form>
                                     <li class=" active">
                                         <a href="#settings" class=" active" data-toggle="tab">Tất cả </a>
                                     </li>
@@ -48,13 +48,16 @@
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
                                                     <th class="text-center" >Học phí</th>
-                                                    <th class="text-center" ></th>
+                                                    <th  >
+                                                        <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
+                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                    </a></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($listall as $item)
                                                 <tr>
-                                                    <th class="text-center">{{$item->id}}</th>
+                                                    <th class="text-center">{{"BKC".$item->id}}</th>
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     <th class="text-center">
@@ -70,15 +73,15 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-link btn-sm">
-                                                            <i class="fa fa-user"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm">
+                                                      
+                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
+                                                        </a>
+                                                        
+                                                            <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ?')">
+                                                                <i class="fa fa-times"></i>
+                                                            </a>
+                                                       
                                                     </td>
                                                 </tr>    
                                                 @endforeach
@@ -103,13 +106,16 @@
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
                                                     <th class="text-center" >Học phí</th>
-                                                    <th class="text-center" ></th>
+                                                    <th  >
+                                                        <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
+                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                    </a></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($list[2] as $item)
                                                 <tr>
-                                                    <th class="text-center">{{$item->id}}</th>
+                                                    <th class="text-center">{{"BKC".$item->id}}</th>
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     <th class="text-center">
@@ -125,15 +131,12 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-link btn-sm">
-                                                            <i class="fa fa-user"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm">
+                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                        </a>
+                                                        <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ?')">
                                                             <i class="fa fa-times"></i>
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </tr>    
                                                 @endforeach
@@ -154,13 +157,16 @@
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
                                                     <th class="text-center" >Học phí</th>
-                                                    <th class="text-center" ></th>
+                                                    <th  >
+                                                        <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
+                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                    </a></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($list[1] as $item)
                                                 <tr>
-                                                    <th class="text-center">{{$item->id}}</th>
+                                                    <th class="text-center">{{"BKC".$item->id}}</th>
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     <th class="text-center">
@@ -176,15 +182,12 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-link btn-sm">
-                                                            <i class="fa fa-user"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm">
+                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                        </a>
+                                                        <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ?')">
                                                             <i class="fa fa-times"></i>
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </tr>    
                                                 @endforeach
@@ -205,13 +208,16 @@
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
                                                     <th class="text-center" >Học phí</th>
-                                                    <th class="text-center" ></th>
+                                                    <th  >
+                                                        <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
+                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                    </a></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($list[0] as $item)
                                                 <tr>
-                                                    <th class="text-center">{{$item->id}}</th>
+                                                    <th class="text-center">{{"BKC".$item->id}}</th>
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     <th class="text-center">
@@ -225,17 +231,14 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center"> {{$item->scholarship}}</th>
-                                                    <th class="text-center" >{{ number_format($item->fee)}}}VND</th>
+                                                    <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-link btn-sm">
-                                                            <i class="fa fa-user"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm">
+                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                        </a>
+                                                        <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ?')">
                                                             <i class="fa fa-times"></i>
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </tr>    
                                                 @endforeach
