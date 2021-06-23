@@ -113,6 +113,7 @@
             demo.initFormExtendedDatetimepickers();
         });
     </script>
+    {{-- validate --}}
     <script type="text/javascript">
         $().ready(function(){
 
@@ -123,23 +124,38 @@
 
         });
     </script>
+    {{-- js class --}}
+    <script type="text/javascript">
+        var $table = $('#bootstrap-table');
 
-	{{-- <script type="text/javascript">
-    	$(document).ready(function(){
+        $().ready(function(){
+            $table.bootstrapTable({
+                toolbar: ".toolbar",
+                clickToSelect: true,
+                showRefresh: true,
+                search: true,
+                showToggle: true,
+                showColumns: true,
+                pagination: true,
+                searchAlign: 'left',
+                pageSize: 8,
+                clickToSelect: false,
+                pageList: [8,10,25,50,100],
 
-        	demo.initDashboardPageCharts();
-        	demo.initVectorMap();
+                formatShowingRows: function(pageFrom, pageTo, totalRows){
+                    //do nothing here, we don't want to show the text "showing x of y from..."
+                },
 
-        	$.notify({
-            	icon: 'pe-7s-bell',
-            	message: "<b>Light Bootstrap Dashboard PRO</b> - forget about boring dashboards."
-
-            },{
-                type: 'warning',
-                timer: 4000
+                icons: {
+                    refresh: 'fa fa-refresh',
+                    toggle: 'fa fa-th-list',
+                    columns: 'fa fa-columns',
+                    detailOpen: 'fa fa-plus-circle',
+                    detailClose: 'fa fa-minus-circle'
+                }
             });
+        });
 
-    	});
-	</script> --}}
+    </script>
 
 </html>

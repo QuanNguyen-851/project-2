@@ -1,6 +1,12 @@
 @extends('layouts.layout');
 @section('main')
-
+@php
+    if(isset($_GET['err'])){
+        $err=$_GET['err'];
+    }else{
+        $err=0;
+    }
+@endphp
 <form action="{{ route('students.update', $student->id) }}" method="POST" id="updatevalidateform">
     @csrf
     @method("PUT")
@@ -103,6 +109,13 @@
                                     required="required"
                                     value="{{$student->email}}"
                                 />
+                                <span style=" color: red;font-size: 12px;margin-left: 44px;">
+                                    @php
+                                        if($err==1){
+                                            echo "update không thành công email bạn chọn đã tồn tại!";
+                                        }
+                                    @endphp
+                                    </span>
                         </div>
                         
                         {{-- Số Điện thoại --}}
@@ -117,6 +130,13 @@
                                     minLength="9"
                                     maxLength="10"
                                 />
+                                <span style=" color: red;font-size: 12px;margin-left: 44px;">
+                                    @php
+                                        if($err==2){
+                                            echo "update không thành công số điện thoại bạn chọn đã tồn tại!";
+                                        }
+                                    @endphp
+                                    </span>
                         </div>
                         {{-- địa chỉ --}}
                         <div class="form-group">

@@ -56,11 +56,13 @@ class StudentController extends Controller
      */
     public function create()
     {
+
         $class = Classroom::where('disable', '!=', '1')->get();
         $scholarship = Scholarship::all();
         return view('Student.create', [
             "class" => $class,
             "scholarship" => $scholarship,
+
         ]);
     }
 
@@ -72,6 +74,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+
         $student = new ModelsStudent();
         $student->name = $request->name;
         $student->idClass = $request->class;
@@ -83,8 +86,21 @@ class StudentController extends Controller
         $student->idStudentShip = $request->scholarship;
         $student->fee = $request->fee;
         $student->disable = 0;
-        $student->save();
-        return redirect(route('students.index'));
+        $email = $request->email;
+        $check = ModelsStudent::where('email', '=', $email)->first();
+        $checkphone = ModelsStudent::where('phone', '=', $request->phone)->first();
+        if ($check !== null) {
+            return redirect(route('students.create', [
+                "err" => 1,
+            ]));
+        } else if ($checkphone !== null) {
+            return redirect(route('students.create', [
+                "err" => 2,
+            ]));
+        } else {
+            $student->save();
+            return redirect(route('students.index'));
+        }
     }
 
     /**
@@ -119,6 +135,8 @@ class StudentController extends Controller
         $scholarship = Scholarship::all();
 
 
+
+
         return view('Student.edit', [
             "student" => $student,
             "allclass" => $class,
@@ -135,19 +153,34 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        ModelsStudent::where('id', $id)->update([
-            "idClass" => $request->get('class'),
-            "name" => $request->get('name'),
-            "gender" => $request->get('gender'),
-            "dateBirth" => $request->get('DoB'),
-            "Email" => $request->get('email'),
-            "phone" => $request->get('phone'),
-            "address" => $request->get('address'),
-            "idStudentShip" => $request->get('scholarship'),
-            "fee" => $request->get('fee'),
-        ]);
-
-        return redirect(Route('students.index'));
+        $email = $request->email;
+        $check = ModelsStudent::where('email', '=', $email)->first();
+        $checkphone = ModelsStudent::where('phone', '=', $request->phone)->first();
+        $ok = ModelsStudent::find($id);
+        if ($check !== null && $email != $ok->email) {
+            return redirect(Route('students.edit', [
+                "err" => 1,
+                "$id",
+            ]));
+        } else if ($checkphone !== null && $request->phone != $ok->phone) {
+            return redirect(Route('students.edit', [
+                "err" => 2,
+                "$id",
+            ]));
+        } else {
+            ModelsStudent::where('id', $id)->update([
+                "idClass" => $request->get('class'),
+                "name" => $request->get('name'),
+                "gender" => $request->get('gender'),
+                "dateBirth" => $request->get('DoB'),
+                "Email" => $request->get('email'),
+                "phone" => $request->get('phone'),
+                "address" => $request->get('address'),
+                "idStudentShip" => $request->get('scholarship'),
+                "fee" => $request->get('fee'),
+            ]);
+            return redirect(Route('students.index'));
+        }
     }
 
     /**

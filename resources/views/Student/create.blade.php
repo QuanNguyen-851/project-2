@@ -4,7 +4,13 @@
     @csrf
     
     <div class="col-md-6" >
-
+@php
+    if(isset($_GET['err'])){
+        $err=$_GET['err'];
+    }else{
+        $err=0;
+    }
+@endphp
         <div class="card">
             <div class="header">Thêm sinh viên</div>
                 <div class="content">  
@@ -59,7 +65,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Ngày sinh</label>
                             <div class="form-group">
-                            <input type="date" 
+                            <input type="date" required="required"
                              name="DoB" class="form-control datepicker" placeholder="Date Picker Here"/>
                             </div>
                         </div>
@@ -72,6 +78,13 @@
                                     email="true"
                                     required="required"
                                 />
+                                <span style=" color: red;font-size: 12px;margin-left: 44px;">
+                                @php
+                                    if($err==1){
+                                        echo "Email này đã tồn tại";
+                                    }
+                                @endphp
+                                </span>
                         </div>
                         
                         {{-- Số Điện thoại --}}
@@ -85,6 +98,13 @@
                                     minLength="9"
                                     maxLength="10"
                                 />
+                                <span style=" color: red;font-size: 12px;margin-left: 44px;">
+                                    @php
+                                        if($err==2){
+                                            echo "Số điện thoại này đã tồn tại";
+                                        }
+                                    @endphp
+                                    </span>
                         </div>
                         {{-- địa chỉ --}}
                         <div class="form-group">

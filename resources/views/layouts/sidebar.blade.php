@@ -76,7 +76,7 @@
             </li>
             {{-- lớp --}}
             <li>
-                <a href="calendr.html">
+                <a href="{{ route('class.index') }}">
                     <i class="pe-7s-date"></i>
                     <p>Lớp</p>
                 </a>
