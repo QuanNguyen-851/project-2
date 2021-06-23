@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComponentsController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,6 @@ Route::get('icons', [ComponentsController::class, 'icons']);
 
 // STUDENT
 Route::resource('students', StudentController::class);
-Route::get('students/{id}/hide', [StudentController::class, 'hide'])->name('students.hide');
+
+// Course
+Route::resource('course', CourseController::class);
