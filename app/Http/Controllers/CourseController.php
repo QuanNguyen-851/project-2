@@ -98,6 +98,13 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+       // 
+    }
+    public function hide($id)
+    {
+        Course::where('id', $id)->update([
+            "disable" => 1,
+        ]);
+        return redirect(route('course.index'));
     }
 }

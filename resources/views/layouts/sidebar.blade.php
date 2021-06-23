@@ -99,7 +99,7 @@
                         </li>
                         <li>
                             <a href="grid">
-                                <span class="sidebar-mini">GS</span>
+                                <span class="sidebar-mini"><i class="pe-7s-check"></i></span>
                                 <span class="sidebar-normal">Đã tốt nghiệp</span>
                             </a>
                         </li>
