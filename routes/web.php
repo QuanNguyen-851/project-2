@@ -37,3 +37,5 @@ Route::get('class/{id}/hide', [ClassController::class, 'hide'])->name('class.hid
 
 // Course
 Route::resource('course', CourseController::class);
+
+Route::get('course/{id}/hide', [CourseController::class,'hide'])->name('course.hide');

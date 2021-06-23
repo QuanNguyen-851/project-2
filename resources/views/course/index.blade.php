@@ -23,7 +23,7 @@
                     <a href="{{ route('course.edit',$item->id) }}" type="button" rel="tooltip" title="Sửa khóa" class="btn btn-success btn-link btn-sm">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <a href="{{route('course.delete',$item->id) }}" onclick="return confirm('không thể thay đổi một khi chấp nhận')" type="button" rel="tooltip" title="Tốt Nghiệp" class="btn btn-success btn-link btn-sm">
+                    <a href="{{route('course.hide', $item->id) }}" onclick="return confirm('không thể thay đổi một khi chấp nhận')" type="button" rel="tooltip" title="Tốt Nghiệp" class="btn btn-success btn-link btn-sm">
                         <i class="pe-7s-check"></i>
                     </a>
                 </td>
