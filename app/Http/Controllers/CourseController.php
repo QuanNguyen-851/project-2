@@ -26,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return View('course.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $course = new Course();
+        $course->name = $request->course;
+        $course->year = $request->year;
+        $course->countMustPay = $request->count;
+        $course->disable = '0';
+        $course->save();
+        return redirect(route('course.index'));
     }
 
     /**

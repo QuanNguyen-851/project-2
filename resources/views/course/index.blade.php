@@ -7,6 +7,7 @@
                 <th class="text-center">#</th>
                 <th>Khóa</th>
                 <th>Năm</th>
+                <th><a href="{{route('course.create')}}">Thêm</a></th>
                 <th></th>
             </tr>
         </thead>
