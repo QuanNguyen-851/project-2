@@ -27,7 +27,7 @@ class StudentController extends Controller
                 ->join('course', 'course.id', '=', 'classbk.idCourse')
                 ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
                 ->where('student.name', 'LIKE', "%$search%")
-                ->orwhere('classbk.name', 'LIKE', "%$search%")
+
                 ->where('student.disable', '!=', '1')
                 ->where('course.id', '=', $course[$i]->id)
                 ->get();
@@ -37,7 +37,7 @@ class StudentController extends Controller
             ->join('course', 'course.id', '=', 'classbk.idCourse')
             ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
             ->where('student.name', 'LIKE', "%$search%")
-            ->orwhere('classbk.name', 'LIKE', "%$search%")
+
             ->where('student.disable', '!=', '1')
             ->paginate(1000);
 
@@ -56,7 +56,12 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $class = Classroom::where('disable', '!=', '1')->get();
+        $scholarship = Scholarship::all();
+        return view('Student.create', [
+            "class" => $class,
+            "scholarship" => $scholarship,
+        ]);
     }
 
     /**
@@ -67,7 +72,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = new ModelsStudent();
+        $student->name = $request->name;
+        $student->idClass = $request->class;
+        $student->gender = $request->gender;
+        $student->dateBirth = $request->DoB;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->address = $request->address;
+        $student->idStudentShip = $request->scholarship;
+        $student->fee = $request->fee;
+        $student->disable = 0;
+        $student->save();
+        return redirect(route('students.index'));
     }
 
     /**
@@ -130,7 +147,7 @@ class StudentController extends Controller
             "fee" => $request->get('fee'),
         ]);
 
-        return redirect(route('Student.index'));
+        return redirect(Route('students.index'));
     }
 
     /**
@@ -142,5 +159,12 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function hide($id)
+    {
+        ModelsStudent::where('id', $id)->update([
+            "disable" => 1,
+        ]);
+        return redirect(Route('students.index'));
     }
 }

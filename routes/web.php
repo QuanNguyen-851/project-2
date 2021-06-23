@@ -27,3 +27,4 @@ Route::get('icons', [ComponentsController::class, 'icons']);
 
 // STUDENT
 Route::resource('students', StudentController::class);
+Route::get('students/{id}/hide', [StudentController::class, 'hide'])->name('students.hide');

@@ -1,41 +1,21 @@
-@extends('layouts.layout');
+@extends('layouts.layout')
 @section('main')
-
-<form action="{{ route('students.update', $student->id) }}" method="POST" id="updatevalidateform">
+<form action="{{ route('students.store',) }}" method="POST" id="createvalidateform">
     @csrf
-    @method("PUT")
+    
     <div class="col-md-6" >
 
         <div class="card">
-            <div class="header">Thông tin sinh viên</div>
-                <div class="content">
-                    
-                        {{-- id --}}
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"  >ID</label>
-                            
-                                <input class="form-control"
-                                    type="text"
-                                    readonly
-                                    name="noid"   
-                                    value="{{"BKC".$student->id}}"
-                                />
-                        
-                        
-                        </div>
+            <div class="header">Thêm sinh viên</div>
+                <div class="content">  
+
                         {{-- lớp --}}
-                        
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Lớp</label>
                             <select name="class" class="selectpicker"  >
-                                @foreach ($allclass as $item)
+                                @foreach ($class as $item)
                                 
-                                <option value="{{$item->id}}"
-                                 @php
-                                    $in = ($item->id == $student->idclass) ? "selected":" " ;
-                                @endphp
-                                {{$in}}
-                                >{{ $item->name}}</option>
+                                <option value="{{$item->id}}">{{ $item->name}}</option>
                                 @endforeach
                                 
                             </select>                
@@ -51,33 +31,23 @@
                                     type="text"
                                     name="name"
                                     required="required"
-                                    value="{{$student->name}}"
-                                    
                                 />
                             
                         
                         </div>
                         {{-- Giới tính --}}
                         <div class="form-check form-check-radio">
-                            @php
-                            $nam= ($student->gender==1) ? "checked":"" ;
-                            @endphp
+                           
                             <label class="col-sm-2 control-label">Giới tính</label>
                             <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="1"
-
-                            {{$nam}}
-                            >
+                            <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="1" checked>
+                            
                                 <span class="form-check-sign"></span>
-                                
                                     Nam
                             </label>
                             <label class="form-check-label">
-                                @php
-                            $nu= ($student->gender==0) ? "checked" : "" ;
-                            @endphp
                                 <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="0"
-                                {{$nu}}>
+                                >
                                 <span class="form-check-sign"></span>
                                 
                                     Nữ
@@ -89,19 +59,18 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Ngày sinh</label>
                             <div class="form-group">
-                            <input type="date" value="{{$student->dateBirth}}" name="DoB" class="form-control datepicker" placeholder="Date Picker Here"/>
+                            <input type="date" 
+                             name="DoB" class="form-control datepicker" placeholder="Date Picker Here"/>
                             </div>
                         </div>
                         {{-- Email --}}
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Email</label>
-                            
                                 <input class="form-control"
-                                    type="email"
+                                    type="text"
                                     name="email"
                                     email="true"
                                     required="required"
-                                    value="{{$student->email}}"
                                 />
                         </div>
                         
@@ -111,9 +80,8 @@
                                 <input class="form-control"
                                     type="text"
                                     name="phone"
-                                    number="true"
                                     required="required"
-                                    value="{{$student->phone}}"
+                                    number="true"
                                     minLength="9"
                                     maxLength="10"
                                 />
@@ -125,7 +93,7 @@
                                     type="text"
                                     name="address"
                                     required="required"
-                                    value="{{$student->address}}"
+                                   
                                 />
                             
                         
@@ -149,15 +117,8 @@
                         <label class="col-sm-2 control-label" style="width: 30%;">Học bổng</label>
                         <select name="scholarship" class="selectpicker"  data-style="btn-default btn-block" data-menu-style="dropdown-blue">
                             @foreach ($scholarship as $item)
-                                @php
-                                    $in = ($item->id==$student->idscholarship) ? "selected":"" ;
-                                @endphp
-                                <option value="{{$item->id}}" 
-                                {{$in}}
-                                >{{ $item->name}}</option>
-                                @endforeach
-                            
-                        
+                                <option value="{{$item->id}}">{{ $item->name." - ".number_format($item->scholarship)."vnd"}}</option>
+                            @endforeach
                         </select>               
                     </div>
                 
@@ -171,20 +132,21 @@
                                 name="fee"
                                 required="required"
                                 number="true"
-                                style="width: 70%;"
-                                value="{{$student->fee}}"
+                                style="width: 70%;"   
                         />
                     </div>
                 </div>
             </div>
             <div  style="text-align: center;">
-                <button type="submit" name="btn" class="btn btn-fill btn-info">Update</button>
-
-               
+                
+                <button type="submit" name="btn" class="btn btn-fill btn-info" style="margin: 20px;">Thêm</button>
+    
+</form>
+                
+                
             </div>
         </div>
         
     </div>
-</form>
 
 @endsection
