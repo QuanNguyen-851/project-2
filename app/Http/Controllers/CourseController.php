@@ -41,7 +41,7 @@ class CourseController extends Controller
         $course = new Course();
         $course->name = $request->course;
         $course->year = $request->year;
-        $course->countMustPay = $request->count;
+        $course->countMustPay = '1';
         $course->disable = '0';
         $course->save();
         return redirect(route('course.index'));
@@ -66,7 +66,12 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $view = Course::select('course.*')
+        ->where('disable','=','0')
+        ->find($id);
+        return view('course.edit',[
+            'course' => $view
+        ]);
     }
 
     /**
@@ -78,7 +83,11 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Course::where('id', $id)->update([
+            "name" => $request->get('course'),
+            "year" => $request->get('year'),
+        ]);
+        return redirect(route('course.index'));
     }
 
     /**

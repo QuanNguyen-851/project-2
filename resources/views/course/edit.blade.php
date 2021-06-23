@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 @section('main')
-<form action="{{ route('course.store',) }}" method="POST" id="createvalidateform">
+    <form action="{{ route('course.update',$course->id) }}" method="POST" id="createvalidateform">
     @csrf
-    
+    @method("PUT")
     <div class="card">
         
-            <div class="header text-center">Thêm Khóa</div>
+            <div class="header text-center">Sửa Khóa</div>
             <div class="content">
     
                 <div class="form-group">
@@ -14,6 +14,7 @@
                            name="course"
                            type="text"
                            required="true"
+                           value="{{$course->name}}"
                     />
                 </div>
     
@@ -24,8 +25,10 @@
                            id="registerPassword"
                            type="text"
                            required="true"
+                           value="{{$course->year}}"
                     />
                 </div>
+
     
                 <div class="category"><star>*</star> Bắt buộc</div>
             </div>
