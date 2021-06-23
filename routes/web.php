@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComponentsController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,6 @@ Route::get('icons', [ComponentsController::class, 'icons']);
 
 // STUDENT
 Route::resource('students', StudentController::class);
+
+// Course
+Route::resource('course', CourseController::class);
