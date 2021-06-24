@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Course;
+
+use App\Models\Major;
 use Illuminate\Http\Request;
 
-class CourseController extends Controller
+class majorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $listallCourse = Course::select('course.*')->where('disable','=','0')->get();
-        return view('course.index',[
-            'listallCourse' => $listallCourse,
+        $viewall = Major::select('major.*')->where('disable', '=', '0')->get();
+        return view('major.index',[
+            'listAll'=>$viewall,
         ]);
     }
 
@@ -26,7 +27,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return View('course.create');
+        return view('major.create');
     }
 
     /**
@@ -37,14 +38,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $course = new Course();
-        $course->name = $request->course;
-        $course->year = $request->year;
-        $course->countMustPay = '1';
+        $course = new Major();
+        $course->name = $request->name;
+        $course->shortName = $request->short;
+        $course->fee = $request->fee;
         $course->disable = '0';
         $course->save();
-        return redirect(route('course.index'));
+        return redirect(route('major.index'));
     }
 
     /**
@@ -53,11 +53,11 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $passed = Course::select('course.*')->where('disable','=','1')->get();
-        return view('course.passed',[
-            'passed' => $passed
+        $passed = Major::select('major.*')->where('disable','=','1')->get();
+        return view('major.disabled',[
+            'disabled' => $passed,
         ]);
     }
 
@@ -69,11 +69,11 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        $view = Course::select('course.*')
+        $view = Major::select('major.*')
         ->where('disable','=','0')
         ->find($id);
-        return view('course.edit',[
-            'course' => $view
+        return view('major.edit',[
+            'major' => $view
         ]);
     }
 
@@ -86,11 +86,12 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Course::where('id', $id)->update([
-            "name" => $request->get('course'),
-            "year" => $request->get('year'),
+        Major::where('id', $id)->update([
+            "name" => $request->get('name'),
+            "shortName" => $request->get('short'),
+            "fee"=> $request->get('fee')
         ]);
-        return redirect(route('course.index'));
+        return redirect(route('major.index'));
     }
 
     /**
@@ -101,20 +102,27 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-       // 
+        //
     }
     public function hide($id)
     {
-        Course::where('id', $id)->update([
+        Major::where('id', $id)->update([
             "disable" => 1,
         ]);
-        return redirect(route('course.index'));
+        return redirect(route('major.index'));
     }
-    public function passed()
+    public function disabled()
     {
-        $passed = Course::select('course.*')->where('disable','=','1');
-        return view('course.passed',[
-            'passed' => $passed,
+        $passed = Major::select('major.*')->where('disable','=','1')->get();
+        return view('major.disabled',[
+            'disabled' => $passed,
         ]);
+    }
+    public function showMajor($id)
+    {
+        Major::where('id', $id)->update([
+            "disable" => 0,
+        ]);
+        return redirect(route('major.index'));
     }
 }

@@ -84,7 +84,7 @@
             {{-- khóa --}}
             <li>
                 <a data-toggle="collapse" href="#componentsExamples">
-                    <i class="pe-7s-study"></i>
+                    <i class="pe-7s-note2"></i>
                     <p>khóa
                        <b class="caret"></b>
                     </p>
@@ -93,12 +93,12 @@
                     <ul class="nav">
                         <li>
                             <a href="{{route('course.index')}}">
-                                <span class="sidebar-mini">B</span>
+                                <span class="sidebar-mini"><i class="pe-7s-study"></i></span>
                                 <span class="sidebar-normal">Đang theo học</span>
                             </a>
                         </li>
                         <li>
-                            <a href="grid">
+                            <a href="{{route('course.passed')}}">
                                 <span class="sidebar-mini"><i class="pe-7s-check"></i></span>
                                 <span class="sidebar-normal">Đã tốt nghiệp</span>
                             </a>
@@ -108,42 +108,12 @@
                 </div>
             </li>
             
-            {{-- thống kê --}}
+            {{-- Ngành--}}
             <li>
-                <a data-toggle="collapse" href="#tablesExamples">
+                <a href="{{route('major.index')}}">
                     <i class="pe-7s-graph1"></i>
-                    <p>Thống kê
-                       <b class="caret"></b>
-                    </p>
+                    <p>Ngành</p>
                 </a>
-                <div class="collapse" id="tablesExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="tables/regular.html">
-                                <span class="sidebar-mini">RT</span>
-                                <span class="sidebar-normal">Theo tháng</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tables/extended.html">
-                                <span class="sidebar-mini">ET</span>
-                                <span class="sidebar-normal">Theo lớp</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tables/bootstrap-table.html">
-                                <span class="sidebar-mini">BT</span>
-                                <span class="sidebar-normal">Nợ học phí</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tables/datatables.net.html">
-                                <span class="sidebar-mini">DT</span>
-                                <span class="sidebar-normal">DataTables.net</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
 
             {{-- nhân viên --}}
