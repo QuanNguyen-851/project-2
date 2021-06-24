@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classroom;
+use App\Models\Course;
+use App\Models\Major;
 use Illuminate\Http\Request;
 
 class ClassController extends Controller
@@ -33,7 +35,12 @@ class ClassController extends Controller
      */
     public function create()
     {
-
+        $major = Major::all();
+        $Course = Course::all();
+        return view('Class.create', [
+            "major" => $major,
+            "course" => $Course,
+        ]);
         return view('Class.create');
     }
 
@@ -45,7 +52,20 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        echo "hello";
+        $class = new Classroom();
+        $class->name = $request->class;
+        $class->idMajor = $request->major;
+        $class->idCourse = $request->course;
+        $class->disable = 0;
+        $check = Classroom::where('name', '=', $request->class)->first();
+        if ($check !== null) {
+            return redirect(route('class.create', [
+                "err" => 1,
+            ]));
+        } else {
+            $class->save();
+            return redirect(route('class.index'));
+        }
     }
 
     /**

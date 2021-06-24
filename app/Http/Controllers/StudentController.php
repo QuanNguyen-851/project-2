@@ -39,6 +39,7 @@ class StudentController extends Controller
             ->where('student.name', 'LIKE', "%$search%")
 
             ->where('student.disable', '!=', '1')
+
             ->paginate(1000);
 
         return view('Student.index', [
@@ -84,7 +85,20 @@ class StudentController extends Controller
         $student->phone = $request->phone;
         $student->address = $request->address;
         $student->idStudentShip = $request->scholarship;
-        $student->fee = $request->fee;
+
+        $class = Classroom::join('major', 'classbk.idMajor', '=', 'major.id')
+            ->where('classbk.id', '=', $request->class)
+            ->select('major.fee as feemustpay')
+            ->first();
+        $scholarship = Scholarship::find($request->scholarship)
+            ->select('scholarship.scholarship as pay')
+            ->first();
+
+        $fee = $class->feemustpay - round($scholarship->pay / 30, -5); // số tiền phải đóng bằng số tiền ngành - tiền học bổng/30
+        if ($fee < 0) {
+            $fee = 0;
+        }
+        $student->fee = $fee;
         $student->disable = 0;
         $email = $request->email;
         $check = ModelsStudent::where('email', '=', $email)->first();
@@ -153,6 +167,23 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $class = Classroom::join('major', 'classbk.idMajor', '=', 'major.id')
+            ->where('classbk.id', '=', $request->class)
+            ->select('major.fee as feemustpay')
+            ->first();
+        $scholarship = Scholarship::where('id', '=', $request->scholarship)
+            ->select('scholarship.scholarship as pay')
+            ->first();
+
+        // echo $request->scholarship;
+        // echo "tiền khóa" . $class->feemustpay;
+        // echo "học bổng" . $scholarship->pay;
+        // echo " tiền trừ" . round($scholarship->pay / 30, -5);
+        $fee = $class->feemustpay - round($scholarship->pay / 30, -5);
+        if ($fee < 0) {
+            $fee = 0;
+        }
         $email = $request->email;
         $check = ModelsStudent::where('email', '=', $email)->first();
         $checkphone = ModelsStudent::where('phone', '=', $request->phone)->first();
@@ -177,7 +208,7 @@ class StudentController extends Controller
                 "phone" => $request->get('phone'),
                 "address" => $request->get('address'),
                 "idStudentShip" => $request->get('scholarship'),
-                "fee" => $request->get('fee'),
+                "fee" => $fee,
             ]);
             return redirect(Route('students.index'));
         }

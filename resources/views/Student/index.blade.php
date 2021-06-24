@@ -46,7 +46,7 @@
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
-                                                    <th class="text-center" >Học phí</th>
+                                                    <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                         <i class="pe-7s-plus" > Thêm sinh viên</i>
@@ -104,7 +104,7 @@
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
-                                                    <th class="text-center" >Học phí</th>
+                                                    <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                         <i class="pe-7s-plus" > Thêm sinh viên</i>
@@ -155,7 +155,7 @@
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
-                                                    <th class="text-center" >Học phí</th>
+                                                    <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                         <i class="pe-7s-plus" > Thêm sinh viên</i>
@@ -206,7 +206,7 @@
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
-                                                    <th class="text-center" >Học phí</th>
+                                                    <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                         <i class="pe-7s-plus" > Thêm sinh viên</i>

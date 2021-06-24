@@ -144,7 +144,7 @@
                 
                     
                     {{-- Học phí mỗi đợt --}}
-                    <div class="form-group" >
+                    {{-- <div class="form-group" >
                         <label class="col-sm-2 control-label">Học phí Mỗi đợt</label>
                         
                         <input class="form-control"
@@ -154,7 +154,7 @@
                                 number="true"
                                 style="width: 70%;"   
                         />
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div  style="text-align: center;">

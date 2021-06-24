@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 @section('main')
+@php
+    if(isset($_GET['err'])){
+
+    }
+@endphp
 <form action="{{ route('class.store') }}" method="post"> 
     @csrf
     <div class="card">
@@ -12,32 +17,37 @@
                 
                         <input class="form-control"
                             type="text"
-                            name="name"
+                            name="class"
                             required="required"
                         />
+                        <span style=" color: red;font-size: 12px;margin-left: 44px;">
+                            @php
+                            if(isset($_GET['err'])){
+                                echo "lớp này đã tồn tại";
+                            }
+                            @endphp
+                        </span>
+                    
                     
                 
                 </div>
                 {{-- ngành --}}
                 <div class="form-group">
                     <label class="col-sm-2 control-label">ngành</label>
-                    <select name="class" class="selectpicker"  >
-                        
-                        
-                        <option value=""></option>
-                        
-                        
+                    <select name="major" class="selectpicker"  >
+                        @foreach ($major as $item)
+                    <option value="{{$item->id}}">{{$item->name." - ".$item->shortName}}</option>
+                        @endforeach
                     </select>                
                 </div>
                 {{-- khóa --}}
                 <div class="form-group">
                         <label class="col-sm-2 control-label">khóa</label>
-                        <select name="class" class="selectpicker"  >
-                            
-                            
-                            <option value=""></option>
-                            
-                            
+                        <select name="course" class="selectpicker"  >
+                            @foreach ($course as $item)
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+
                         </select>    
                 </div>
             

@@ -174,7 +174,7 @@
                                 @endphp
                                 <option value="{{$item->id}}" 
                                 {{$in}}
-                                >{{ $item->name}}</option>
+                                >{{ $item->name." - ".$item->scholarship."vnd"}}</option>
                                 @endforeach
                             
                         
@@ -183,7 +183,7 @@
                 
                     
                     {{-- Học phí mỗi đợt --}}
-                    <div class="form-group" >
+                    {{-- <div class="form-group" >
                         <label class="col-sm-2 control-label">Học phí Mỗi đợt</label>
                         
                         <input class="form-control"
@@ -194,7 +194,7 @@
                                 style="width: 70%;"
                                 value="{{$student->fee}}"
                         />
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div  style="text-align: center;">
