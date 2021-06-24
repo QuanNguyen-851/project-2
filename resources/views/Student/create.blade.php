@@ -4,13 +4,7 @@
     @csrf
     
     <div class="col-md-6" >
-@php
-    if(isset($_GET['err'])){
-        $err=$_GET['err'];
-    }else{
-        $err=0;
-    }
-@endphp
+
         <div class="card">
             <div class="header">Thêm sinh viên</div>
                 <div class="content">  
@@ -79,11 +73,12 @@
                                     required="required"
                                 />
                                 <span style=" color: red;font-size: 12px;margin-left: 44px;">
-                                @php
-                                    if($err==1){
-                                        echo "Email này đã tồn tại";
-                                    }
-                                @endphp
+                              
+                                    @if (Session::has('erre'))
+                                    {{Session::get('erre')}}
+                                        
+                                    @endif
+
                                 </span>
                         </div>
                         
@@ -99,11 +94,10 @@
                                     maxLength="10"
                                 />
                                 <span style=" color: red;font-size: 12px;margin-left: 44px;">
-                                    @php
-                                        if($err==2){
-                                            echo "Số điện thoại này đã tồn tại";
-                                        }
-                                    @endphp
+                                    @if (Session::has('errp'))
+                                    {{Session::get('errp')}}
+                                        
+                                    @endif
                                     </span>
                         </div>
                         {{-- địa chỉ --}}

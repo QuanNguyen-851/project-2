@@ -116,12 +116,9 @@
     {{-- validate --}}
     <script type="text/javascript">
         $().ready(function(){
-
             $('#createvalidateform').validate();
             $('#updatevalidateform').validate();
-            // $('#loginFormValidation').validate();
-            // $('#allInputsFormValidation').validate();
-
+           
         });
     </script>
     {{-- js class --}}

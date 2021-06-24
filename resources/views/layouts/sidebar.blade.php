@@ -144,7 +144,7 @@
             </li>
             {{-- Học Bổng --}}
             <li>
-                <a href="calendar.html">
+                <a href="{{ route('scholarship.index') }}">
                     <i class="pe-7s-date"></i>
                     <p>Học bổng</p>
                 </a>

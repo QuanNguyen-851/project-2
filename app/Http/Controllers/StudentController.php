@@ -7,7 +7,7 @@ use App\Models\Course;
 use App\Models\Scholarship;
 use App\Models\Student as ModelsStudent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 use Student;
 
 class StudentController extends Controller
@@ -104,13 +104,9 @@ class StudentController extends Controller
         $check = ModelsStudent::where('email', '=', $email)->first();
         $checkphone = ModelsStudent::where('phone', '=', $request->phone)->first();
         if ($check !== null) {
-            return redirect(route('students.create', [
-                "err" => 1,
-            ]));
+            return redirect()->route('students.create')->with('erre', "Email đã tồn tại");
         } else if ($checkphone !== null) {
-            return redirect(route('students.create', [
-                "err" => 2,
-            ]));
+            return redirect()->route('students.create')->with('errp', "Số điện thoại này đã tồn tại");
         } else {
             $student->save();
             return redirect(route('students.index'));
@@ -189,15 +185,15 @@ class StudentController extends Controller
         $checkphone = ModelsStudent::where('phone', '=', $request->phone)->first();
         $ok = ModelsStudent::find($id);
         if ($check !== null && $email != $ok->email) {
-            return redirect(Route('students.edit', [
-                "err" => 1,
+
+            return redirect()->route('students.edit', [
                 "$id",
-            ]));
+            ])->with('erre', "Email đã tồn tại");
         } else if ($checkphone !== null && $request->phone != $ok->phone) {
-            return redirect(Route('students.edit', [
-                "err" => 2,
+
+            return redirect()->route('students.edit', [
                 "$id",
-            ]));
+            ])->with('errp', "Số điện thoại này đã tồn tại");
         } else {
             ModelsStudent::where('id', $id)->update([
                 "idClass" => $request->get('class'),

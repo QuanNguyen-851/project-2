@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classroom;
 use App\Models\Course;
 use App\Models\Major;
+use Exception;
 use Illuminate\Http\Request;
 
 class ClassController extends Controller
@@ -59,9 +60,10 @@ class ClassController extends Controller
         $class->disable = 0;
         $check = Classroom::where('name', '=', $request->class)->first();
         if ($check !== null) {
-            return redirect(route('class.create', [
-                "err" => 1,
-            ]));
+            // return redirect(route('class.create', [
+            //     "err" => 1,
+            // ]));
+            return redirect(route('class.create'))->with('err', "Lớp này đã tồn tại");
         } else {
             $class->save();
             return redirect(route('class.index'));
@@ -87,7 +89,14 @@ class ClassController extends Controller
      */
     public function edit($id)
     {
-        //
+        $major = Major::all();
+        $Course = Course::all();
+        $class = Classroom::find($id);
+        return view('Class.edit', [
+            "major" => $major,
+            "course" => $Course,
+            "class" => $class,
+        ]);
     }
 
     /**
@@ -99,7 +108,18 @@ class ClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $class = Classroom::where('name', $request->class)->firstorFail();
+            return redirect()->route('class.edit', [
+                $id,
+            ])->with('err', "Lớp này đã tồn tại");
+        } catch (Exception $e) {
+
+            Classroom::where('id', $id)->update([
+                "name" => $request->get('class'),
+            ]);
+            return redirect()->route('class.index');
+        }
     }
 
     /**

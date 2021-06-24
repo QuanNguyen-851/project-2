@@ -3,6 +3,7 @@
 
 <div class="row">
     <div class="col-md-12">
+        <h1>Danh sách lớp</h1>
         <div class="card">
 
             <div class="toolbar">
@@ -42,8 +43,7 @@
                             <a rel="tooltip" title="Hide" class="btn btn-danger  btn-sm" href="{{ route('class.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ?')" style="float: right; margin:10px">
                                 ẩn
                             </a>
-                            <a rel="tooltip" title="Edit Profile" class="btn btn-success  btn-sm" href="" style="float: right; margin: 10px;">
-                                
+                            <a rel="tooltip" title="Edit Profile" class="btn btn-success  btn-sm" href="{{ route('class.edit', $item->id) }}" style="float: right; margin: 10px;">
                                 sửa
                             </a>
                             
