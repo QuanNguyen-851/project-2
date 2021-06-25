@@ -37,14 +37,20 @@ class StudentController extends Controller
             ->join('course', 'course.id', '=', 'classbk.idCourse')
             ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
             ->where('student.name', 'LIKE', "%$search%")
-
             ->where('student.disable', '!=', '1')
-
+            ->paginate(1000);
+        $hidedstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
+            ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
+            ->join('course', 'course.id', '=', 'classbk.idCourse')
+            ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
+            ->where('student.name', 'LIKE', "%$search%")
+            ->where('student.disable', '1')
             ->paginate(1000);
 
         return view('Student.index', [
             "listall" => $allstudents,
             "list" => $student,
+            "listhide" => $hidedstudents,
             "search" => $search,
             "course" => $course,
         ]);
@@ -224,6 +230,13 @@ class StudentController extends Controller
     {
         ModelsStudent::where('id', $id)->update([
             "disable" => 1,
+        ]);
+        return redirect(Route('students.index'));
+    }
+    public function unhide($id)
+    {
+        ModelsStudent::where('id', $id)->update([
+            "disable" => 0,
         ]);
         return redirect(Route('students.index'));
     }

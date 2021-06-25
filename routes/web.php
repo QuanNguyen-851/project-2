@@ -4,6 +4,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\majorController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ Route::get('icons', [ComponentsController::class, 'icons']);
 // STUDENT
 Route::resource('students', StudentController::class);
 Route::get('students/{id}/hide', [StudentController::class, 'hide'])->name('students.hide');
-
+Route::get('students/{id}/unhide', [StudentController::class, 'unhide'])->name('students.unhide');
 //CLASS
 Route::resource('class', ClassController::class);
 Route::get('class/{id}/hide', [ClassController::class, 'hide'])->name('class.hide');
@@ -50,3 +51,6 @@ Route::get('major/{id}/showmajor', [majorController::class, 'showMajor'])->name(
 
 //Scholarship
 Route::resource('scholarship', ScholarshipController::class);
+
+//payment
+Route::resource('payment', PaymentController::class);

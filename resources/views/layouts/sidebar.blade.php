@@ -149,6 +149,15 @@
                     <p>Học bổng</p>
                 </a>
             </li>
+            {{-- phương thức đóng học --}}
+            <li>
+                <a href="{{ route('payment.index') }}">
+                    <i class="pe-7s-date"></i>
+                    <p>phương thức đóng học</p>
+                </a>
+            </li>
+
+
                      {{-- lớp --}}
             <li>
                 <a data-toggle="collapse" href="#formsExamples">
@@ -187,42 +196,7 @@
                 </div>
             </li>
             
-            <li>
-                <a data-toggle="collapse" href="#pagesExamples">
-                    <i class="pe-7s-gift"></i>
-                    <p>Pages
-                       <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse" id="pagesExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="pages/user.html">
-                                <span class="sidebar-mini">UP</span>
-                                <span class="sidebar-normal">User Page</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="pages/login.html">
-                                <span class="sidebar-mini">LP</span>
-                                <span class="sidebar-normal">Login Page</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="pages/register.html">
-                                <span class="sidebar-mini">RP</span>
-                                <span class="sidebar-normal">Register Page</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="pages/lock.html">
-                                <span class="sidebar-mini">LSP</span>
-                                <span class="sidebar-normal">Lock Screen Page</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+           
         </ul>
     </div>
 </div>
