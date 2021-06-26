@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 @section('main')
+<div class="card">
 <div class="table-responsive">
+
     <h1>Danh sách các ngành đã ẩn</h1>
     <div class="toolbar">
         <button style="margin-right: 10px" onclick="location.href='{{route('major.index')}}'" class="btn btn-primary">Xem các ngành hiện có</button>
@@ -31,4 +33,5 @@
         </tbody>
     </table>
     </div>
+</div>
     @endsection

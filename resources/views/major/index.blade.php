@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 @section('main')
+<div class="card">
 <h1>Danh sách các ngành</h1>
 <div class="toolbar">
     <button style="margin-right: 10px" onclick="location.href='{{route('major.disabled')}}'" class="btn btn-primary">Xem các ngành đã ẩn</button>
@@ -34,6 +35,7 @@
         @endforeach
     </tbody>
 </table>
+</div>
 <script type="text/javascript">
     var $table = $('#bootstrap-table');
 

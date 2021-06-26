@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @section('main')
 <div class="table-responsive">
+    <div class="card">
     <h1>Các khóa đang theo học</h1>
     <table class="table">
         <thead>
@@ -33,4 +34,5 @@
         </tbody>
     </table>
     </div>
+</div>
     @endsection

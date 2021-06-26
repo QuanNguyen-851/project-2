@@ -38,14 +38,14 @@ class StudentController extends Controller
             ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
             ->where('student.name', 'LIKE', "%$search%")
             ->where('student.disable', '!=', '1')
-            ->paginate(1000);
+            ->paginate(100);
         $hidedstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
             ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
             ->join('course', 'course.id', '=', 'classbk.idCourse')
             ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
             ->where('student.name', 'LIKE', "%$search%")
             ->where('student.disable', '1')
-            ->paginate(1000);
+            ->paginate(100);
 
         return view('Student.index', [
             "listall" => $allstudents,

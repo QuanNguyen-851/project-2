@@ -5369,7 +5369,7 @@ h1 .subtitle {
 }
 
 .sidebar:before, .bootstrap-navbar:before {
-    opacity: .33;
+    opacity: -2.67;
     background: #000000;
 }
 
@@ -5408,7 +5408,7 @@ h1 .subtitle {
     background: -webkit-linear-gradient(top, #23CCEF 0%, rgba(64, 145, 255, 0.7) 100%);
     background: -o-linear-gradient(top, #23CCEF 0%, rgba(64, 145, 255, 0.7) 100%);
     background: -ms-linear-gradient(top, #23CCEF 0%, rgba(64, 145, 255, 0.7) 100%);
-    background: linear-gradient(to bottom, #23CCEF 0%, rgba(64, 145, 255, 0.7) 100%);
+    background: linear-gradient(to bottom, #066e84 0%, rgb(0 62 146 / 70%) 100%);
     background-size: 150% 150%;
 }
 

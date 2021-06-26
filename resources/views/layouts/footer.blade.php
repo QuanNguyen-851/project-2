@@ -3,29 +3,32 @@
         <nav class="pull-left">
             <ul>
                 <li>
-                    <a href="#">
-                        Home
+                    <a href="https://github.com/QuanNguyen-851">
+                    <button  class="btn btn-social btn-light btn-github">
+                        <i class="fa fa-github"></i>
+                    </button>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="https://www.facebook.com/profile.php?id=100010083363618">
+                    <button class="btn btn-social btn-light btn-facebook">
+                        <i class="fa fa-facebook"> </i>
+                    </button>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        Company
+                    <a href="https://twitter.com/QunNguy65329936">
+                    <button class="btn btn-social btn-light btn-twitter">
+                        <i class="fa fa-twitter"></i>
+                    </button>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        Portfolio
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                       Blog
-                    </a>
-                </li>
+                
             </ul>
         </nav>
         <p class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+            &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://www.facebook.com/profile.php?id=100010083363618">Quân Nguyễn</a> Nếu có vấn đề về trang web vui lòng liên hệ Nguyễn Mạnh Quân để được hỗ trợ kịp thời 
         </p>
     </div>
 </footer>

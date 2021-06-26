@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\majorController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ScholarshipController;
@@ -54,3 +55,8 @@ Route::resource('scholarship', ScholarshipController::class);
 
 //payment
 Route::resource('payment', PaymentController::class);
+
+//employee
+Route::resource('employee', EmployeeController::class);
+Route::get('employee/{id}/block', [EmployeeController::class, 'block'])->name('block');
+Route::get('employee/{id}/unblock', [EmployeeController::class, 'unblock'])->name('unblock');

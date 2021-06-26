@@ -22,9 +22,7 @@
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="info">
-                <div class="photo">
-                    <img src="{{ asset('assets') }}/img/default-avatar.png" />
-                </div>
+                
 
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
@@ -36,23 +34,18 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="#pablo">
-                                <span class="sidebar-mini">MP</span>
-                                <span class="sidebar-normal">My Profile</span>
+                            <a href="{{ route('employee.edit', 1) }}">
+                                <span class="sidebar-mini">
+                                    <i class="pe-7s-id"></i>
+                                </span>
+                                <span class="sidebar-normal">Cập nhật thông tin cá nhân</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="#pablo">
-                                <span class="sidebar-mini">EP</span>
-                                <span class="sidebar-normal">Edit Profile</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#pablo">
-                                <span class="sidebar-mini">S</span>
-                                <span class="sidebar-normal">Settings</span>
+                                <span class="sidebar-mini"><i class="pe-7s-next-2"></i></span>
+                                <span class="sidebar-normal">Đăng xuất</span>
                             </a>
                         </li>
                     </ul>
@@ -118,29 +111,10 @@
 
             {{-- nhân viên --}}
             <li>
-                <a data-toggle="collapse" href="#mapsExamples">
-                    <i class="pe-7s-users"></i>
-                    <p>Nhân Viên
-                       <b class="caret"></b>
-                    </p>
+                <a href="{{ route('employee.index') }}">
+                    <i class="pe-7s-user"></i>
+                    <p>Nhân viên</p>
                 </a>
-                <div class="collapse" id="mapsExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="maps/google.html">
-                                <span class="sidebar-mini">GM</span>
-                                <span class="sidebar-normal">Giáo vụ</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="maps/vector.html">
-                                <span class="sidebar-mini">VM</span>
-                                <span class="sidebar-normal">Kế toán</span>
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
             </li>
             {{-- Học Bổng --}}
             <li>
@@ -158,44 +132,6 @@
             </li>
 
 
-                     {{-- lớp --}}
-            <li>
-                <a data-toggle="collapse" href="#formsExamples">
-                    <i class="pe-7s-note2"></i>
-                    <p>lớp
-                       <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse" id="formsExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="forms/regular.html">
-                                <span class="sidebar-mini">Rf</span>
-                                <span class="sidebar-normal">Regular Forms</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="forms/extended.html">
-                                <span class="sidebar-mini">Ef</span>
-                                <span class="sidebar-normal">Extended Forms</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="forms/validation.html">
-                                <span class="sidebar-mini">Vf</span>
-                                <span class="sidebar-normal">Validation Forms</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="forms/wizard.html">
-                                <span class="sidebar-mini">W</span>
-                                <span class="sidebar-normal">Wizard</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            
            
         </ul>
     </div>

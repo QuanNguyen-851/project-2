@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 @section('main')
-    <h1>danh sách sinh viên</h1>
+    <h1>Danh sách sinh viên
+        <i class="pe-7s-study" ></i>
+    </h1>
   
         <div class="table-responsive">
             <div class="card">
