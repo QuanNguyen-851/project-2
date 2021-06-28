@@ -27,8 +27,8 @@
                 
             </ul>
         </nav>
-        <p class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://www.facebook.com/profile.php?id=100010083363618">Quân Nguyễn</a> Nếu có vấn đề về trang web vui lòng liên hệ Nguyễn Mạnh Quân để được hỗ trợ kịp thời 
+        <p class="copyright pull-right"> Nếu có vấn đề về trang web vui lòng liên hệ <a href="https://www.facebook.com/profile.php?id=100010083363618">Quân Nguyễn</a> để được hỗ trợ kịp thời 
+            &copy; <script>document.write(new Date().getFullYear())</script> 
         </p>
     </div>
 </footer>

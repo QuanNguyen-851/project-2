@@ -3,9 +3,9 @@
     <h1>Danh sách nhân viên
         <i class="fa fa-users"></i>
     </h1>
-  
-        <div class="table-responsive">
-            <div class="card">
+        <div class="card">
+            <div class="table-responsive">
+            
                 <div class="row">
                             <div class="content">
                                 <ul role="tablist" class="nav nav-tabs">
@@ -80,9 +80,6 @@
                                                     
                                                     <td class="td-actions text-right">
                                                        
-                                                        <a rel="tooltip" title="Show" class="btn btn-success btn-link btn-sm" href="">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
                                                         
                                                             
                                                            @if ($item->block ==1)
@@ -91,6 +88,11 @@
                                                                 <i class="pe-7s-check" ></i>
                                                             </a>
                                                             @else
+                                                              <a rel="tooltip" title="Show" class="btn btn-success btn-link btn-sm" href="">
+                                                                     <i class="fa fa-edit"></i>
+                                                             </a>
+                                                                            
+
                                                             <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="fa fa-times"></i>
                                                             </a>
@@ -158,9 +160,9 @@
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         
-                                                            <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
-                                                                <i class="fa fa-times"></i>
-                                                            </a>
+                                                        <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
                                                            
                                                            
                                                        
@@ -221,11 +223,9 @@
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        
-                                                            <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
-                                                                <i class="fa fa-times"></i>
-                                                            </a>
-                                                           
+                                                        <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
                                                            
                                                        
                                                     </td>

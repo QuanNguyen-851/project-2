@@ -9,21 +9,16 @@
             <div class="content">
                 <form>
                     <div class="row">
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label>Company (disabled)</label>
-                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
-                            </div>
-                        </div>
+                        
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>Username</label>
+                                <label>Tên Đăng nhập</label>
                                 <input type="text" class="form-control" placeholder="Username" value="michael23">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
+                                <label for="exampleInputEmail1">Email</label>
                                 <input type="email" class="form-control" placeholder="Email">
                             </div>
                         </div>
@@ -32,52 +27,55 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>First Name</label>
+                                <label>Họ Và Tên</label>
                                 <input type="text" class="form-control" placeholder="Company" value="Mike">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Last Name</label>
-                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Address</label>
+                                <label>Địa chỉ</label>
                                 <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
                             </div>
                         </div>
+                        
                     </div>
 
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>City</label>
+                                <label>Số Điện Thoại</label>
                                 <input type="text" class="form-control" placeholder="City" value="Mike">
                             </div>
                         </div>
                         <div class="col-md-4">
+                          
                             <div class="form-group">
-                                <label>Country</label>
-                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
+                                  <label>Ngày sinh</label>
+                                <input type="date" class="form-control datepicker" placeholder="Date Picker Here"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Postal Code</label>
-                                <input type="number" class="form-control" placeholder="ZIP Code">
-                            </div>
+                                <label>Giới tính</label>
+                                <select name="cities" class="selectpicker" data-title="Single Select" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                                    <option value="1">Nam</option>
+                                    <option value="0">Nữ</option>
+                                ...
+                                </select>
+                          </div>
+                           
+                            
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>About Me</label>
+                                <label>Địa chỉ</label>
                                 <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
                             </div>
                         </div>
@@ -95,27 +93,21 @@
                 <img src="../../assets/img/full-screen-image-3.jpg" alt="..."/>
             </div>
             <div class="content">
-                <div class="author">
+                
                      <a href="#">
-                    <img class="avatar border-gray" src="../../assets/img/default-avatar.png" alt="..."/>
+                  
 
-                      <h4 class="title">Tania Andrew<br />
-                         <small>michael24</small>
+                      <h4 class="title">Tên Đăng nhập<br />
+                         <small>Họ và tên</small>
                       </h4>
                     </a>
-                </div>
-                <p class="description text-center"> "Lamborghini Mercy <br>
-                                    Your chick she so thirsty <br>
-                                    I'm in that two seat Lambo"
+               
+                <p class="description "> Email.@gmail.com<br>
+                                 
                 </p>
             </div>
-            <hr>
-            <div class="text-center">
-                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
-            </div>
+            
+            
         </div>
     </div>
 

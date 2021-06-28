@@ -3,9 +3,9 @@
     <h1>Danh sách sinh viên
         <i class="pe-7s-study" ></i>
     </h1>
-  
+  <div class="card">
         <div class="table-responsive">
-            <div class="card">
+            
                 <div class="row">
                             <div class="content">
                                 <ul role="tablist" class="nav nav-tabs">
@@ -54,7 +54,9 @@
                                                     <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
-                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                        <i class="
+                                                        pe-7s-add-user
+                                                        " > </i>
                                                     </a></th>
                                                 </tr>
                                             </thead>
@@ -114,7 +116,9 @@
                                                     <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
-                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                            <i class="
+                                                            pe-7s-add-user
+                                                            " > </i>
                                                     </a></th>
                                                 </tr>
                                             </thead>
@@ -165,7 +169,9 @@
                                                     <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
-                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                            <i class="
+                                                            pe-7s-add-user
+                                                            " > </i>
                                                     </a></th>
                                                 </tr>
                                             </thead>
@@ -216,7 +222,9 @@
                                                     <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
-                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                            <i class="
+                                                            pe-7s-add-user
+                                                            " > </i>
                                                     </a></th>
                                                 </tr>
                                             </thead>
@@ -267,7 +275,9 @@
                                                     <th class="text-center" >Học phí 1 đợt</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
-                                                        <i class="pe-7s-plus" > Thêm sinh viên</i>
+                                                            <i class="
+                                                            pe-7s-add-user
+                                                            " > </i>
                                                     </a></th>
                                                 </tr>
                                             </thead>
@@ -290,9 +300,9 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
+                                                        {{-- <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
-                                                        </a>
+                                                        </a> --}}
                                                        
                                                                 
                                                         <a rel="tooltip" title="Unhide" class="btn btn-warning btn-link btn-sm" href="{{ route('students.unhide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">

@@ -111,6 +111,7 @@
             demo.initFormExtendedDatetimepickers();
         });
     </script>
+ 
     {{-- validate --}}
     <script type="text/javascript">
         $().ready(function(){
