@@ -40,7 +40,7 @@
                     <td class="text-center">{{$item->course}}</td>
                     
                         <td >
-                            <a rel="tooltip" title="Hide" class="btn btn-danger  btn-sm" href="{{ route('class.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ?')" style="float: right; margin:10px">
+                            <a rel="tooltip" title="Hide" class="btn btn-danger  btn-sm" href="{{ route('class.hide', $item->id)}}" onclick="return confirm('CẢNH BÁO! HÀNH ĐỘNG NÀY SẼ KHÔNG THỂ THAY ĐỔI BẠN CHẮC CHỨ ?')" style="float: right; margin:10px">
                                 ẩn
                             </a>
                             <a rel="tooltip" title="Edit Profile" class="btn btn-success  btn-sm" href="{{ route('class.edit', $item->id) }}" style="float: right; margin: 10px;">

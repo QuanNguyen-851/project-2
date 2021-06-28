@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Major;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class majorController extends Controller
@@ -15,8 +16,8 @@ class majorController extends Controller
     public function index()
     {
         $viewall = Major::select('major.*')->where('disable', '=', '0')->get();
-        return view('major.index',[
-            'listAll'=>$viewall,
+        return view('major.index', [
+            'listAll' => $viewall,
         ]);
     }
 
@@ -55,8 +56,8 @@ class majorController extends Controller
      */
     public function show($id)
     {
-        $passed = Major::select('major.*')->where('disable','=','1')->get();
-        return view('major.disabled',[
+        $passed = Major::select('major.*')->where('disable', '=', '1')->get();
+        return view('major.disabled', [
             'disabled' => $passed,
         ]);
     }
@@ -70,9 +71,9 @@ class majorController extends Controller
     public function edit($id)
     {
         $view = Major::select('major.*')
-        ->where('disable','=','0')
-        ->find($id);
-        return view('major.edit',[
+            ->where('disable', '=', '0')
+            ->find($id);
+        return view('major.edit', [
             'major' => $view
         ]);
     }
@@ -85,12 +86,33 @@ class majorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   //update bảng ngành
         Major::where('id', $id)->update([
             "name" => $request->get('name'),
             "shortName" => $request->get('short'),
-            "fee"=> $request->get('fee')
+            "fee" => $request->get('fee')
         ]);
+        //update lại số tiền phải đóng của tất cả những đứa ở ngành này 
+        $student = Student::join('classbk', 'classbk.id', '=', 'student.idClass')
+            ->join('major', 'classbk.idMajor', '=', 'major.id')
+            ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
+            ->select('scholarship.scholarship as scho', 'student.id as id')
+            ->where('student.disable', '!=', '1')
+            ->where('idMajor', '=', $id)
+            ->get();
+        foreach ($student as $item) {
+            // print_r($item);
+            $fee = $request->fee - round($item->scho / 30, -5);
+
+            if ($fee < 0) {
+                $fee = 0;
+            }
+            echo $fee;
+            Student::where('id', $item->id)->update([
+                "fee" => $fee,
+            ]);
+        }
+
         return redirect(route('major.index'));
     }
 
@@ -113,8 +135,8 @@ class majorController extends Controller
     }
     public function disabled()
     {
-        $passed = Major::select('major.*')->where('disable','=','1')->get();
-        return view('major.disabled',[
+        $passed = Major::select('major.*')->where('disable', '=', '1')->get();
+        return view('major.disabled', [
             'disabled' => $passed,
         ]);
     }

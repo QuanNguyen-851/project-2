@@ -63,21 +63,21 @@
             {{-- sinh viên --}}
             <li>
                 <a  href="{{ route('students.index') }}">
-                    <i class="pe-7s-user-female"></i>
+                    <i class="pe-7s-study"></i>
                     <p>Sinh Viên</p>
                 </a>
             </li>
             {{-- lớp --}}
             <li>
                 <a href="{{ route('class.index') }}">
-                    <i class="pe-7s-date"></i>
+                    <i class="pe-7s-albums"></i>
                     <p>Lớp</p>
                 </a>
             </li>
             {{-- khóa --}}
             <li>
                 <a data-toggle="collapse" href="#componentsExamples">
-                    <i class="pe-7s-note2"></i>
+                    <i class="pe-7s-bookmarks"></i>
                     <p>khóa
                        <b class="caret"></b>
                     </p>
@@ -119,14 +119,14 @@
             {{-- Học Bổng --}}
             <li>
                 <a href="{{ route('scholarship.index') }}">
-                    <i class="pe-7s-date"></i>
+                    <i class="pe-7s-gift"></i>
                     <p>Học bổng</p>
                 </a>
             </li>
             {{-- phương thức đóng học --}}
             <li>
                 <a href="{{ route('payment.index') }}">
-                    <i class="pe-7s-date"></i>
+                    <i class="pe-7s-network"></i>
                     <p>phương thức đóng học</p>
                 </a>
             </li>

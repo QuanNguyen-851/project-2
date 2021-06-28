@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Scholarship;
+use App\Models\Student as ModelsStudent;
 use Exception;
 use Illuminate\Http\Request;
+use Student;
 
 class ScholarshipController extends Controller
 {
@@ -103,12 +105,32 @@ class ScholarshipController extends Controller
             print_r($scholarship);
             return redirect()->route('scholarship.edit', [$id,])->with('err', "Mức học bổng này đã tồn tại");
         } catch (Exception $e) {
-
+            //update cho bảng học bổng
             Scholarship::where('id', $id)->update([
                 "name" => $request->name,
                 "scholarship" => $request->scholarship,
 
             ]);
+            //update lại số tiền phải đóng cho tất cả các thằng nào dùng mức học bổng đagn được thay đổi
+            $student = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
+                ->join('major', 'classbk.idMajor', '=', 'major.id')
+                ->select('major.fee as feemustpay', 'student.id as id')
+                ->where('student.disable', '!=', '1')
+                ->where('student.idStudentShip', '=', $id)->get();
+
+            foreach ($student as $item) {
+
+                $fee = $item->feemustpay - round($scho / 30, -5);
+                echo ($fee);
+                if ($fee < 0) {
+                    $fee = 0;
+                }
+
+                ModelsStudent::where('id', $item->id)->update([
+                    "fee" => $fee,
+                ]);
+            }
+
             return redirect()->route('scholarship.index');
         }
     }
