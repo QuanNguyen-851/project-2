@@ -1,22 +1,22 @@
 @extends('layouts.layout')
 @section('main')
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 col-md-offset-2">
         <div class="card">
             <div class="header">
-                <h4 class="title">Thông tin cá nhân</h4>
+                <h4 class="title">Thêm nhân viên</h4>
             </div>
             <div class="content">
-                <form action="{{ route('employee.update', $employee->id) }}" method="post" id="updatevalidateform">
+                <form action="{{ route('employee.store') }}" method="post" id="updatevalidateform">
                     @csrf
-                    @method("PUT")
+                   
                     <div class="row">
                         
-                        
+                       
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="email" name="email" class="form-control" value="{{$employee->email}}"
+                                <input type="email" name="email" class="form-control"
                                 required
                                 email="true"    
                                 >
@@ -34,19 +34,36 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Họ Và Tên</label>
-                                <input type="text" name="name" class="form-control" value="{{$employee->name}}"
+                                <input type="text" name="name" class="form-control" 
                                 required>
                             </div>
                         </div>
+                         <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Vị trí</label>
+                            <a style="color:red;font-size: small;">
+                            <select name="permission" class="selectpicker" title="Chọn vị trí--"  data-style="btn-default btn-block" data-menu-style="dropdown-blue" required>
+                                <option value="1" 
+                                 >Giáo vụ</option>
+                                <option value="0"
+                               
+                                >Kế toán</option>
+                          
+                            </select>
+                            </a>
+                      </div>
+                       
                         
                     </div>
+                    </div>
+                   
 
 
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Số Điện Thoại</label>
-                                <input type="text" name="phone" class="form-control"  value="{{$employee->phone}}"
+                                <input type="text" name="phone" class="form-control"  value=""
                                 required
                                 minLength="9"
                                 maxLength="10"
@@ -64,7 +81,7 @@
                             <div class="form-group">
                                   <label>Ngày sinh</label>
                                     
-                            <input type="date" name="DoB" class="form-control datepicker" placeholder="" value="{{$employee->dateBirth}}"
+                            <input type="date" name="DoB" class="form-control datepicker" placeholder="" value=""
                             required
                             >
                             </div>
@@ -72,18 +89,16 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Giới tính</label>
-                                <select name="gender" class="selectpicker"  data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                                <a style="color:red;font-size: small;">
+                                <select name="gender" class="selectpicker" title="chọn giới tính--"  data-style="btn-default btn-block" data-menu-style="dropdown-blue" required>
                                     <option value="1" 
-                                    @if ($employee->gender ==1)
-                                     {{"selected"}}   
-                                    @endif >Nam</option>
+                                     >Nam</option>
                                     <option value="0"
-                                    @if ($employee->gender ==0)
-                                     {{"selected"}}   
-                                    @endif
+                                   
                                     >Nữ</option>
                               
                                 </select>
+                                </a>
                           </div>
                            
                             
@@ -95,39 +110,18 @@
                             <div class="form-group">
                                 <label>Địa chỉ</label>
                                 <textarea name="address" rows="5" class="form-control" 
-                                required>{{$employee->address}}</textarea>
+                                required></textarea>
                             </div>
                         </div>
                     </div>
 
                     <button type="submit" class="btn btn-info btn-fill pull-right">Cập nhật</button>
-                    <div class="clearfix"></div>
+                    <div class="clearfix" style="color:red;">Nhân viên đăng nhập bằng email và mật khẩu mặc định ban đầu là 123456</div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card card-user">
-            <div class="image">
-                <img src="../../assets/img/full-screen-image-3.jpg" alt="..."/>
-            </div>
-            <div class="content">                
-                     <a href="#">
-                     <h4 class="title">{{$employee->name}}<br />
-                         
-                      </h4>
-                    </a>
-               
-                <p class="description "> Email: {{$employee->email}}<br>
-                                 
-                </p>
-            <a class="btn btn-primary btn-fill" href="{{ route('employee.changepass', $employee->id) }}">Đổi mật khẩu</a>
-                
-            </div>
-            
-            
-        </div>
-    </div>
+
 
 </div>
 @endsection

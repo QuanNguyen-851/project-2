@@ -13,6 +13,8 @@
                            name="pass"
                            type="password"
                            required="true"
+                           minLength="5"
+                                
                     />
                     <span style="color:red">
                         @if (Session::has('error'))
@@ -28,6 +30,7 @@
                            id="registerPassword"
                            type="password"
                            required="true"
+                           minLength="5"
                     />
                 </div>
 
@@ -39,6 +42,7 @@
                            type="password"
                            required="true"
                            equalTo="#registerPassword"
+                           minLength="5"
                     />
                 </div>
 

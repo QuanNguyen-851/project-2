@@ -54,7 +54,7 @@
                                     <div class="form-group">
                                         <label>Mật khẩu</label>
                                         <input type="password" name="password" placeholder="Nhập mật khẩu" class="form-control"
-                                        required>
+                                        required minLength="5">
                                     </div>
                                     <div class="form-group" style="text-align: center;color:red">
                                         <span>

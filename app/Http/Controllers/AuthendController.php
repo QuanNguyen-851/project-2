@@ -22,7 +22,7 @@ class AuthendController extends Controller
                 ['permission', '1'],
             ])
                 ->firstorFail();
-            $request->session()->put('userName', $checklogin->userName);
+            $request->session()->put('name', $checklogin->name);
             $request->session()->put('id', $checklogin->id);
             return redirect()->route('dashboard');
         } catch (Exception $e) {

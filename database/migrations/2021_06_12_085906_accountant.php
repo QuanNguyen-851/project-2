@@ -18,7 +18,6 @@ class Accountant extends Migration
             $table->string('name', 50);
             $table->string('email')->unique();
             $table->string('phone', 10)->unique();
-            $table->string('userName')->unique();
             $table->string('passWord');
             $table->boolean('gender');
             $table->date('dateBirth');

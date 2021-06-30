@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     {
         $search = $request->get('search');
         $employee = Employee::where('name', 'LIKE', "%$search%")
-            ->orwhere('userName', 'LIKE', "%$search%")
+
             ->paginate(100);
 
         $employeemi = Employee::where([
@@ -28,7 +28,7 @@ class EmployeeController extends Controller
             ->orwhere([
                 ['permission', '1'],
                 ['block', '!=', '1'],
-                ['userName', 'LIKE', "%$search%"],
+                ['email', 'LIKE', "%$search%"],
             ])
 
             ->get();
@@ -40,7 +40,7 @@ class EmployeeController extends Controller
             ->orwhere([
                 ['permission', '0'],
                 ['block', '!=', '1'],
-                ['userName', 'LIKE', "%$search%"],
+                ['email', 'LIKE', "%$search%"],
             ])
 
             ->get();
@@ -59,7 +59,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('Employee.create');
     }
 
     /**
@@ -70,7 +70,28 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $checkemail = Employee::where('email', $request->email)->first();
+        $checkphone = Employee::where('phone', $request->phone)->first();
+
+        if ($checkemail !== null) {
+            return redirect()->route('employee.create')->with('erremail', "Email này đã tồn tại");
+        } elseif ($checkphone !== null) {
+            return redirect()->route('employee.create')->with('errphone', "Số điện thoại này đã tồn tại");
+        } else {
+            $employee = new Employee();
+            $employee->name = $request->name;
+            $employee->email = $request->email;
+            $employee->phone = $request->phone;
+
+            $employee->password = "123456";
+            $employee->gender = $request->gender;
+            $employee->dateBirth = $request->DoB;
+            $employee->address = $request->address;
+            $employee->permission = $request->permission;
+            $employee->block = "0";
+            $employee->save();
+            return redirect()->route('employee.index');
+        }
     }
 
     /**
@@ -110,13 +131,11 @@ class EmployeeController extends Controller
 
         $thisemployee = Employee::where('id', $id)->first();
 
-        $checkusername = Employee::where('userName', $request->userName)->first();
+
         $checkphone = Employee::where('phone', $request->phone)->first();
         $checkemail = Employee::where('email', $request->email)->first();
 
-        if ($checkusername !== null && $thisemployee->userName != $request->userName) {
-            return redirect()->route('employee.edit', [$id,])->with('errusername', "Tên đăng nhập này đã tồn tại!");
-        } else
+
         if ($checkphone !== null && $thisemployee->phone != $request->phone) {
             return redirect()->route('employee.edit', [$id,])->with('errphone', "Số điện thoại này đã tồn tại!");
         } else
@@ -124,7 +143,7 @@ class EmployeeController extends Controller
             return redirect()->route('employee.edit', [$id,])->with('erremail', "Email này đã tồn tại!");
         } else {
             Employee::where('id', $id)->update([
-                "userName" => $request->userName,
+
                 "email" => $request->email,
                 "name" => $request->name,
                 "phone" => $request->phone,

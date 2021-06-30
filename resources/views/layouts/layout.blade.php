@@ -28,10 +28,11 @@
     
     </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" >
+        
         {{-- thanh sidebar bên trái --}}
             @include('layouts.sidebar') 
-        <div class="main-panel">
+        <div class="main-panel" style="background-color: #507ada0d" >
            
             {{-- thanh navbar trên cùng --}}
             @include('layouts.navbar')

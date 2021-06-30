@@ -40,7 +40,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                <th class="text-center">Username</th>
+                                                
                                                     <th class="text-center">Họ Và tên</th>
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
@@ -48,7 +48,7 @@
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
-                                                        <a href="" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
+                                                        <a href="{{ route('employee.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                         <i class="pe-7s-add-user" > Thêm Nhân viên</i>
                                                     </a></th>
                                                 </tr>
@@ -56,7 +56,7 @@
                                             <tbody>
                                                 @foreach ($allemployee as $item)
                                                 <tr>
-                                                    <th class="text-center">{{$item->userName}}</th>
+                                                   
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">
@@ -109,7 +109,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                <th class="text-center">Username</th>
+                                               
                                                     <th class="text-center">Họ Và tên</th>
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
@@ -125,7 +125,7 @@
                                             <tbody>
                                                 @foreach ($Miemployee as $item)
                                                 <tr>
-                                                    <th class="text-center">{{$item->userName}}</th>
+                                                  
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">
@@ -166,7 +166,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                <th class="text-center">Username</th>
+                                                
                                                     <th class="text-center">Họ Và tên</th>
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
@@ -182,7 +182,7 @@
                                             <tbody>
                                                 @foreach ($Acemployee as $item)
                                                 <tr>
-                                                    <th class="text-center">{{$item->userName}}</th>
+                                                  
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">

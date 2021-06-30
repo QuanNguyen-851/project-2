@@ -25,9 +25,9 @@
                 
 
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                    <span style="text-align: center;    font-size: x-large;">
-                        @if (Session::has('userName'))
-                            {{Session::get('userName')}}
+                    <span style="font-size: large;">
+                        @if (Session::has('name'))
+                            {{Session::get('name')}}
                         @endif
                         <b class="caret"></b>
                     </span>
