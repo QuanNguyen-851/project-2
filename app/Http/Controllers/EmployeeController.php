@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     {
         $search = $request->get('search');
         $employee = Employee::where('name', 'LIKE', "%$search%")
-
+            ->orwhere('email', 'LIKE', "%$search%")
             ->paginate(100);
 
         $employeemi = Employee::where([

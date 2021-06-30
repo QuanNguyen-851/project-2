@@ -45,6 +45,7 @@
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">số điện thoại</th>
+                                                    <th  class="text-center">email</th>
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
@@ -67,6 +68,7 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
+                                                    <th class="text-center" >{{$item->email}}</th>
                                                     <th class="text-center"> 
                                                         {{$item->PermissionName}}
                                                     </th>
@@ -114,6 +116,7 @@
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">số điện thoại</th>
+                                                    <th  class="text-center">email</th>
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
@@ -136,6 +139,7 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
+                                                    <th class="text-center" >{{$item->email}}</th>
                                                     <th class="text-center"> 
                                                         {{$item->PermissionName}}
                                                     </th>
@@ -171,6 +175,7 @@
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">số điện thoại</th>
+                                                    <th  class="text-center">email</th>
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
@@ -193,6 +198,7 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
+                                                    <th class="text-center" >{{$item->email}}</th>
                                                     <th class="text-center"> 
                                                         {{$item->PermissionName}}
                                                     </th>
