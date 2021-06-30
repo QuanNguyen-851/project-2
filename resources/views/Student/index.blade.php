@@ -284,16 +284,13 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center"> {{$item->scholarship}}</th>
-                                                    <th class="text-center" >{{ number_format($item->fee)}} VND</th>
+                                                    <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                      
-                                                       
-                                                                
+                                                         
                                                         <a rel="tooltip" title="Unhide" class="btn btn-warning btn-link btn-sm" href="{{ route('students.unhide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                            
-                                                       
+
                                                     </td>
                                                 </tr>    
                                                 @endforeach

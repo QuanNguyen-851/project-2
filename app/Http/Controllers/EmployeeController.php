@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use Exception;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -90,7 +91,11 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        return view('Employee.edit');
+        $employee = Employee::where('id', $id)->first();
+
+        return view('Employee.edit', [
+            "employee" => $employee,
+        ]);
     }
 
     /**
@@ -102,7 +107,33 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $thisemployee = Employee::where('id', $id)->first();
+
+        $checkusername = Employee::where('userName', $request->userName)->first();
+        $checkphone = Employee::where('phone', $request->phone)->first();
+        $checkemail = Employee::where('email', $request->email)->first();
+
+        if ($checkusername !== null && $thisemployee->userName != $request->userName) {
+            return redirect()->route('employee.edit', [$id,])->with('errusername', "Tên đăng nhập này đã tồn tại!");
+        } else
+        if ($checkphone !== null && $thisemployee->phone != $request->phone) {
+            return redirect()->route('employee.edit', [$id,])->with('errphone', "Số điện thoại này đã tồn tại!");
+        } else
+        if ($checkemail !== null && $thisemployee->email != $request->email) {
+            return redirect()->route('employee.edit', [$id,])->with('erremail', "Email này đã tồn tại!");
+        } else {
+            Employee::where('id', $id)->update([
+                "userName" => $request->userName,
+                "email" => $request->email,
+                "name" => $request->name,
+                "phone" => $request->phone,
+                "dateBirth" => $request->DoB,
+                "gender" => $request->gender,
+                "address" => $request->address,
+            ]);
+            return redirect()->route('employee.edit', [$id,]);
+        }
     }
 
     /**
@@ -128,5 +159,26 @@ class EmployeeController extends Controller
             "block" => 0,
         ]);
         return redirect()->route('employee.index');
+    }
+    public function changepass($id)
+    {
+        return view('Employee.changepass', [
+            "id" => $id,
+        ]);
+    }
+    public function changepassProcess(Request $request, $id)
+    {
+        try {
+            $oldpass = Employee::where([
+                ['id', $id],
+                ["passWord", $request->pass]
+            ])->firstorFail();
+            Employee::where('id', $id)->update([
+                "passWord" => $request->newpass,
+            ]);
+            return redirect()->route('employee.edit', [$id,]);
+        } catch (Exception $e) {
+            return redirect()->route('employee.changepass', [$id,])->with('error', "sai mật khẩu");
+        }
     }
 }

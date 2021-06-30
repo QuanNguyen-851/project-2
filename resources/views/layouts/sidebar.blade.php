@@ -25,7 +25,7 @@
                 
 
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                    <span>
+                    <span style="text-align: center;    font-size: x-large;">
                         @if (Session::has('userName'))
                             {{Session::get('userName')}}
                         @endif
@@ -36,9 +36,9 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="{{ route('employee.edit', 1) }}">
+                            <a href="{{ route('employee.edit',Session::get('id')) }}">
                                 <span class="sidebar-mini">
-                                    <i class="pe-7s-id"></i>
+                                <i class="pe-7s-id"></i>
                                 </span>
                                 <span class="sidebar-normal">Cập nhật thông tin cá nhân</span>
                             </a>

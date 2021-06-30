@@ -118,7 +118,7 @@
                                 <input class="form-control"
                                     type="text"
                                     name="phone"
-                                    number="true"
+                                   
                                     required="required"
                                     value="{{$student->phone}}"
                                     minLength="9"

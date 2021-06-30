@@ -82,5 +82,7 @@ Route::middleware([CheckLogin::class])->group(function () { // checklogin
     Route::prefix('employee')->name('employee.')->group(function () {
         Route::get('/{id}/block', [EmployeeController::class, 'block'])->name('block');
         Route::get('/{id}/unblock', [EmployeeController::class, 'unblock'])->name('unblock');
+        Route::get('/{id}/changepass', [EmployeeController::class, 'changepass'])->name('changepass');
+        Route::post('/{id}/changepassProcess', [EmployeeController::class, 'changepassProcess'])->name('changepassProcess');
     });
 });
