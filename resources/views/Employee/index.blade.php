@@ -60,10 +60,7 @@
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">
-                                                    @php
-                                                        $gt = ($item->gender == 1) ? "Nam" : "Nữ";
-                                                    @endphp
-                                                    {{$gt}}
+                                                    {{$item->GenderName}}
                                                     </th>
                                                     @php
                                                         $date=date_create($item->dateBirth);
@@ -71,11 +68,7 @@
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
                                                     <th class="text-center"> 
-                                                        @if ($item->permission == 1)
-                                                            {{"Giáo vụ"}}
-                                                        @else
-                                                        {{"Kế toán"}}
-                                                        @endif
+                                                        {{$item->PermissionName}}
                                                     </th>
                                                     
                                                     <td class="td-actions text-right">
@@ -84,7 +77,7 @@
                                                             
                                                            @if ($item->block ==1)
                                                                
-                                                           <a rel="tooltip" title="Unblock" class="btn btn-warning btn-link btn-sm btn-fill" href="{{ route('unblock', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                           <a rel="tooltip" title="Unblock" class="btn btn-warning btn-link btn-sm btn-fill" href="{{ route('employee.unblock', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="pe-7s-check" ></i>
                                                             </a>
                                                             @else
@@ -93,7 +86,7 @@
                                                              </a>
                                                                             
 
-                                                            <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                            <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('employee.block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="fa fa-times"></i>
                                                             </a>
                                                            @endif
@@ -136,10 +129,7 @@
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">
-                                                    @php
-                                                        $gt = ($item->gender == 1) ? "Nam" : "Nữ";
-                                                    @endphp
-                                                    {{$gt}}
+                                                        {{$item->GenderName}}
                                                     </th>
                                                     @php
                                                         $date=date_create($item->dateBirth);
@@ -147,11 +137,7 @@
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
                                                     <th class="text-center"> 
-                                                        @if ($item->permission == 1)
-                                                            {{"Giáo vụ"}}
-                                                        @else
-                                                        {{"Kế toán"}}
-                                                        @endif
+                                                        {{$item->PermissionName}}
                                                     </th>
                                                     
                                                     <td class="td-actions text-right">
@@ -160,7 +146,7 @@
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         
-                                                        <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                        <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('employee.block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                            
@@ -200,10 +186,7 @@
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">
-                                                    @php
-                                                        $gt = ($item->gender == 1) ? "Nam" : "Nữ";
-                                                    @endphp
-                                                    {{$gt}}
+                                                        {{$item->GenderName}}
                                                     </th>
                                                     @php
                                                         $date=date_create($item->dateBirth);
@@ -211,11 +194,7 @@
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
                                                     <th class="text-center"> 
-                                                        @if ($item->permission == 1)
-                                                            {{"Giáo vụ"}}
-                                                        @else
-                                                        {{"Kế toán"}}
-                                                        @endif
+                                                        {{$item->PermissionName}}
                                                     </th>
                                                     
                                                     <td class="td-actions text-right">
@@ -223,7 +202,7 @@
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                        <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('employee.block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                            
@@ -240,9 +219,7 @@
                                 </div>
 
                             </div>
-                        
-                    
-                    
+
                 </div>
             </div>
         </div>

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Classroom;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -13,8 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $listallCourse = Course::select('course.*')->where('disable','=','0')->get();
-        return view('course.index',[
+        $listallCourse = Course::select('course.*')->where('disable', '=', '0')->get();
+        return view('course.index', [
             'listallCourse' => $listallCourse,
         ]);
     }
@@ -37,7 +39,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $course = new Course();
         $course->name = $request->course;
         $course->year = $request->year;
@@ -55,8 +57,8 @@ class CourseController extends Controller
      */
     public function show()
     {
-        $passed = Course::select('course.*')->where('disable','=','1')->get();
-        return view('course.passed',[
+        $passed = Course::select('course.*')->where('disable', '=', '1')->get();
+        return view('course.passed', [
             'passed' => $passed
         ]);
     }
@@ -70,9 +72,9 @@ class CourseController extends Controller
     public function edit($id)
     {
         $view = Course::select('course.*')
-        ->where('disable','=','0')
-        ->find($id);
-        return view('course.edit',[
+            ->where('disable', '=', '0')
+            ->find($id);
+        return view('course.edit', [
             'course' => $view
         ]);
     }
@@ -101,19 +103,22 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-       // 
+        // 
     }
     public function hide($id)
     {
         Course::where('id', $id)->update([
             "disable" => 1,
         ]);
+        Classroom::where('idCourse', $id)->update([
+            "disable" => 1,
+        ]);
         return redirect(route('course.index'));
     }
     public function passed()
     {
-        $passed = Course::select('course.*')->where('disable','=','1');
-        return view('course.passed',[
+        $passed = Course::select('course.*')->where('disable', '=', '1');
+        return view('course.passed', [
             'passed' => $passed,
         ]);
     }

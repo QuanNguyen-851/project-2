@@ -9,7 +9,7 @@
 
 <table id="bootstrap-table" class="table">
     <thead>
-        <th data-field="state" data-checkbox="true"></th>
+        
         <th data-field="id" class="text-center">#</th>
     	<th data-field="name" data-sortable="true">Tên Ngành</th>
     	<th data-field="salary" data-sortable="true">Tên rút gọn</th>
@@ -19,7 +19,7 @@
     <tbody>
         @foreach ($listAll as $item)
         <tr>
-            <td></td>
+            
         	<td>{{$item->id}}</td>
         	<td>{{$item->name}}</td>
         	<td>{{$item->shortName}}</td>

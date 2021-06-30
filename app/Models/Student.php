@@ -10,4 +10,12 @@ class Student extends Model
     use HasFactory;
     protected $table = 'student';
     public $timestamps = false;
+    public function getGenderNameAttribute()
+    {
+        if ($this->gender == 1) {
+            return "Nam";
+        } else {
+            return "Nữ";
+        }
+    }
 }

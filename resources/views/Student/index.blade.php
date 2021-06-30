@@ -42,6 +42,7 @@
                                 <div class="tab-content">
                                     {{-- tất cả --}}
                                     <div id="settings" class="tab-pane active">
+                                     
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -66,12 +67,8 @@
                                                     <th class="text-center">{{"BKC".$item->id}}</th>
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
-                                                    <th class="text-center">
-                                                    @php
-                                                        $gt = ($item->gender == 1) ? "Nam" : "Nữ";
-                                                    @endphp
-                                                    {{$gt}}
-                                                    </th>
+                                                    <th class="text-center">{{$item->GenderName}}</th>
+                                                   
                                                     @php
                                                         $date=date_create($item->dateBirth);
                                                     @endphp
@@ -102,7 +99,8 @@
                                         </div>
 
                                     </div>
-                                    {{-- năm 3 --}}
+
+                                     {{-- năm 3  --}}
                                     <div id="agency" class="tab-pane ">
                                          <table class="table">
                                             <thead>
@@ -129,11 +127,7 @@
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     <th class="text-center">
-                                                    @php
-                                                        $gt = ($item->gender == 1) ? "Nam" : "Nữ";
-                                                    @endphp
-                                                    {{$gt}}
-                                                    </th>
+                                                        {{$item->GenderName}}</th>
                                                     @php
                                                         $date=date_create($item->dateBirth);
                                                     @endphp
@@ -155,7 +149,7 @@
                                             </tbody>
                                         </table> 
                                     </div>
-                                    {{-- năm 2 --}}
+                                   {{--  năm 2  --}}
                                     <div id="company" class="tab-pane">
                                         <table class="table">
                                             <thead>
@@ -182,11 +176,7 @@
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     <th class="text-center">
-                                                    @php
-                                                        $gt = ($item->gender == 1) ? "Nam" : "Nữ";
-                                                    @endphp
-                                                    {{$gt}}
-                                                    </th>
+                                                        {{$item->GenderName}}</th>
                                                     @php
                                                         $date=date_create($item->dateBirth);
                                                     @endphp
@@ -208,7 +198,7 @@
                                             </tbody>
                                         </table> 
                                     </div>
-                                    {{-- năm 1 --}}
+                                  {{--  năm 1  --}}
                                     <div id="style" class="tab-pane">
                                         <table class="table">
                                             <thead>
@@ -235,11 +225,7 @@
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     <th class="text-center">
-                                                    @php
-                                                        $gt = ($item->gender == 1) ? "Nam" : "Nữ";
-                                                    @endphp
-                                                    {{$gt}}
-                                                    </th>
+                                                        {{$item->GenderName}}</th>
                                                     @php
                                                         $date=date_create($item->dateBirth);
                                                     @endphp
@@ -261,7 +247,7 @@
                                             </tbody>
                                         </table> 
                                     </div>
-                                    {{-- bị ẩn --}}
+                                 {{--  bị ẩn  --}}
                                     <div id="icon-info" class="tab-pane">
                                         <table class="table">
                                             <thead>
@@ -300,9 +286,7 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                        {{-- <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a> --}}
+                                                      
                                                        
                                                                 
                                                         <a rel="tooltip" title="Unhide" class="btn btn-warning btn-link btn-sm" href="{{ route('students.unhide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
@@ -317,7 +301,8 @@
 
                                             </tbody>
                                         </table> 
-                                    </div>
+                                    </div>  
+
                                 </div>
 
                             </div>

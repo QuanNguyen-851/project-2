@@ -26,25 +26,49 @@ class StudentController extends Controller
                 ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
                 ->join('course', 'course.id', '=', 'classbk.idCourse')
                 ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
-                ->where('student.name', 'LIKE', "%$search%")
+                // ->where('student.name', 'LIKE', "%$search%")
 
-                ->where('student.disable', '!=', '1')
-                ->where('course.id', '=', $course[$i]->id)
+                // ->where('student.disable', '!=', '1')
+                // ->where('course.id', '=', $course[$i]->id)
+                ->where([
+                    ['student.name', 'LIKE', "%$search%"],
+                    ['student.disable', '!=', '1'],
+                    ['course.id', '=', $course[$i]->id],
+                ])
+                ->orwhere([
+                    ['classbk.name', 'LIKE', "%$search%"],
+                    ['student.disable', '!=', '1'],
+                    ['course.id', '=', $course[$i]->id],
+                ])
                 ->get();
         }
         $allstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
             ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
             ->join('course', 'course.id', '=', 'classbk.idCourse')
             ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
-            ->where('student.name', 'LIKE', "%$search%")
-            ->where('student.disable', '!=', '1')
+            ->where([
+                ['student.name', 'LIKE', "%$search%"],
+                ['student.disable', '!=', '1'],
+            ])
+            ->orwhere([
+                ['classbk.name', 'LIKE', "%$search%"],
+                ['student.disable', '!=', '1'],
+            ])
             ->paginate(100);
         $hidedstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
             ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
             ->join('course', 'course.id', '=', 'classbk.idCourse')
             ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
-            ->where('student.name', 'LIKE', "%$search%")
-            ->where('student.disable', '1')
+            // ->where('student.name', 'LIKE', "%$search%")
+            // ->where('student.disable', '1')
+            ->where([
+                ['student.name', 'LIKE', "%$search%"],
+                ['student.disable', '1'],
+            ])
+            ->orwhere([
+                ['classbk.name', 'LIKE', "%$search%"],
+                ['student.disable', '1'],
+            ])
             ->paginate(100);
 
         return view('Student.index', [

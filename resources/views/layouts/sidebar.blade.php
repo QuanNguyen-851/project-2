@@ -9,11 +9,11 @@
     -->
 
     <div class="logo">
-        <a href="/" class="simple-text logo-mini" style="margin-left: 40px;">
+        <a href="/dashboard);" class="simple-text logo-mini" style="margin-left: 40px;">
             Mi
         </a>
 
-        <a href="/" class="simple-text logo-normal">
+        <a href="/dashboard" class="simple-text logo-normal">
             <img id='bkacad' style='width: 118px; margin-left: 10px;'
              src="{{ asset('assets') }}/img/logo_1591255072.png">
         </a>
@@ -26,7 +26,9 @@
 
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        Tania Andrew
+                        @if (Session::has('userName'))
+                            {{Session::get('userName')}}
+                        @endif
                         <b class="caret"></b>
                     </span>
                 </a>
@@ -43,7 +45,7 @@
                         </li>
 
                         <li>
-                            <a href="#pablo">
+                            <a href="{{ route('logout') }}">
                                 <span class="sidebar-mini"><i class="pe-7s-next-2"></i></span>
                                 <span class="sidebar-normal">Đăng xuất</span>
                             </a>

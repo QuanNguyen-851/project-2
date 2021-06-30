@@ -16,15 +16,32 @@ class EmployeeController extends Controller
     {
         $search = $request->get('search');
         $employee = Employee::where('name', 'LIKE', "%$search%")
+            ->orwhere('userName', 'LIKE', "%$search%")
             ->paginate(100);
 
-        $employeemi = Employee::where('permission', '1')
-            ->where('block', '!=', '1')
-            ->where('name', 'LIKE', "%$search%")
+        $employeemi = Employee::where([
+            ['permission', '1'],
+            ['block', '!=', '1'],
+            ['name', 'LIKE', "%$search%"],
+        ])
+            ->orwhere([
+                ['permission', '1'],
+                ['block', '!=', '1'],
+                ['userName', 'LIKE', "%$search%"],
+            ])
+
             ->get();
-        $employeeac = Employee::where('permission', '0')
-            ->where('block', '!=', '1')
-            ->where('name', 'LIKE', "%$search%")
+        $employeeac = Employee::where([
+            ['permission', '0'],
+            ['block', '!=', '1'],
+            ['name', 'LIKE', "%$search%"],
+        ])
+            ->orwhere([
+                ['permission', '0'],
+                ['block', '!=', '1'],
+                ['userName', 'LIKE', "%$search%"],
+            ])
+
             ->get();
         return view('Employee.index', [
             "allemployee" => $employee,
