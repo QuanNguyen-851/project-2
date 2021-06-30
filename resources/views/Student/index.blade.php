@@ -284,7 +284,7 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center"> {{$item->scholarship}}</th>
-                                                    <th class="text-center" >{{ number_format($item->fee)}}VND</th>
+                                                    <th class="text-center" >{{ number_format($item->fee)}} VND</th>
                                                     <td class="td-actions text-right">
                                                       
                                                        
