@@ -8,7 +8,9 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\majorController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ScholarshipController;
+use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\StudentController;
+use App\Http\Middleware\Checkhasrand;
 use App\Http\Middleware\CheckLoged;
 use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
@@ -23,15 +25,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// login
+// checkloged
 Route::middleware([CheckLoged::class])->group(function () {
     Route::get('/', [AuthendController::class, 'login'])->name('login');
     Route::post('/loginProcess', [AuthendController::class, 'loginProcess'])->name('loginProcess');
+    Route::get('/foget', [AuthendController::class, 'foget'])->name('foget'); //trang nhập email
+    Route::post('/findaccount', [AuthendController::class, 'findaccount'])->name('findaccount'); //check email
+    Route::middleware([Checkhasrand::class])->group(function () {
+
+        Route::get('/fogetpass', [SendMailController::class, 'fogetpass'])->name('fogetpass'); // gửi mail mã xác nhận
+        Route::get('/checkrand', [AuthendController::class, 'checkrand'])->name('checkrand'); //trang xác nhận
+        Route::post('/checkrandprocess', [AuthendController::class, 'checkrandprocess'])->name('checkrandprocess'); //check rand
+        Route::get('/getpass', [AuthendController::class, 'getpass'])->name('getpass'); //trang đổi lại mk
+        Route::post('/setpass', [AuthendController::class, 'setpass'])->name('setpass'); // lấy mật khẩu
+
+    });
 });
-
-
-
-Route::middleware([CheckLogin::class])->group(function () { // checklogin
+// checklogin
+Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/logout', [AuthendController::class, 'logout'])->name('logout');
     //dashboad
     Route::get('/dashboard', function () {
@@ -48,7 +59,6 @@ Route::middleware([CheckLogin::class])->group(function () { // checklogin
 
     //CLASS
     Route::resource('class', ClassController::class);
-    // Route::get('class/{id}/hide', [ClassController::class, 'hide'])->name('class.hide');
     Route::prefix('class')->name('class.')->group(function () {
         Route::get('/{id}/hide', [ClassController::class, 'hide'])->name('hide');
     });

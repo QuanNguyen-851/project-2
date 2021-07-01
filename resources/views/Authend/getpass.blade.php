@@ -38,37 +38,36 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                        <form method="post" action="{{ route('loginProcess') }}"id="updatevalidateform">
+                        <form method="post" action="{{ route('setpass') }}"id="updatevalidateform">
                             @csrf
                         <!--   if you want to have the card without animation please remove the ".card-hidden" class   -->
                             <div class="card card-hidden">
-                                <div class="header text-center">Đăng nhập</div>
+                                <div class="header text-center">Đổi mật khẩu</div>
                                 <div class="content">
+                                   
                                     <div class="form-group">
-                                        <label>Email </label>
-                                        <input type="email" name="email" placeholder="Nhập email" class="form-control"
-                                        email="true"
-                                        required
-                                        >
+                                        <label class="control-label">Mật khẩu mới</label>
+                                        <input class="form-control"
+                                               name="newpass"
+                                               id="registerPassword"
+                                               type="password"
+                                               required="true"
+                                               minLength="5"
+                                        />
                                     </div>
+                    
                                     <div class="form-group">
-                                        <label>Mật khẩu</label>
-                                        <input type="password" name="password" placeholder="Nhập mật khẩu" class="form-control"
-                                        required minLength="5">
+                                        <label class="control-label">Nhập lại mật khẩu mới </label>
+                                        <input class="form-control"
+                                               name="password_confirmation"
+                                               id="registerPasswordConfirmation"
+                                               type="password"
+                                               required="true"
+                                               equalTo="#registerPassword"
+                                               minLength="5"
+                                        />
                                     </div>
-                                    <div class="form-group" style="text-align: center;color:red">
-                                        <span>
-                                            @if (Session::has('err'))
-                                                {{Session::get('err')}}
-                                            @endif
-                                            @if (Session::has('notlogin'))
-                                            {{Session::get('notlogin')}}
-                                            @endif
-
-                                        </span>
-                                        
-                                    </div>
-                                    <a style="color:#5a087b;" href="{{ route('foget') }}" >Quên mật khẩu?</a>
+                                    
                                 </div>
                                 
                                 <div class="footer text-center">

@@ -8,7 +8,7 @@
         <div class="header">Đổi mật khẩu</div>
             <div class="content">
                 <div class="form-group">
-                    <label class="control-label">Mật khẩu</label>
+                    <label class="control-label">Mật khẩu cũ</label>
                     <input class="form-control"
                            name="pass"
                            type="password"

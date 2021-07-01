@@ -33,12 +33,39 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Họ Và Tên</label>
+                            <label>Họ Và Tên</label>
                                 <input type="text" name="name" class="form-control" value="{{$employee->name}}"
                                 required>
                             </div>
                         </div>
+                        {{-- <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Số Điện Thoại</label>
+                                <input type="text" name="phone" class="form-control"  value="{{$employee->phone}}"
+                                required
+                                minLength="9"
+                                maxLength="10"
+                                >
+                                <span style="color:red">
+                                    @if (Session::has('errphone'))
+                                    {{Session::get('errphone')}}
+                                        
+                                    @endif
+                                </span>
+                            </div>
+                        </div> --}}
+                        <div class="col-md-4">
+                            <div class="form-group">
+                            
+                            <a style="color:red;font-size: small;">
+                                <input type="hidden" name="permission" class="form-control"  value="{{$employee->permission}}"
+                                >
+                            
+                            </a>
+                            </div>
+                       
                         
+                        </div>
                     </div>
 
 

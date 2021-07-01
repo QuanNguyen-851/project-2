@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Employee;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,14 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->exists('id')) {
-            return $next($request);
+        if ($request->session()->exists('id')) { //check login
+            $em = Employee::where('id', $request->session()->get('id'))->first();
+            if ($em->block == 1) { //check bị chặn
+                $request = session()->flush();
+                return redirect()->route('login')->with('notlogin', "Bạn đã bị chặn");
+            } else {
+                return $next($request);
+            }
         } else {
             return redirect()->route('login')->with('notlogin', "Bạn chưa đăng nhập");
         }

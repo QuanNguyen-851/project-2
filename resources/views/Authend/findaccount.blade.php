@@ -38,41 +38,32 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                        <form method="post" action="{{ route('loginProcess') }}"id="updatevalidateform">
+                        <form method="post" action="{{ route('findaccount') }}"id="updatevalidateform">
                             @csrf
                         <!--   if you want to have the card without animation please remove the ".card-hidden" class   -->
                             <div class="card card-hidden">
-                                <div class="header text-center">Đăng nhập</div>
+                                <div class="header text-center">Tìm tài khoản của bạn</div>
                                 <div class="content">
                                     <div class="form-group">
-                                        <label>Email </label>
+                                        <label>Vui lòng nhập email tài khoản của bạn</label>
                                         <input type="email" name="email" placeholder="Nhập email" class="form-control"
                                         email="true"
                                         required
                                         >
                                     </div>
-                                    <div class="form-group">
-                                        <label>Mật khẩu</label>
-                                        <input type="password" name="password" placeholder="Nhập mật khẩu" class="form-control"
-                                        required minLength="5">
-                                    </div>
+                                    
                                     <div class="form-group" style="text-align: center;color:red">
                                         <span>
-                                            @if (Session::has('err'))
-                                                {{Session::get('err')}}
+                                            @if (Session::has('error'))
+                                                {{Session::get('error')}}
                                             @endif
-                                            @if (Session::has('notlogin'))
-                                            {{Session::get('notlogin')}}
-                                            @endif
-
                                         </span>
                                         
                                     </div>
-                                    <a style="color:#5a087b;" href="{{ route('foget') }}" >Quên mật khẩu?</a>
+                                    
                                 </div>
-                                
                                 <div class="footer text-center">
-                                    <button type="submit" class="btn btn-fill btn-warning btn-wd">Login</button>
+                                    <button type="submit" class="btn btn-fill btn-warning btn-wd">Tìm kiếm</button>
                                 </div>
                             </div>
 

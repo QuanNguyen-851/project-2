@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Exception;
+
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -102,6 +103,11 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
+        $employee = Employee::where('id', $id)->first();
+
+        return view('Employee.show', [
+            "employee" => $employee,
+        ]);
     }
 
     /**
@@ -150,8 +156,13 @@ class EmployeeController extends Controller
                 "dateBirth" => $request->DoB,
                 "gender" => $request->gender,
                 "address" => $request->address,
+                "permission" => $request->permission,
             ]);
-            return redirect()->route('employee.edit', [$id,]);
+            if ($id == Session()->get('id')) {
+                return redirect()->route('employee.edit', [$id,]);
+            } else {
+                return redirect()->route('employee.show', [$id,]);
+            }
         }
     }
 
@@ -195,7 +206,7 @@ class EmployeeController extends Controller
             Employee::where('id', $id)->update([
                 "passWord" => $request->newpass,
             ]);
-            return redirect()->route('employee.edit', [$id,]);
+            return redirect()->route('logout');
         } catch (Exception $e) {
             return redirect()->route('employee.changepass', [$id,])->with('error', "sai mật khẩu");
         }

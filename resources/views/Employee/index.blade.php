@@ -76,14 +76,13 @@
                                                     <td class="td-actions text-right">
                                                        
                                                         
-                                                            
-                                                           @if ($item->block ==1)
-                                                               
-                                                           <a rel="tooltip" title="Unblock" class="btn btn-warning btn-link btn-sm btn-fill" href="{{ route('employee.unblock', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                        @if ($item->id != Session::get('id'))
+                                                            @if ($item->block ==1)
+                                                            <a rel="tooltip" title="Unblock" class="btn btn-warning btn-link btn-sm btn-fill" href="{{ route('employee.unblock', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="pe-7s-check" ></i>
                                                             </a>
                                                             @else
-                                                              <a rel="tooltip" title="Show" class="btn btn-success btn-link btn-sm" href="">
+                                                              <a rel="tooltip" title="Show" class="btn btn-success btn-link btn-sm" href="{{ route('employee.show', $item->id) }}">
                                                                      <i class="fa fa-edit"></i>
                                                              </a>
                                                                             
@@ -91,8 +90,8 @@
                                                             <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('employee.block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="fa fa-times"></i>
                                                             </a>
-                                                           @endif
-                                                            
+                                                            @endif
+                                                        @endif
                                                        
                                                     </td>
                                                 </tr>    
@@ -120,7 +119,7 @@
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
-                                                        <a href="" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
+                                                        <a href="{{ route('employee.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                         <i class="pe-7s-add-user" > Thêm Nhân viên</i>
                                                     </a></th>
                                                 </tr>
@@ -145,15 +144,15 @@
                                                     </th>
                                                     
                                                     <td class="td-actions text-right">
-                                                      
-                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
+                                                        @if ($item->id != Session::get('id'))
+                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('employee.show', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         
                                                         <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('employee.block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-times"></i>
                                                         </a>
-                                                           
+                                                        @endif
                                                            
                                                        
                                                     </td>
@@ -179,7 +178,7 @@
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
-                                                        <a href="" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
+                                                        <a href="{{ route('employee.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                         <i class="pe-7s-add-user" > Thêm Nhân viên</i>
                                                     </a></th>
                                                 </tr>
@@ -204,8 +203,8 @@
                                                     </th>
                                                     
                                                     <td class="td-actions text-right">
-                                                      
-                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
+                                                    
+                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('employee.show', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('employee.block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
