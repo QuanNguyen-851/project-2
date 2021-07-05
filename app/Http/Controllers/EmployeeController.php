@@ -88,7 +88,7 @@ class EmployeeController extends Controller
             $employee->gender = $request->gender;
             $employee->dateBirth = $request->DoB;
             $employee->address = $request->address;
-            $employee->permission = $request->permission;
+            $employee->permission = "0";
             $employee->block = "0";
             $employee->save();
             return redirect()->route('employee.index');
@@ -156,7 +156,7 @@ class EmployeeController extends Controller
                 "dateBirth" => $request->DoB,
                 "gender" => $request->gender,
                 "address" => $request->address,
-                "permission" => $request->permission,
+
             ]);
             if ($id == Session()->get('id')) {
                 return redirect()->route('employee.edit', [$id,]);

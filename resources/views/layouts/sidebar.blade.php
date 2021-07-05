@@ -24,12 +24,12 @@
             <div class="info">
                 
 
-                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                    <span style="font-size: large;">
+                <a  href="{{ route('employee.edit',Session::get('id')) }}" >
+                    <span style="font-size: large; text-align: center;">
                         @if (Session::has('name'))
                             {{Session::get('name')}}
                         @endif
-                        <b class="caret"></b>
+                        
                     </span>
                 </a>
 
@@ -112,12 +112,12 @@
             </li>
 
             {{-- nhân viên --}}
-            <li>
+            {{-- <li>
                 <a href="{{ route('employee.index') }}">
                     <i class="pe-7s-user"></i>
                     <p>Nhân viên</p>
                 </a>
-            </li>
+            </li> --}}
             {{-- Học Bổng --}}
             <li>
                 <a href="{{ route('scholarship.index') }}">

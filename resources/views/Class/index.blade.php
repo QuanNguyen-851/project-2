@@ -7,14 +7,8 @@
         <div class="card">
 
             <div class="toolbar">
-               
-                <form action="">
-                    <input type="file" name="file" class="form-control" style="float: left;width: 75%;" >
-                    <button type="submit" name="btn"class="btn btn-primary btn-fill" style="float: left;margin-right: 15px;" >Đồng ý</button>
-                    
-                </form> 
-               
-                
+                    <a href="{{ route('class.insertClass') }}" class="btn btn-primary btn-fill" style="float: left;margin-right: 15px;" >Thêm danh sách lớp</a>
+
             </div> 
             
             <a href="{{ route('class.create') }}" class="btn btn-primary btn-fill btn-sm " style="float: right;margin-right: 5px;    margin-top: 19px;">

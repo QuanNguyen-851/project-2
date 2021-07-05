@@ -9,5 +9,6 @@ class Classroom extends Model
 {
     use HasFactory;
     protected $table = "classbk";
+    protected $fillable = ["name", "idMajor", "idCourse", "disable"];
     public $timestamps = false;
 }

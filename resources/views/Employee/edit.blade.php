@@ -38,34 +38,8 @@
                                 required>
                             </div>
                         </div>
-                        {{-- <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Số Điện Thoại</label>
-                                <input type="text" name="phone" class="form-control"  value="{{$employee->phone}}"
-                                required
-                                minLength="9"
-                                maxLength="10"
-                                >
-                                <span style="color:red">
-                                    @if (Session::has('errphone'))
-                                    {{Session::get('errphone')}}
-                                        
-                                    @endif
-                                </span>
-                            </div>
-                        </div> --}}
-                        <div class="col-md-4">
-                            <div class="form-group">
-                            
-                            <a style="color:red;font-size: small;">
-                                <input type="hidden" name="permission" class="form-control"  value="{{$employee->permission}}"
-                                >
-                            
-                            </a>
-                            </div>
-                       
                         
-                        </div>
+                       
                     </div>
 
 
@@ -140,6 +114,7 @@
             </div>
             <div class="content">                
                      <a href="#">
+                        <p>{{"BKM".sprintf("%03d", $employee->id)}}</p>
                      <h4 class="title">{{$employee->name}}<br />
                          
                       </h4>

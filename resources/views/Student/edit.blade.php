@@ -18,7 +18,7 @@
                                     type="text"
                                     readonly
                                     name="noid"   
-                                    value="{{"BKC".$student->id}}"
+                                    value="{{"BKC".sprintf("%03d", $student->id)}}"
                                 />
                         
                         

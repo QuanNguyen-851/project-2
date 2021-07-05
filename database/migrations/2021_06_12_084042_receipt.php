@@ -26,7 +26,7 @@ class Receipt extends Migration
             $table->date('date');
             $table->string('class_bk');
             $table->integer('countPay');
-            $table->string('method');
+
             $table->boolean('disable');
         });
     }

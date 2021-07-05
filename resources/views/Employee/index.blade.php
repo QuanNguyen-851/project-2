@@ -16,10 +16,7 @@
                                         </div>
                                     </form>
                                     
-                                    <form action="">
-                                        <button type="submit" name="btn"class="btn btn-primary btn-fill" style="float: right;margin-right: 15px;" >Đồng ý</button>
-                                        <input type="file" name="file" class="form-control" style="float: right;width: 25%;" messages="ssdhf">
-                                    </form>
+                                   
                                     <li class=" active">
                                         <a href="#settings" class=" active" data-toggle="tab">Tất cả </a>
                                     </li>
@@ -30,7 +27,9 @@
                                         <a href="#company" data-toggle="tab">Kế toán</a>
                                     </li>
                                    
-                                    
+                                    <a href="{{ route('employee.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
+                                                        <i class="pe-7s-add-user" > Thêm kế toán</i>
+                                                    </a>
                                     
                                 </ul>
 
@@ -40,7 +39,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                
+                                                    <th class="text-center">ID</th>
                                                     <th class="text-center">Họ Và tên</th>
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
@@ -49,15 +48,14 @@
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
-                                                        <a href="{{ route('employee.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
-                                                        <i class="pe-7s-add-user" > Thêm Nhân viên</i>
-                                                    </a></th>
+                                                        
+                                                </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($allemployee as $item)
                                                 <tr>
-                                                   
+                                                    <th class="text-center">{{"BKM".sprintf("%03d", $item->id)}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">
@@ -76,7 +74,7 @@
                                                     <td class="td-actions text-right">
                                                        
                                                         
-                                                        @if ($item->id != Session::get('id'))
+                                                        @if ($item->permission ==0)
                                                             @if ($item->block ==1)
                                                             <a rel="tooltip" title="Unblock" class="btn btn-warning btn-link btn-sm btn-fill" href="{{ route('employee.unblock', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="pe-7s-check" ></i>
@@ -110,7 +108,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                               
+                                                    <th class="text-center">ID</th>
                                                     <th class="text-center">Họ Và tên</th>
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
@@ -119,15 +117,13 @@
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
-                                                        <a href="{{ route('employee.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
-                                                        <i class="pe-7s-add-user" > Thêm Nhân viên</i>
-                                                    </a></th>
+                                                        </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($Miemployee as $item)
                                                 <tr>
-                                                  
+                                                    <th class="text-center">{{"BKM".sprintf("%03d", $item->id)}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">
@@ -144,15 +140,7 @@
                                                     </th>
                                                     
                                                     <td class="td-actions text-right">
-                                                        @if ($item->id != Session::get('id'))
-                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('employee.show', $item->id) }}">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
                                                         
-                                                        <a rel="tooltip" title="Block" class="btn btn-danger btn-link btn-sm" href="{{ route('employee.block', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
-                                                            <i class="fa fa-times"></i>
-                                                        </a>
-                                                        @endif
                                                            
                                                        
                                                     </td>
@@ -169,7 +157,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                
+                                                    <th class="text-center">ID</th>
                                                     <th class="text-center">Họ Và tên</th>
                                                     <th class="text-center">giới tính</th>
                                                     <th class="text-center">ngày sinh</th>
@@ -178,15 +166,13 @@
                                                     <th class="text-center">Vị trí</th>
                                                     
                                                     <th  >
-                                                        <a href="{{ route('employee.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
-                                                        <i class="pe-7s-add-user" > Thêm Nhân viên</i>
-                                                    </a></th>
+                                                        </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($Acemployee as $item)
                                                 <tr>
-                                                  
+                                                    <th class="text-center">{{"BKM".sprintf("%03d", $item->id)}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     
                                                     <th class="text-center">

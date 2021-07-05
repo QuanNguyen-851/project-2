@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\insertClassExample;
+use App\Imports\ClassImport;
 use App\Models\Classroom;
 use App\Models\Course;
 use App\Models\Major;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClassController extends Controller
 {
@@ -140,5 +144,26 @@ class ClassController extends Controller
             "disable" => 1,
         ]);
         return redirect(Route('class.index'));
+    }
+    public function insertClass()
+    {
+
+        return view('Class.insertClass');
+    }
+    public function insertClassprocess(Request $request)
+    {
+
+        try {
+            Excel::import(new ClassImport, $request->file('excel'));
+
+            return redirect()->route('class.index');
+        } catch (Exception $e) {
+            return redirect()->route("class.insertClass")->with('err', "Không thể thực hiện! Vui lòng điền danh sách theo file hướng dẫn");
+        }
+    }
+    public function insertClassExample()
+    {
+
+        return Excel::download(new insertClassExample, 'insertClassExample.xlsx');
     }
 }

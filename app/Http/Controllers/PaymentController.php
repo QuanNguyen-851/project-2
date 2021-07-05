@@ -42,6 +42,7 @@ class PaymentController extends Controller
     {
         $name = $request->name;
         $sale = $request->sale;
+        $countPer = $request->countPer;
 
         try {
             $payment = Payment::where('name', $name)
@@ -53,6 +54,7 @@ class PaymentController extends Controller
             $up = new Payment();
             $up->name = $name;
             $up->sale = $sale;
+            $up->$countPer;
             $up->save();
             return redirect()->route('payment.index');
         }
@@ -94,10 +96,28 @@ class PaymentController extends Controller
     {
         $name = $request->name;
         $sale = $request->sale;
+        $countPer = $request->countPer;
 
+        // $payment = Payment::where('name', $name)
+        //         ->where('sale', $sale)
+        //         -
+        //         ->first();
+        // if($payment!==null&&) {
+
+
+        //     return redirect()->route('payment.edit', [$id,])->with('err', "Đã tồn tại");
+        // } else {
+        //     Payment::where('id', $id)->update([
+        //         "name" => $name,
+        //         "sale" => $sale,
+        //         "countPer" => $countPer,
+        //     ]);
+        //     return redirect()->route('payment.index');
+        // }
         try {
             $payment = Payment::where('name', $name)
                 ->where('sale', $sale)
+                ->where('id', '!=', $id)
                 ->firstorFail();
 
             return redirect()->route('payment.edit', [$id,])->with('err', "Đã tồn tại");
@@ -105,6 +125,7 @@ class PaymentController extends Controller
             Payment::where('id', $id)->update([
                 "name" => $name,
                 "sale" => $sale,
+                "countPer" => $countPer,
             ]);
             return redirect()->route('payment.index');
         }

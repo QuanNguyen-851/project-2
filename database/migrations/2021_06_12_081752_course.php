@@ -18,6 +18,7 @@ class Course extends Migration
             $table->string('name', 10);
             $table->string('year');
             $table->integer('countMustPay');
+            $table->integer('countSubFeeMustPay');
             $table->boolean('disable');
         });
     }

@@ -4,7 +4,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="header">
-                <h4 class="title">Thông tin cá nhân</h4>
+                <h4 class="title">Thông tin Nhân viên</h4>
             </div>
             <div class="content">
                 <form action="{{ route('employee.update', $employee->id) }}" method="post" id="updatevalidateform">
@@ -15,8 +15,8 @@
                         
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email</label>
-                                <input type="email" name="email" class="form-control" value="{{$employee->email}}"
+                                
+                                <input type="hidden" name="email" class="form-control" value="{{$employee->email}}"
                                 required
                                 email="true"    
                                 >
@@ -38,28 +38,7 @@
                                 required>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                            <label>Vị trí</label>
-                            <a style="color:red;font-size: small;">
-                            <select name="permission" class="selectpicker"   data-style="btn-default btn-block" data-menu-style="dropdown-blue" required>
-                                <option value="1" 
-                                @if ($employee->permission==1)
-                                    {{"selected"}}
-                                @endif
-                                 >Giáo vụ</option>
-                                <option value="0"
-                                @if ($employee->permission==0)
-                                {{"selected"}}
-                            @endif
-                                >Kế toán</option>
-                          
-                            </select>
-                            </a>
-                            </div>
-                       
                         
-                        </div>
                     </div>
 
 
@@ -130,10 +109,11 @@
     <div class="col-md-4">
         <div class="card card-user">
             <div class="image">
-                <img src="../../assets/img/full-screen-image-3.jpg" alt="..."/>
+                <img src="../../assets/img/full-screen-image-1.jpg" alt="..."/>
             </div>
             <div class="content">                
                      <a href="#">
+                     <p>{{"BKM".sprintf("%03d", $employee->id)}}</p>
                      <h4 class="title">{{$employee->name}}<br />
                          
                       </h4>

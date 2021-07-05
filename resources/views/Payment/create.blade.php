@@ -27,6 +27,16 @@
                    
             />
         </div>
+        <div class="form-group">
+            <label class="control-label">Số đợt/lần đóng </label>
+            <input class="form-control"
+                   name="countPer"
+                   type="text"
+                   required="true"
+                   number="true"
+                   
+            />
+        </div>
         <span style=" color: red;font-size: 12px;margin-left: 44px;">
 
             @if (Session::has('err'))

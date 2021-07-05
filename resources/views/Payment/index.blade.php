@@ -15,6 +15,7 @@
                     <tr>
                         <th class="text-center">Phương thức</th>
                         <th class="text-center">Giảm</th>
+                        <th class="text-center">Số đợt/lần đóng</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -29,6 +30,10 @@
                         {{$item->sale."%/đợt"}}
                         
                         </td >
+                        <td class="text-center">
+                            {{$item->countPer}}
+                            
+                            </td >
                         <td class="td-actions text-center">
                             <a href="{{ route('payment.edit', $item->id) }}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
                                 <i class="fa fa-edit"></i>

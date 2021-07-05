@@ -13,6 +13,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Middleware\Checkhasrand;
 use App\Http\Middleware\CheckLoged;
 use App\Http\Middleware\CheckLogin;
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,20 +50,28 @@ Route::middleware([CheckLogin::class])->group(function () {
         return view('dashboard');
     })->name('dashboard');
     // STUDENT
-    Route::resource('students', StudentController::class);
+
     Route::prefix('students')->name('students.')->group(function () {
         Route::get('/{id}/hide', [StudentController::class, 'hide'])->name('hide');
         Route::get('/{id}/unhide', [StudentController::class, 'unhide'])->name('unhide');
+        Route::get('/importStudents', [StudentController::class, 'importStudents'])->name('importStudents');
+        Route::post('/insertByExcel', [StudentController::class, 'insertByExcel'])->name('insertByExcel');
+        Route::get('/exportStudentsform', [StudentController::class, 'exportStudentsform'])->name('exportStudentsform');
+        Route::post('/exportStudents', [StudentController::class, 'exportStudents'])->name('exportStudents');
+        Route::get('/exampleFileStudents', [StudentController::class, 'exampleFileStudents'])->name('exampleFileStudents');
     });
-
+    Route::resource('students', StudentController::class);
 
 
     //CLASS
-    Route::resource('class', ClassController::class);
+
     Route::prefix('class')->name('class.')->group(function () {
         Route::get('/{id}/hide', [ClassController::class, 'hide'])->name('hide');
+        Route::get('/insertClass', [ClassController::class, 'insertClass'])->name('insertClass');
+        Route::post('/insertClassprocess', [ClassController::class, 'insertClassprocess'])->name('insertClassprocess');
+        Route::get('/insertClassExample', [ClassController::class, 'insertClassExample'])->name('insertClassExample');
     });
-
+    Route::resource('class', ClassController::class);
 
     // Course
     Route::resource('course', CourseController::class);

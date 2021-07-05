@@ -15,8 +15,9 @@ class Method extends Migration
     {
         Schema::create('payment', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
-            $table->float('sale',5,2);
+            $table->string('name', 50);
+            $table->float('sale', 5, 2);
+            $table->integer('countPer')->unique();
         });
     }
 

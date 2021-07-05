@@ -44,6 +44,7 @@ class CourseController extends Controller
         $course->name = $request->course;
         $course->year = $request->year;
         $course->countMustPay = '1';
+        $course->countSubFeeMustPay = "0";
         $course->disable = '0';
         $course->save();
         return redirect(route('course.index'));

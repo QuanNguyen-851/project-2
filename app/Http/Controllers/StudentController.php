@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\exampleFileStudentsExport;
+use App\Exports\StudentsExport;
+use App\Exports\StudentsExportall;
+use App\Imports\StudentsImport;
 use App\Models\Classroom;
 use App\Models\Course;
 use App\Models\Scholarship;
 use App\Models\Student as ModelsStudent;
+use Exception;
 use Illuminate\Http\Request;
-
+use Maatwebsite\Excel\Facades\Excel;
 use Student;
 
 class StudentController extends Controller
@@ -20,8 +25,9 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $course = Course::orderBy('id', 'desc')->skip(0)->take(3)->get();
-        for ($i = 0; $i < 3; $i++) {
+        $course = Course::where('disable', '!=', "1")->orderBy('id', 'desc')->skip(0)->take(3)->get();
+
+        for ($i = 0; $i < count($course); $i++) {
             $student[$i] = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
                 ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
                 ->join('course', 'course.id', '=', 'classbk.idCourse')
@@ -259,5 +265,45 @@ class StudentController extends Controller
             "disable" => 0,
         ]);
         return redirect(Route('students.index'));
+    }
+
+    public function importStudents()
+    {
+        return view('Student.importStudent');
+    }
+
+    public function insertByExcel(Request $request)
+    {
+
+        try {
+            Excel::import(new StudentsImport, $request->file('excel'));
+            return redirect()->route('students.index');
+        } catch (Exception $e) {
+            return redirect()->route("students.importStudents")->with('err', "Không thể thực hiện! Vui lòng điền danh sách theo file hướng dẫn ");
+        }
+    }
+    public function exportStudentsform()
+    {
+        $course = Course::orderBy('id', 'desc')->skip(0)->take(3)->get();
+        return view('Student.exportStudentsform', [
+            "course" => $course,
+        ]);
+    }
+
+    public function exportStudents(Request $request)
+    {
+        $idcourse = $request->course;
+        if ($idcourse != 0) {
+            return Excel::download(new StudentsExport($idcourse), 'ListStudents.xlsx');
+        } else {
+            return Excel::download(new StudentsExportall, 'ListStudents.xlsx');
+        }
+
+        // return (new StudentsExport($idcourse))->download('ListStudents.xlsx');
+    }
+    public function exampleFileStudents()
+    {
+
+        return Excel::download(new exampleFileStudentsExport, 'exampleFileStudents.xlsx');
     }
 }

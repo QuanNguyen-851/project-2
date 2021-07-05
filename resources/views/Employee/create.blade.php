@@ -38,23 +38,7 @@
                                 required>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                            <label>Vị trí</label>
-                            <a style="color:red;font-size: small;">
-                            <select name="permission" class="selectpicker" title="Chọn vị trí--"  data-style="btn-default btn-block" data-menu-style="dropdown-blue" required>
-                                <option value="1" 
-                                 >Giáo vụ</option>
-                                <option value="0"
-                               
-                                >Kế toán</option>
-                          
-                            </select>
-                            </a>
-                            </div>
                        
-                        
-                        </div>
                     </div>
                    
 

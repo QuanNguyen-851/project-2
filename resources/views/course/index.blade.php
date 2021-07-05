@@ -9,9 +9,10 @@
                 <th class="text-center">#</th>
                 <th>Khóa</th>
                 <th>Năm</th>
-                <th>Tổng số đợt phải đóng</th>
-                <th><a href="{{route('course.create')}}">Thêm</a></th>
-                <th></th>
+                <th>Số đợt phải đóng</th>
+                <th>Số đợt phải đóng phụ phí</th>
+                <th class="text-center"><a href="{{route('course.create')}}" class="btn btn-primary">Thêm</a></th>
+                
             </tr>
         </thead>
         <tbody>
@@ -21,7 +22,8 @@
                 <td>{{$item->name}}</td>
                 <td>{{$item->year}}</td>
                 <td>{{$item->countMustPay}} Đợt</td>
-                <td class="td-actions text-right">
+                <td>{{$item->countSubFeeMustPay}} Đợt</td>
+                <td class="td-actions text-center">
                     <a href="{{ route('course.edit',$item->id) }}" type="button" rel="tooltip" title="Sửa khóa" class="btn btn-success btn-link btn-sm">
                         <i class="fa fa-edit"></i>
                     </a>
