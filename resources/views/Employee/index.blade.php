@@ -66,7 +66,7 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
-                                                    <th class="text-center" >{{$item->email}}</th>
+                                                    <th class="text-center" ><a href="mailto:{{$item->email}}">{{$item->email}}</a></th>
                                                     <th class="text-center"> 
                                                         {{$item->PermissionName}}
                                                     </th>
@@ -134,7 +134,7 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
-                                                    <th class="text-center" >{{$item->email}}</th>
+                                                    <th class="text-center" ><a href="mailto:{{$item->email}}">{{$item->email}}</a></th>
                                                     <th class="text-center"> 
                                                         {{$item->PermissionName}}
                                                     </th>
@@ -183,7 +183,7 @@
                                                     @endphp
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center" >{{$item->phone}}</th>
-                                                    <th class="text-center" >{{$item->email}}</th>
+                                                    <th class="text-center" ><a href="mailto:{{$item->email}}">{{$item->email}}</a></th>
                                                     <th class="text-center"> 
                                                         {{$item->PermissionName}}
                                                     </th>

@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 @section('main')
 <div class="col-md-6" style="width: 100%;">
+            <h1 class="title">Học Bổng</h1>
     <div class="card" style="width: 100%;">
         <div class="header">
-            <h4 class="title">Học Bổng</h4>
             <a href="{{ route('scholarship.create') }}" class="btn btn-primary btn-fill" style="float: right;">
                 <i class="pe-7s-plus"></i>
                 Thêm</a>

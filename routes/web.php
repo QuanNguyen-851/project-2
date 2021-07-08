@@ -5,6 +5,7 @@ use App\Http\Controllers\ClassController;
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FeeController;
 use App\Http\Controllers\majorController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ScholarshipController;
@@ -13,7 +14,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Middleware\Checkhasrand;
 use App\Http\Middleware\CheckLoged;
 use App\Http\Middleware\CheckLogin;
-use Illuminate\Routing\RouteRegistrar;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,8 +60,16 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::get('/exportStudentsform', [StudentController::class, 'exportStudentsform'])->name('exportStudentsform');
         Route::post('/exportStudents', [StudentController::class, 'exportStudents'])->name('exportStudents');
         Route::get('/exampleFileStudents', [StudentController::class, 'exampleFileStudents'])->name('exampleFileStudents');
+        Route::get('/{id}/studentfee', [FeeController::class, 'studentfee'])->name('studentfee');
     });
     Route::resource('students', StudentController::class);
+
+
+    //Fee 
+    Route::prefix('fee')->name('fee.')->group(function () {
+        Route::get('/{id}/studentfee', [FeeController::class, 'studentfee'])->name('studentfee');
+        Route::get('/{id}/detailStuddentFee', [FeeController::class, 'detailStuddentFee'])->name('detailStuddentFee');
+    });
 
 
     //CLASS

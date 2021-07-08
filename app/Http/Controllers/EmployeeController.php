@@ -140,27 +140,44 @@ class EmployeeController extends Controller
 
         $checkphone = Employee::where('phone', $request->phone)->first();
         $checkemail = Employee::where('email', $request->email)->first();
-
-
-        if ($checkphone !== null && $thisemployee->phone != $request->phone) {
-            return redirect()->route('employee.edit', [$id,])->with('errphone', "Số điện thoại này đã tồn tại!");
-        } else
-        if ($checkemail !== null && $thisemployee->email != $request->email) {
-            return redirect()->route('employee.edit', [$id,])->with('erremail', "Email này đã tồn tại!");
-        } else {
-            Employee::where('id', $id)->update([
-
-                "email" => $request->email,
-                "name" => $request->name,
-                "phone" => $request->phone,
-                "dateBirth" => $request->DoB,
-                "gender" => $request->gender,
-                "address" => $request->address,
-
-            ]);
-            if ($id == Session()->get('id')) {
-                return redirect()->route('employee.edit', [$id,]);
+        if ($id == Session()->get('id')) {
+            if ($checkphone !== null && $thisemployee->phone != $request->phone) {
+                return redirect()->route('employee.edit', [$id,])->with('errphone', "Số điện thoại này đã tồn tại!");
+            } else
+            if ($checkemail !== null && $thisemployee->email != $request->email) {
+                return redirect()->route('employee.edit', [$id,])->with('erremail', "Email này đã tồn tại!");
             } else {
+                Employee::where('id', $id)->update([
+
+                    "email" => $request->email,
+                    "name" => $request->name,
+                    "phone" => $request->phone,
+                    "dateBirth" => $request->DoB,
+                    "gender" => $request->gender,
+                    "address" => $request->address,
+
+                ]);
+
+                return redirect()->route('employee.edit', [$id,]);
+            }
+        } else {
+            if ($checkphone !== null && $thisemployee->phone != $request->phone) {
+                return redirect()->route('employee.show', [$id,])->with('errphone', "Số điện thoại này đã tồn tại!");
+            } else
+            if ($checkemail !== null && $thisemployee->email != $request->email) {
+                return redirect()->route('employee.show', [$id,])->with('erremail', "Email này đã tồn tại!");
+            } else {
+                Employee::where('id', $id)->update([
+
+                    "email" => $request->email,
+                    "name" => $request->name,
+                    "phone" => $request->phone,
+                    "dateBirth" => $request->DoB,
+                    "gender" => $request->gender,
+                    "address" => $request->address,
+
+                ]);
+
                 return redirect()->route('employee.show', [$id,]);
             }
         }

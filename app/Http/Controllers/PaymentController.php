@@ -54,7 +54,7 @@ class PaymentController extends Controller
             $up = new Payment();
             $up->name = $name;
             $up->sale = $sale;
-            $up->$countPer;
+            $up->countPer = $countPer;
             $up->save();
             return redirect()->route('payment.index');
         }

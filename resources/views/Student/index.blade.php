@@ -92,7 +92,7 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                      
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
@@ -152,6 +152,7 @@
                                                         <th class="text-center"> {{$item->scholarship}}</th>
                                                         <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                         <td class="td-actions text-right">
+                                                            <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
                                                             <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
@@ -204,6 +205,7 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
@@ -255,6 +257,7 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
@@ -309,6 +312,7 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
                                                          
                                                         <a rel="tooltip" title="Unhide" class="btn btn-warning btn-link btn-sm" href="{{ route('students.unhide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-edit"></i>

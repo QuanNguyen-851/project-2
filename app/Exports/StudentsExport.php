@@ -17,7 +17,7 @@ class StudentsExport implements FromQuery, WithHeadings, withMapping
     {
         $date = date_create($student->dateBirth);
         $data = [
-            "BKC" . $student->id,
+            "BKC" . sprintf("%03d",  $student->id),
             $student->name,
             $student->gender == 1 ? "Nam" : "Nữ",
             date_format($date, "d/m/Y"),
