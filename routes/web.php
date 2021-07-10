@@ -69,6 +69,10 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::prefix('fee')->name('fee.')->group(function () {
         Route::get('/{id}/studentfee', [FeeController::class, 'studentfee'])->name('studentfee');
         Route::get('/{id}/detailStuddentFee', [FeeController::class, 'detailStuddentFee'])->name('detailStuddentFee');
+        Route::get('/{id}/detailStudentSubFee', [FeeController::class, 'detailStudentSubFee'])->name('detailStudentSubFee');
+        Route::get('/listowefee', [FeeController::class, 'listowefee'])->name('listowefee');
+        Route::get('/{month}/exportlistowefee', [FeeController::class, 'exportlistowefee'])->name('exportlistowefee');
+        Route::post('/exportalllistowefeeprocess', [FeeController::class, 'exportalllistowefeeprocess'])->name('exportalllistowefeeprocess');
     });
 
 

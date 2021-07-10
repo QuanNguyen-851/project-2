@@ -69,6 +69,40 @@
                     <p>Sinh Viên</p>
                 </a>
             </li>
+            {{-- thống kê --}}
+            <li>
+                <a data-toggle="collapse" href="#formsExamples">
+                    <i class="pe-7s-graph3"></i>
+                    <p>Thống kê
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="formsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="">
+                                <span class="sidebar-mini"></span>
+                                <span class="sidebar-normal">Trong tháng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-mini"></span>
+                                <span class="sidebar-normal">Lớp</span>
+                            </a>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+            </li>
+            {{-- danh sách nợ học phí--}}
+            <li>
+                <a href="{{ route('fee.listowefee') }}">
+                    <i class="pe-7s-delete-user"></i>
+                    <p>Danh sách nợ học phí</p>
+                </a>
+            </li>
             {{-- lớp --}}
             <li>
                 <a href="{{ route('class.index') }}">
@@ -132,6 +166,7 @@
                     <p>phương thức đóng học</p>
                 </a>
             </li>
+            {{-- Thống kê --}}
 
 
            

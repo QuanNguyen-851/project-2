@@ -92,7 +92,7 @@
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a>
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
@@ -100,9 +100,7 @@
                                                             <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="fa fa-times"></i>
                                                             </a>
-                                                           
-                                                           
-                                                       
+
                                                     </td>
                                                 </tr>    
                                                 @endforeach

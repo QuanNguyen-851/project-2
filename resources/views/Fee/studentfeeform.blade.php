@@ -80,17 +80,18 @@
                     </td>
                 </tr>
                 @endforeach
-                        {{-- @foreach ($studentsubfee as $item)
-                        <tr>
+
+                @foreach ($studentsubfee as $item)
+                    <tr>
                     <td>
                         <div class="td-name">
                             {{$item->payer}}
                         </div>
                     </td>
 
-                    <td style="text-align: left; " >{{$item->note}}</td>
+                    <td style="text-align: left;" ><textarea disabled style="width: 390px;height: 90px;border: none; max-width: 390px;min-height: 90px;">{{$item->note}}</textarea></td>
                     <td style="text-align: left" class="td-number">
-                        {{date_format(date_create($item->date),"d/n/Y")}}
+                    {{date_format(date_create($item->date),"d/n/Y")}}
                     </td>
                     <td style="text-align: left" class="td-number">
                         {{number_format($item->payfee)."VNĐ"}}
@@ -98,19 +99,19 @@
                     <td style="text-align: left" class="td-number">
                         {{$item->countPay}}
                     </td>
+                    <td style="text-align: left" >
+                        {{$item->payment}}
+                    </td>
                     <td class="td-actions">
-                        <button type="button" rel="tooltip" data-placement="left" title="View Post" class="btn btn-info btn-link btn-icon">
+                        
+                        <a rel="tooltip" href="{{ route('fee.detailStudentSubFee', $item->idFee) }}" data-placement="left" title="Xem chi tiết" class="btn btn-info btn-link btn-icon">
                             <i class="fa fa-image"></i>
-                        </button>
-                        <button type="button" rel="tooltip" data-placement="left" title="Edit Post" class="btn btn-success btn-link btn-icon">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                        <button type="button" rel="tooltip" data-placement="left" title="Remove Post" class="btn btn-danger btn-link btn-icon ">
-                            <i class="fa fa-times"></i>
-                        </button>
+                        </a>
+                        
                     </td>
                 </tr>
-                @endforeach --}}
+                @endforeach
+                        
             
             </tbody>
         </table>
