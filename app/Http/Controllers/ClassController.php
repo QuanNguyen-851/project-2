@@ -152,14 +152,16 @@ class ClassController extends Controller
     }
     public function insertClassprocess(Request $request)
     {
-
-        try {
-            Excel::import(new ClassImport, $request->file('excel'));
-
-            return redirect()->route('class.index');
-        } catch (Exception $e) {
-            return redirect()->route("class.insertClass")->with('err', "Không thể thực hiện! Vui lòng điền danh sách theo file hướng dẫn");
+        if ($request->file('excel') === null) {
+            return redirect()->route("class.insertClass")->with('err', "Vui lòng chọn file");
         }
+        // try {
+        Excel::import(new ClassImport, $request->file('excel'));
+
+        return redirect()->route('class.index');
+        // } catch (Exception $e) {
+        //     return redirect()->route("class.insertClass")->with('err', "Không thể thực hiện! Vui lòng điền danh sách theo file hướng dẫn");
+        // }
     }
     public function insertClassExample()
     {

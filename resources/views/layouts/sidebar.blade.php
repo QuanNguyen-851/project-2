@@ -9,12 +9,12 @@
     -->
 
     <div class="logo">
-        <a href="/dashboard);" class="simple-text logo-mini" style="margin-left: 40px;">
-            Mi
-        </a>
+        {{-- <a href="/dashboard);" class="simple-text logo-mini" style="margin-left: 40px;">
+            
+        </a> --}}
 
         <a href="/dashboard" class="simple-text logo-normal">
-            <img id='bkacad' style='width: 118px; margin-left: 10px;'
+            <img id='bkacad' style='width: 160px;margin-left: 50px;'
              src="{{ asset('assets') }}/img/logo_1591255072.png">
         </a>
     </div>

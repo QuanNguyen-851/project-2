@@ -33,7 +33,8 @@ class exporAllStudentOwe implements FromArray, WithHeadings, WithMapping
     }
     public function headings(): array
     {
-
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $date = date('d/m/Y H:i', time());
 
         return [
             'Mã',
@@ -44,6 +45,7 @@ class exporAllStudentOwe implements FromArray, WithHeadings, WithMapping
             'Số đợt phải đóng',
             'Số đợt đã đóng',
             'Nợ',
+            'Danh sách được tính đến' . $date,
         ];
     }
 

@@ -15,9 +15,10 @@
                 </select>
         </div>
     </div>    
-   </form> <button class="btn btn-primary"  style="    float: left;">Đồng ý</button>
-    
+    <button class="btn btn-primary"  style="float: left;">Đồng ý</button></form>
+    <a class="btn btn-primary btn-round" style="float: right;margin-right: 10px;">gửi mail</a>
 </div>
+
 </div>
 <div class="card">
     <div class="toolbar">
@@ -27,13 +28,13 @@
             $month = $_GET['month'];
         }else{
             $month = 0;
-            }
+        }
     @endphp
         <a class="btn btn-warning" style="margin-right: 25px;" href="{{ route('fee.exportlistowefee', $month) }}">Xuất danh sách</a>
     </div>
     <table id="bootstrap-table" class="table">
         <thead>
-            <th data-field="id" class="text-center">ID</th>
+            <th data-field="id" class="text-center">ID </th>
             <th data-field="name" data-sortable="true">Họ và tên</th>
             <th data-field="salary" data-sortable="true">Ngày sinh</th>
             <th data-field="country" data-sortable="true">Lớp</th>
@@ -55,10 +56,7 @@
                 <td> <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a></td>
                 </tr>
             @endforeach
-            
-            
-        
-            
+
         </tbody>
     </table>
   </div>

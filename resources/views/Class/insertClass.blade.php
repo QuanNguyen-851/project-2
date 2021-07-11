@@ -19,9 +19,16 @@
                 </div>
                
             </div>
-            <span style="color:red;">@if (Session::has('err'))
+            <p style="color:red;">@if (Session::has('err'))
                     {{Session::get('err')}}
-                    @endif</span>
+                    @endif</p>
+                    @if (isset($errors)&& $errors->any())
+                    @foreach ($errors->all() as $error)
+                       <p style="color:red;"> {{$error}} </p>
+                    @endforeach
+                       
+                    
+                @endif
         </div> 
         
     </div>

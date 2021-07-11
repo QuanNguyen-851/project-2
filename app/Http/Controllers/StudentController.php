@@ -274,13 +274,12 @@ class StudentController extends Controller
 
     public function insertByExcel(Request $request)
     {
-
-        try {
-            Excel::import(new StudentsImport, $request->file('excel'));
-            return redirect()->route('students.index');
-        } catch (Exception $e) {
-            return redirect()->route("students.importStudents")->with('err', "Không thể thực hiện! Vui lòng điền danh sách theo file hướng dẫn ");
+        if ($request->file('excel') === null) {
+            return redirect()->route("students.importStudents")->with('err', "Vui lòng chọn file");
         }
+
+        Excel::import(new StudentsImport, $request->file('excel'));
+        return redirect()->route('students.index');
     }
     public function exportStudentsform()
     {

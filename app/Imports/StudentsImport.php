@@ -6,10 +6,18 @@ use App\Models\Classroom;
 use App\Models\Scholarship;
 use App\Models\Student as ModelsStudent;
 use Exception;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
-class StudentsImport implements ToModel, WithHeadingRow
+class StudentsImport implements
+    ToModel,
+    WithHeadingRow,
+    WithValidation
+
+//   WithValidation
 {
     /**
      * @param array $row
@@ -48,5 +56,75 @@ class StudentsImport implements ToModel, WithHeadingRow
         ];
 
         return new ModelsStudent($data);
+    }
+
+    public function rules(): array
+    {
+        return [
+
+            '*.ho_ten' => [
+                'required',
+            ],
+            '*.email' => ['email', 'unique:student,email'],
+            '*.sdt' => [
+                'required',
+                'unique:student,phone',
+                'max:9999999999',
+                'min:99999999',
+                'numeric'
+            ],
+            '*.ngay_sinh' => [
+                'required',
+                'numeric'
+            ],
+            '*.gioi_tinh' => [
+                'required',
+                Rule::in('Nam', 'Nữ')
+            ],
+            '*.lop' => [
+                function ($attribute, $value, $onFailure) {
+                    if ($value === null) {
+                        $onFailure('Lớp không được để trống');
+                    } else
+                    if (Classroom::where('name', $value)->value("id") === null) {
+                        $onFailure('Lớp này không tồn tại');
+                    }
+                },
+
+            ],
+            '*.hoc_bong' => [
+                function ($attribute, $value, $onFailure) {
+                    if ($value === null) {
+                        $onFailure('Học bổng không được để trống');
+                    } else
+                    if (Scholarship::where('name', $value)->value("id") === null) {
+                        $onFailure('Mức học bổng này không tồn tại');
+                    }
+                },
+            ],
+            '*.dia_chi' => [
+                'required'
+            ]
+
+
+
+        ];
+    }
+    public function customValidationMessages()
+    {
+        return [
+            '*.ho_ten.required' => 'Họ và tên Không được để trống',
+            '*.email.unique' => 'Email đã tồn tại',
+            '*.sdt.max' => 'số điện thoại không quá 10 ký tự',
+            '*.sdt.min' => 'số điện thoại tối thiểu 9 ký tự',
+            '*.sdt.required' => 'Số điện thoại Không được để trống',
+            '*.sdt.unique' => 'Số điện thoại đã tồn tại',
+            '*.sdt.numeric' => 'Số điện thoại chỉ chứa số ',
+            '*.gioi_tinh.in' => 'Giới tính phải là Nam Hoặc Nữ',
+            '*.gioi_tinh.required' => 'Giới tính Không được để trống',
+            '*.ngay_sinh.required' => 'ngày sinh không được để trống',
+            '*.ngay_sinh.numeric' => 'ngày sinh không đúng định dạng',
+            '*.dia_chi' => 'Địa chỉ Không được để trống',
+        ];
     }
 }

@@ -13,11 +13,7 @@
                 " > file mẫu</i>
             </a>
             <div class="content " style="height: 90px;">
-        
-          
-                
                 <div class="form-group">
-                    
                     
                     <input type="file" name="excel" class="form-control"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                     <button type="submit" name="btn"class="btn btn-primary btn-fill" 
@@ -26,9 +22,18 @@
                 </div>
                
             </div>
-            <span style="color:red;">@if (Session::has('err'))
+            <p style="color:red;">@if (Session::has('err'))
                     {{Session::get('err')}}
-                    @endif</span>
+                    @endif</p>
+                            
+            @if (isset($errors)&& $errors->any())
+                @foreach ($errors->all() as $error)
+                   <p style="color:red;"> {{$error}} </p>
+                @endforeach
+                   
+                
+            @endif
+            
         </div> 
         
     </div>
