@@ -252,20 +252,20 @@ class StudentController extends Controller
     {
         //
     }
-    public function hide($id)
-    {
-        ModelsStudent::where('id', $id)->update([
-            "disable" => 1,
-        ]);
-        return redirect(Route('students.index'));
-    }
-    public function unhide($id)
-    {
-        ModelsStudent::where('id', $id)->update([
-            "disable" => 0,
-        ]);
-        return redirect(Route('students.index'));
-    }
+    // public function hide($id)
+    // {
+    //     ModelsStudent::where('id', $id)->update([
+    //         "disable" => 1,
+    //     ]);
+    //     return redirect(Route('students.index'));
+    // }
+    // public function unhide($id)
+    // {
+    //     ModelsStudent::where('id', $id)->update([
+    //         "disable" => 0,
+    //     ]);
+    //     return redirect(Route('students.index'));
+    // }
 
     public function importStudents()
     {

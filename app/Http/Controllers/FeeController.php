@@ -21,7 +21,7 @@ class FeeController extends Controller
             ->join('classbk', 'student.idClass', '=', 'classbk.id')
             ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
             ->join('course', 'course.id', '=', 'classbk.idCourse')
-            ->select('Student.*', 'course.countMustPay', 'course.countSubFeeMustPay')
+            ->select('Student.*', 'course.countMustPay', 'course.countSubFeeMustPay', 'scholarship.name as scholarship')
             ->first();
 
         $payed =  Fee::where('idStudent', $id)
@@ -59,13 +59,13 @@ class FeeController extends Controller
         $studentfee =  Fee::where('idStudent', $id)
             ->join('student', 'student.id', '=', 'fee.idStudent')
             ->join('payment', 'payment.id', '=', 'fee.idMethod')
-            ->select('student.*', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment')
+            ->select('student.*', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
             ->orderBy('date', 'desc')
             ->get();
 
         $studentsubfee =  SubFee::where('idStudent', $id)
             ->join('student', 'student.id', '=', 'subfee.idStudent')
-            ->select('student.*', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee')
+            ->select('student.*', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
             ->orderBy('date', 'desc')
             ->get();
         return View('Fee.studentfeeform', [
@@ -111,51 +111,76 @@ class FeeController extends Controller
 
         ]);
     }
-    public function listowefee(Request $request)
+    // public function listowefee(Request $request)
+    public function listowefee($month)
     {
         // lấy id biên lai các sinh viên nợ 
-        $month = $request->month;
+        // $month = $request->month;
         if ($month == 5) {
             //từ 1 đến 5 tháng
-            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` where `course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <5 and `student`.`fee` > ? and `student`.`disable` != ? and `fee`.`disable` != ? ', ['0', '1', '1']);
+            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <=5 and `student`.`fee` > ? and `student`.`disable` != ?) ', ['0', '1', '0', '1']);
         } else if ($month == 6) {
             //6 tháng
-            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` where `course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? and `fee`.`disable` != ? ', ['0', '1', '1']);
+            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? )', ['0', '1', '0', '1']);
         } else if ($month == 7) {
-            //6 tháng
-            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` where `course`.`countMustPay` - fee.countPay >= 7   and `student`.`fee` > ? and `student`.`disable` != ? and `fee`.`disable` != ? ', ['0', '1', '1']);
+            //7 tháng
+            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >= 7   and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1', '0', '1']);
         } else {
             //tất cả
-            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` where `course`.`countMustPay` - fee.countPay >0 and `student`.`fee` > ? and `student`.`disable` != ? and `fee`.`disable` != ? ', ['0', '1', '1']);
+            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >0 and `student`.`fee` > ? and `student`.`disable` != ?) or (`course`.`countSubFeeMustPay` - subfee.countPay > ? 
+            and `student`.`disable` != ? ) ', ['0', '1', '0', '1']);
         }
-
-
-
         $studentowefee = [];
-
+        $sum = 0;
+        $subsum = 0;
+        $count = 0;
         foreach ($fee as $item) {
             $owefee = Student::where('student.id', '=', $item->id)
                 ->join('classbk', 'student.idClass', '=', 'classbk.id')
                 ->join('course', 'course.id', '=', 'classbk.idCourse')
                 ->join('fee', 'fee.idStudent', '=', 'student.id')
+                ->join('subfee', 'subfee.idStudent', '=', 'student.id')
                 ->join('payment', 'payment.id', '=', 'fee.idMethod')
                 ->select(
-                    'Student.*',
+                    'student.*',
                     'classbk.name as class',
                     'fee.countPay',
                     'course.countMustPay',
+                    'subfee.countPay',
+                    'course.countSubFeeMustPay',
                     'payment.sale',
                     DB::raw('
-                    (course.countMustPay - fee.countPay) * student.fee - (course.countMustPay - fee.countPay) * student.fee * payment.sale /100   as owe')
-
+                    (course.countMustPay - fee.countPay) * student.fee - (course.countMustPay - fee.countPay) * student.fee * payment.sale /100   as owe,
+                    (course.countSubFeeMustPay - subfee.countPay)* 1000000 as owesub
+                    ')
                 )
                 ->orderBy('fee.countPay', 'DESC')
+
                 ->first();
+
             array_push($studentowefee, $owefee);
         }
+
+        foreach ($studentowefee as $item) {
+            // $sumst=;
+            if ($item->owe <= 0) {
+                $item->owe = 0;
+            } else if ($item->owesub <= 0) {
+                $item->owesub = 0;
+            }
+
+            $sum += ($item->owe);
+            $subsum += ($item->owesub);
+            $count++;
+        }
+
+
         return view('Fee.listowefee', [
             "studentowefee" => $studentowefee,
             "month" => $month,
+            "sum" => $sum,
+            "subsum" => $subsum,
+            "count" => $count,
         ]);
     }
     public function exportlistowefee($month)

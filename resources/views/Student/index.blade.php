@@ -97,9 +97,9 @@
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         
-                                                            <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                            {{-- <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="fa fa-times"></i>
-                                                            </a>
+                                                            </a> --}}
 
                                                     </td>
                                                 </tr>    
@@ -154,9 +154,9 @@
                                                             <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
-                                                            <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                            {{-- <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                                 <i class="fa fa-times"></i>
-                                                            </a>
+                                                            </a> --}}
                                                         </td>
                                                     </tr>    
                                                     @endforeach
@@ -207,9 +207,9 @@
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                        {{-- <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-times"></i>
-                                                        </a>
+                                                        </a> --}}
                                                     </td>
                                                 </tr>    
                                                 @endforeach
@@ -259,9 +259,9 @@
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                        {{-- <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-times"></i>
-                                                        </a>
+                                                        </a> --}}
                                                     </td>
                                                 </tr>    
                                                 @endforeach
@@ -312,9 +312,9 @@
                                                     <td class="td-actions text-right">
                                                         <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
                                                          
-                                                        <a rel="tooltip" title="Unhide" class="btn btn-warning btn-link btn-sm" href="{{ route('students.unhide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
+                                                        {{-- <a rel="tooltip" title="Unhide" class="btn btn-warning btn-link btn-sm" href="{{ route('students.unhide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-edit"></i>
-                                                        </a>
+                                                        </a> --}}
 
                                                     </td>
                                                 </tr>    

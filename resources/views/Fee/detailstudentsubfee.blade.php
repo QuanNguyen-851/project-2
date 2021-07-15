@@ -7,9 +7,7 @@
         <div style="padding: 35px">
             <P>Họ tên người nộp tiền: {{ $detail->payer}}</P>
             <p>Sinh viên: {{ $detail->name."(".date_format(date_create($detail->dateBirth),"d/m/Y").")"."_".$detail->address."_".$detail->class_bk}}</p>
-
-            
-        <p>Đợt: {{$detail->countPay}}</p>
+            <p>Đợt: {{$detail->countPay}}</p>
             <p>Ghi chú: {{ $detail->note}}</p>
             <P style="color:red">Số tiền: {{number_format($detail->fee)."VNĐ"}}</P>
             <p>Người lập phiếu : {{$detail->accountant}}</p>

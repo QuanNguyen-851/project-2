@@ -50,64 +50,75 @@
     </div>
 
 </body>
-    <!--   Core JS Files  -->
-    <script src="{{ asset('assets') }}/js/jquery.min.js" type="text/javascript"></script>
-	<script src="{{ asset('assets') }}/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="{{ asset('assets') }}/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+     <!--   Core JS Files  -->
+     <script src="{{ asset('assets') }}/js/jquery.min.js" type="text/javascript"></script>
+     <script src="{{ asset('assets') }}/js/bootstrap.min.js" type="text/javascript"></script>
+     <script src="{{ asset('assets') }}/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+ 
+ 
+     <!--  Forms Validations Plugin -->
+     <script src="{{ asset('assets') }}/js/jquery.validate.min.js"></script>
+ 
+     <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+     <script src="{{ asset('assets') }}/js/moment.min.js"></script>
+ 
+     <!--  Date Time Picker Plugin is included in this js file -->
+     <script src="{{ asset('assets') }}/js/bootstrap-datetimepicker.min.js"></script>
+ 
+     <!--  Select Picker Plugin -->
+     <script src="{{ asset('assets') }}/js/bootstrap-selectpicker.js"></script>
+ 
+     <!--  Checkbox, Radio, Switch and Tags Input Plugins -->
+         <script src="{{ asset('assets') }}/js/bootstrap-switch-tags.min.js"></script>
+ 
+     <!--  Charts Plugin -->
+     <script src="{{ asset('assets') }}/js/chartist.min.js"></script>
+ 
+     <!--  Notifications Plugin    -->
+     <script src="{{ asset('assets') }}/js/bootstrap-notify.js"></script>
+ 
+     <!-- Sweet Alert 2 plugin -->
+     <script src="{{ asset('assets') }}/js/sweetalert2.js"></script>
+ 
+     <!-- Vector Map plugin -->
+     <script src="{{ asset('assets') }}/js/jquery-jvectormap.js"></script>
+ 
+     <!--  Google Maps Plugin    -->
+     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+ 
+     <!-- Wizard Plugin    -->
+     <script src="{{ asset('assets') }}/js/jquery.bootstrap.wizard.min.js"></script>
+ 
+     <!--  Bootstrap Table Plugin    -->
+     <script src="{{ asset('assets') }}/js/bootstrap-table.js"></script>
+ 
+     <!--  Plugin for DataTables.net  -->
+     <script src="{{ asset('assets') }}/js/jquery.datatables.js"></script>
+ 
+ 
+     <!--  Full Calendar Plugin    -->
+     <script src="{{ asset('assets') }}/js/fullcalendar.min.js"></script>
+ 
+     <!-- Light Bootstrap Dashboard Core javascript and methods -->
+     <script src="{{ asset('assets') }}/js/light-bootstrap-dashboard.js?v=1.4.1"></script>
+ 
+     <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+     <script src="{{ asset('assets') }}/js/demo.js"></script>
+
+{{-- chart --}}
+    <script type="text/javascript">
+    	$(document).ready(function(){
+        	demo.initDashboardPageCharts();
+        	demo.initVectorMap();
+    	});
+	</script>
 
 
-	<!--  Forms Validations Plugin -->
-	<script src="{{ asset('assets') }}/js/jquery.validate.min.js"></script>
-
-	<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-	<script src="{{ asset('assets') }}/js/moment.min.js"></script>
-
-    <!--  Date Time Picker Plugin is included in this js file -->
-    <script src="{{ asset('assets') }}/js/bootstrap-datetimepicker.min.js"></script>
-
-    <!--  Select Picker Plugin -->
-    <script src="{{ asset('assets') }}/js/bootstrap-selectpicker.js"></script>
-
-	<!--  Checkbox, Radio, Switch and Tags Input Plugins -->
-		<script src="{{ asset('assets') }}/js/bootstrap-switch-tags.min.js"></script>
-
-	<!--  Charts Plugin -->
-	<script src="{{ asset('assets') }}/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="{{ asset('assets') }}/js/bootstrap-notify.js"></script>
-
-    <!-- Sweet Alert 2 plugin -->
-	<script src="{{ asset('assets') }}/js/sweetalert2.js"></script>
-
-    <!-- Vector Map plugin -->
-	<script src="{{ asset('assets') }}/js/jquery-jvectormap.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-	<!-- Wizard Plugin    -->
-    <script src="{{ asset('assets') }}/js/jquery.bootstrap.wizard.min.js"></script>
-
-    <!--  Bootstrap Table Plugin    -->
-    <script src="{{ asset('assets') }}/js/bootstrap-table.js"></script>
-
-	<!--  Plugin for DataTables.net  -->
-    <script src="{{ asset('assets') }}/js/jquery.datatables.js"></script>
-
-
-    <!--  Full Calendar Plugin    -->
-    <script src="{{ asset('assets') }}/js/fullcalendar.min.js"></script>
-
-    <!-- Light Bootstrap Dashboard Core javascript and methods -->
-	<script src="{{ asset('assets') }}/js/light-bootstrap-dashboard.js?v=1.4.1"></script>
-
+    {{-- select js --}}
     <script type="text/javascript">
         $().ready(function(){
-
             //Init Sliders
             demo.initFormExtendedSliders();
-
             // Init DatetimePicker
             demo.initFormExtendedDatetimepickers();
         });
@@ -154,5 +165,36 @@
         });
 
     </script>
+
+    {{-- thông báo gửi mail --}}
+    @php
+        if(Session::has('no')){
+            $no = Session::get('no');
+        
+        }else {
+            $no = 0;
+        }
+    @endphp
+<script type="text/javascript"> 
+
+    var no = "<?= $no ?>"
+    if(no!=0){
+    $(document).ready(function(){
+
+        // demo.initDashboardPageCharts();
+        // demo.initVectorMap();
+
+        $.notify({
+            icon: 'pe-7s-bell',
+            message: "Đã gửi thành công!"
+
+        },{
+            type: 'warning',
+            timer: 4000
+        });
+
+    });
+    }
+</script>
 
 </html>

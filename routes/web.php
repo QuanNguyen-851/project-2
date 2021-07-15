@@ -53,8 +53,8 @@ Route::middleware([CheckLogin::class])->group(function () {
     // STUDENT
 
     Route::prefix('students')->name('students.')->group(function () {
-        Route::get('/{id}/hide', [StudentController::class, 'hide'])->name('hide');
-        Route::get('/{id}/unhide', [StudentController::class, 'unhide'])->name('unhide');
+        // Route::get('/{id}/hide', [StudentController::class, 'hide'])->name('hide');
+        // Route::get('/{id}/unhide', [StudentController::class, 'unhide'])->name('unhide');
         Route::get('/importStudents', [StudentController::class, 'importStudents'])->name('importStudents');
         Route::post('/insertByExcel', [StudentController::class, 'insertByExcel'])->name('insertByExcel');
         Route::get('/exportStudentsform', [StudentController::class, 'exportStudentsform'])->name('exportStudentsform');
@@ -70,9 +70,10 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::get('/{id}/studentfee', [FeeController::class, 'studentfee'])->name('studentfee');
         Route::get('/{id}/detailStuddentFee', [FeeController::class, 'detailStuddentFee'])->name('detailStuddentFee');
         Route::get('/{id}/detailStudentSubFee', [FeeController::class, 'detailStudentSubFee'])->name('detailStudentSubFee');
-        Route::get('/listowefee', [FeeController::class, 'listowefee'])->name('listowefee');
+        Route::get('/{month}/listowefee', [FeeController::class, 'listowefee'])->name('listowefee');
         Route::get('/{month}/exportlistowefee', [FeeController::class, 'exportlistowefee'])->name('exportlistowefee');
         Route::post('/exportalllistowefeeprocess', [FeeController::class, 'exportalllistowefeeprocess'])->name('exportalllistowefeeprocess');
+        Route::get('/warningMail', [SendMailController::class, 'warningMail'])->name('warningMail');
     });
 
 

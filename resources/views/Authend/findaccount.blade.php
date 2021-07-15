@@ -63,9 +63,12 @@
                                     
                                 </div>
                                 <div class="footer text-center">
-                                    <button type="submit" class="btn btn-fill btn-warning btn-wd">Tìm kiếm</button>
+                                    <button id="find" type="submit" class="btn btn-fill btn-warning btn-wd">Tìm kiếm</button>
+                                    <a id="finding" style="display:none;" class="btn btn-fill btn-warning btn-wd"><i class="fa fa-spinner fa-spin"></i>Vui lòng chờ</a>
                                 </div>
+                                <a style="color:red; margin-left: 12px;" href="{{ route('login') }}" ><i class="pe-7s-back"></i>trở về</a>
                             </div>
+                            
 
                         </form>
 
@@ -152,5 +155,13 @@
                
             });
         </script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#find").click(function(){
+    $("#find").hide();
+    $("#finding").show();
+  });
+});
+</script>
 </html>

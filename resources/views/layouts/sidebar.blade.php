@@ -98,8 +98,8 @@
             </li>
             {{-- danh sách nợ học phí--}}
             <li>
-                <a href="{{ route('fee.listowefee') }}">
-                    <i class="pe-7s-delete-user"></i>
+                <a href="{{ route('fee.listowefee', ['month'=>0]) }}">
+                    <i class="pe-7s-delete-user" ></i>
                     <p>Danh sách nợ học phí</p>
                 </a>
             </li>
