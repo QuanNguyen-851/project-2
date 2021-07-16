@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Classroom;
+use App\Models\Course;
 use App\Models\Scholarship;
 use App\Models\Student as ModelsStudent;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -13,6 +14,11 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class StudentsExport implements FromQuery, WithHeadings, withMapping
 {
+    public function __construct($idcourse)
+    {
+        $this->course = $idcourse;
+    }
+
     public function map($student): array
     {
         $date = date_create($student->dateBirth);
@@ -36,17 +42,23 @@ class StudentsExport implements FromQuery, WithHeadings, withMapping
      */
     public function headings(): array
     {
+
+
         return [
-            'Mã',
-            'Họ tên',
-            'Giới tính',
-            'Ngày sinh',
-            'email',
-            'sdt',
-            'địa chỉ',
-            'Học phí/đợt',
-            'Lớp',
-            'Học bổng',
+            ['DANH SÁCH SINH VIÊN KHÓA ' . Course::where('id', $this->course)->value('name')],
+            [
+                'Mã',
+                'Họ tên',
+                'Giới tính',
+                'Ngày sinh',
+                'email',
+                'sdt',
+                'địa chỉ',
+                'Học phí/đợt',
+                'Lớp',
+                'Học bổng',
+            ]
+
 
         ];
     }
@@ -56,10 +68,6 @@ class StudentsExport implements FromQuery, WithHeadings, withMapping
      */
     use Exportable;
 
-    public function __construct($idcourse)
-    {
-        $this->course = $idcourse;
-    }
 
     public function query()
     {

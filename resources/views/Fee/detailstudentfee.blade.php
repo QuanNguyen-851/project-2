@@ -5,6 +5,7 @@
         <h2 style="text-align: center;padding: 10px; font-family: ui-monospace">PHIẾU THU</h2>
         <h3 style="text-align: center;font-family: -webkit-body;">Ngày: {{ date_format(date_create($detail->date)," d/m/Y") }}</h3>
         <div style="padding: 35px">
+        <p>Mã đơn: {{"HP".$detail->id}}</p>
             <P>Họ tên người nộp tiền: {{ $detail->payer}}</P>
             <p>Sinh viên: {{ $detail->name."(".date_format(date_create($detail->dateBirth),"d/m/Y").")"."_".$detail->address."_".$detail->class_bk}}</p>
 

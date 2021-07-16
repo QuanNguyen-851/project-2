@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\exporAllStudentOwe;
+use App\Exports\exportStatistic;
 use App\Exports\exportStudentOwe;
 use App\Models\Classroom;
 use App\Models\Fee;
@@ -59,13 +60,13 @@ class FeeController extends Controller
         $studentfee =  Fee::where('idStudent', $id)
             ->join('student', 'student.id', '=', 'fee.idStudent')
             ->join('payment', 'payment.id', '=', 'fee.idMethod')
-            ->select('student.*', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
+            ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
             ->orderBy('date', 'desc')
             ->get();
 
         $studentsubfee =  SubFee::where('idStudent', $id)
             ->join('student', 'student.id', '=', 'subfee.idStudent')
-            ->select('student.*', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
+            ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
             ->orderBy('date', 'desc')
             ->get();
         return View('Fee.studentfeeform', [
@@ -202,5 +203,65 @@ class FeeController extends Controller
         } else {
             return Excel::download(new exportStudentOwe($month, $class), 'danhSachNo.xlsx');
         }
+    }
+    public function statistic($month)
+    {
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $date = date('m', time());
+        if ($month == 1) {
+            $fee = Fee::join('student', 'fee.idStudent', '=', 'student.id')
+                ->join('payment', 'payment.id', '=', 'fee.idMethod')
+                ->select('student.*', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
+                ->whereraw('DATE_FORMAT(fee.date, "%m") = ?', [$date - 1])
+                // ->select('fee.id')
+                ->get();
+            $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
+                ->select('student.*', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
+                ->whereraw('DATE_FORMAT(subfee.date, "%m") = ?', [$date - 1])
+                ->get();
+        } elseif ($month == 3) {
+            $fee = Fee::join('student', 'fee.idStudent', '=', 'student.id')
+                ->join('payment', 'payment.id', '=', 'fee.idMethod')
+                ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
+                ->whereraw('DATE_FORMAT(fee.date, "%m") < ? and DATE_FORMAT(fee.date, "%m") >= ? ', [$date, $date - 3])
+                // ->select('fee.id')
+                ->get();
+            $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
+                ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
+                ->whereraw('DATE_FORMAT(subfee.date, "%m") < ? and DATE_FORMAT(subfee.date, "%m") >= ?',  [$date, $date - 3])
+                ->get();
+        } else {
+            $fee = Fee::join('student', 'fee.idStudent', '=', 'student.id')
+                ->join('payment', 'payment.id', '=', 'fee.idMethod')
+                ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
+                ->whereraw('DATE_FORMAT(fee.date, "%m") = ?', [$date])
+                // ->select('fee.id')
+                ->get();
+            $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
+                ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
+                ->whereraw('DATE_FORMAT(subfee.date, "%m") = ?', [$date])
+                ->get();
+        }
+        $sumfee = 0;
+        $sumsubfee = 0;
+        foreach ($fee as $item) {
+            $sumfee += $item->payfee;
+        }
+        foreach ($subfee as $item) {
+            $sumsubfee += $item->payfee;
+        }
+
+        return view('Fee.statistic', [
+            "month" => $month,
+            "fee" => $fee,
+            "sumfee" => $sumfee,
+
+            "subfee" => $subfee,
+            "sumsubfee" => $sumsubfee,
+        ]);
+    }
+    public function exportstatistic($month)
+    {
+        return Excel::download(new exportStatistic($month), 'doanhthu.xlsx');
     }
 }

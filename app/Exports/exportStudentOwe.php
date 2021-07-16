@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Classroom;
 use App\Models\Student as ModelsStudent;
 use App\Student;
 use Illuminate\Support\Facades\DB;
@@ -40,10 +41,10 @@ class exportStudentOwe implements FromArray, WithHeadings, WithMapping
             date_format($date, "d/m/Y"),
             number_format($student->scholarship) . "VNĐ",
             $student->payment,
-            number_format($student->fee) . "VNĐ",
-            number_format($student->owe) . "VNĐ",
-            number_format($student->owesub) . "VNĐ",
-            number_format($student->owe + $student->owesub) . "VNĐ",
+            $student->fee,
+            $student->owe,
+            $student->owesub,
+            $student->owe + $student->owesub,
         ];
         return $data;
     }
@@ -51,19 +52,33 @@ class exportStudentOwe implements FromArray, WithHeadings, WithMapping
     {
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $date = date('d/m/Y H:i', time());
+        if ($this->month == 5) {
+            $head = 'danh sách sinh viên bị CẤM THI lớp ' . Classroom::where("id", $this->class)->value('name');
+        } elseif ($this->month == 6) {
+            $head = 'danh sách sinh viên bị ĐÌNH CHỈ HỌC 30 NGÀY lớp ' . Classroom::where("id", $this->class)->value('name');
+        } elseif ($this->month == 7) {
+            $head = 'danh sách sinh viên bị BUỘC THÔI HỌC lớp ' . Classroom::where("id", $this->class)->value('name');
+        } else {
+
+            $head = 'danh sách sinh viên nợ học phí lớp ' . Classroom::where("id", $this->class)->value('name');
+        }
 
         return [
-            'Mã',
-            'Lớp',
-            'Họ tên',
-            'Giới tính',
-            'Ngày sinh',
-            'Học bổng',
-            'Hình thức đóng',
-            'Học phí mỗi đợt',
-            'Học phí nợ tính đến ' . $date,
-            'Phụ phí nợ tính đến' . $date,
-            'Tổng nợ tính đến' . $date,
+            [$head],
+            [
+                'Mã',
+                'Lớp',
+                'Họ tên',
+                'Giới tính',
+                'Ngày sinh',
+                'Học bổng',
+                'Hình thức đóng',
+                'Học phí mỗi đợt',
+                'Học phí nợ tính đến ' . $date,
+                'Phụ phí nợ tính đến' . $date,
+                'Tổng nợ tính đến' . $date,
+            ]
+
         ];
     }
 

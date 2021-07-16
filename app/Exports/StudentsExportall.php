@@ -36,16 +36,20 @@ class StudentsExportall implements FromCollection, WithHeadings, withMapping
     public function headings(): array
     {
         return [
-            'Mã',
-            'Họ tên',
-            'Giới tính',
-            'Ngày sinh',
-            'email',
-            'sdt',
-            'địa chỉ',
-            'Học phí/đợt',
-            'Lớp',
-            'Học bổng',
+            ['DANH SÁCH SINH VIÊN'],
+            [
+                'Mã',
+                'Họ tên',
+                'Giới tính',
+                'Ngày sinh',
+                'email',
+                'sdt',
+                'địa chỉ',
+                'Học phí/đợt',
+                'Lớp',
+                'Học bổng',
+            ]
+
 
         ];
     }

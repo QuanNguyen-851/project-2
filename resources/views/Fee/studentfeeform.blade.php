@@ -39,7 +39,7 @@
 
         <table id="bootstrap-table" class="table">
             <thead>
-               
+                <th class="id">Mã đơn</th>
                 <th  class="text-center">Người nộp</th>
                 <th  data-sortable="true">Ghi chú</th>
                 <th  data-sortable="true">Ngày nộp</th>
@@ -51,6 +51,7 @@
             <tbody>
                 @foreach ($studentfee as $item)
                 <tr>
+                <td> {{"HP".$item->idfee}} </td>
                 <td> {{$item->payer}} </td>
 
                 <td style="text-align: left;" ><textarea disabled style="width: 390px;height: 90px;border: none; max-width: 390px;min-height: 90px;">{{$item->note}}</textarea></td>
@@ -80,6 +81,7 @@
             @endforeach
             @foreach ($studentsubfee as $item)
             <tr>
+                <td>{{"PP".$item ->id}}</td>
             <td>
                 <div>
                     {{$item->payer}}

@@ -74,6 +74,8 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::get('/{month}/exportlistowefee', [FeeController::class, 'exportlistowefee'])->name('exportlistowefee');
         Route::post('/exportalllistowefeeprocess', [FeeController::class, 'exportalllistowefeeprocess'])->name('exportalllistowefeeprocess');
         Route::get('/warningMail', [SendMailController::class, 'warningMail'])->name('warningMail');
+        Route::get('/{month}/statistic', [FeeController::class, 'statistic'])->name('statistic');
+        Route::get('/{month}/exportstatistic', [FeeController::class, 'exportstatistic'])->name('exportstatistic');
     });
 
 
