@@ -1,9 +1,16 @@
 @extends('layouts.layout')
 @section('main')
+
+<style>
+
+    #khoa>a{
+        background: #d0e4ff4a;
+    }
+</style>
 <div class="table-responsive">
     <h1>Các khóa đang theo học</h1>
     <div class="card">
-    
+        <a style="margin: 5px;" class="btn btn-primary" href="{{route('course.passed')}}">Khóa đã tốt nghiệp</a>
     <table class="table">
         <thead>
             <tr>

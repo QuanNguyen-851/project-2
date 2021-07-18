@@ -1,5 +1,12 @@
 @extends('layouts.layout')
 @section('main')
+
+<style>
+
+    #sinhvien>a{
+        background: #d0e4ff4a;
+    }
+</style>
     <h1>Danh sách sinh viên
         <i class="pe-7s-study" ></i>
     </h1>

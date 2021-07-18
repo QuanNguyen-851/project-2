@@ -1,5 +1,12 @@
 @extends('layouts.layout')
 @section('main')
+
+<style>
+
+    #phuongthuc>a{
+        background: #d0e4ff4a;
+    }
+</style>
 <div class="col-md-6" style="width: 100%;">
     <h1 class="title">Phương thức đóng học</h1>
     <div class="card" style="width: 100%;">

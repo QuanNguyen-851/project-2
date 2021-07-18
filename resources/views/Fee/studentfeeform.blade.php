@@ -60,6 +60,9 @@
                 </td>
                 <td style="text-align: left" >
                     {{number_format($item->payfee)."VNĐ"}}
+                    @if ($item->check != 1)
+                    <a style="    color: #ffa50c;">(thiếu)</a>
+                @endif
                 </td>
                 <td style="text-align: left">
                     {{$item->countPay}}
@@ -68,9 +71,7 @@
                     {{$item->payment}}
                 </td>
                 <td class="td-actions">
-                    @if ($item->check != 1)
-                        thiếu
-                    @endif
+                  
 
                     <a  href="{{ route('fee.detailStuddentFee', $item->idFee) }}"  title="Xem chi tiết" class="btn btn-primary">
                         Xem chi tiết
@@ -94,6 +95,9 @@
             </td>
             <td style="text-align: left" >
                 {{number_format($item->payfee)."VNĐ"}}
+                @if ($item->check != 1)
+                <a style="    color: #ffa50c;">(thiếu)</a>
+            @endif
             </td>
             <td style="text-align: left" >
                 {{$item->countPay}}
@@ -102,9 +106,7 @@
                 {{$item->payment}}
             </td>
             <td class="td-actions">  
-                @if ($item->check != 1)
-                thiếu
-            @endif
+               
                 <a href="{{ route('fee.detailStudentSubFee', $item->idFee) }}"  title="Xem chi tiết" class="btn btn-primary">
                     Xem chi tiết
                 </a>               

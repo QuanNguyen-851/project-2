@@ -1,5 +1,12 @@
 @extends('layouts.layout')
 @section('main')  
+
+<style>
+
+    #no>a{
+        background: #d0e4ff4a;
+    }
+</style>
  @php
        date_default_timezone_set('Asia/Ho_Chi_Minh');
         $date = date('d/m/Y H:i a', time());
@@ -10,7 +17,7 @@
 <div style=" height: 30px;">
     <div class="dropdown">
 
-    <button style="margin-left: 10px;" class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    <button style="margin-left: 10px;" class="btn btn-info btn-fill" type="button" id="dropdownMenu1" data-toggle="dropdown">
       @if ($month==5)
       Nợ từ 1-5 tháng (Danh sách cấm thi)
       @elseif($month==6)
@@ -23,17 +30,17 @@
       <span class="caret"></span>
     </button>
   
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.listowefee',['month'=>0]) }}">Tất cả </a></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.listowefee',['month'=>5]) }}">Nợ từ 1-5 tháng (Danh sách cấm thi)</a></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.listowefee',['month'=>6]) }}">Nợ 6 tháng (Danh sách đình chỉ 30 ngày)</a></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.listowefee',['month'=>7]) }}">Nợ >7 tháng (Buộc thôi học)</a></li>
       
     </ul>
-     <a id="sendmail"  href="{{ route('fee.warningMail') }}" class="btn btn-primary btn-round" style="float: right;margin-right: 10px;">
+     <a id="sendmail"  href="{{ route('fee.warningMail') }}" class="btn btn-primary btn-round  btn-fill" style="float: right;margin-right: 10px;">
         
         Gửi mail thông báo</a>
-    <a id="load"  class="btn btn-primary btn-round" style="float: right;margin-right: 10px;display:none;">
+    <a id="load"  class="btn btn-primary btn-round btn-fill" style="float: right;margin-right: 10px;display:none;">
         <i class="fa fa-spinner fa-spin"></i>
         Đang gửi vui lòng chờ</a>
   </div>
@@ -69,7 +76,7 @@
     <div class="toolbar">
         <!--   Here you can write extra buttons/actions for the toolbar  -->
    
-        <a class="btn btn-warning" style="margin-right: 25px;" href="{{ route('fee.exportlistowefee', $month) }}">Xuất danh sách</a>
+        <a class="btn btn-warning  btn-fill" style="margin-right: 25px;" href="{{ route('fee.exportlistowefee', $month) }}">Xuất danh sách</a>
     </div>
     <table id="bootstrap-table" class="table">
        

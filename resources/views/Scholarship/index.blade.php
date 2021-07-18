@@ -1,5 +1,12 @@
 @extends('layouts.layout')
 @section('main')
+
+<style>
+
+    #hocbong>a{
+        background: #d0e4ff4a;
+    }
+</style>
 <div class="col-md-6" style="width: 100%;">
             <h1 class="title">Học Bổng</h1>
     <div class="card" style="width: 100%;">

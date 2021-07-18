@@ -1,5 +1,12 @@
 @extends('layouts.layout')
 @section('main')
+
+<style>
+
+    #nganh>a{
+        background: #d0e4ff4a;
+    }
+</style>
 <h1>Danh sách các ngành</h1>
 <div class="card">
 <div class="toolbar">

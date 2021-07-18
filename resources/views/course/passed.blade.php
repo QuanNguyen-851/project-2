@@ -3,7 +3,7 @@
 <div class="table-responsive">
     <h1>Các khóa đã tốt nghiệp</h1>
     <div class="card">
-    
+        <a style="margin: 5px;" href="{{route('course.index')}}" class="btn btn-primary">trở lại</a>
     <table class="table">
         <thead>
             <tr>

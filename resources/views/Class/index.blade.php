@@ -1,6 +1,12 @@
 @extends('layouts.layout')
 @section('main')
 
+<style>
+
+    #lop>a{
+        background: #d0e4ff4a;
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <h1>Danh sách lớp</h1>

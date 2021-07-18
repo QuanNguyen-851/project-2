@@ -1,5 +1,4 @@
 
-
 <div class="sidebar" data-color="azure" data-image="{{ asset('assets') }}/img/full-screen-image-3.jpg">
     <!--
 
@@ -25,7 +24,9 @@
                 
 
                 <a  href="{{ route('employee.edit',Session::get('id')) }}" >
+                   
                     <span style="font-size: large; text-align: center;">
+                       
                         @if (Session::has('name'))
                             {{Session::get('name')}}
                         @endif
@@ -56,21 +57,21 @@
         </div>
 
         <ul class="nav">
-            <li >
+            <li id = "dashboard">
                 <a  href="/">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             {{-- sinh viên --}}
-            <li>
+            <li id = "sinhvien">
                 <a  href="{{ route('students.index') }}">
                     <i class="pe-7s-study"></i>
                     <p>Sinh Viên</p>
                 </a>
             </li>
             {{-- thống kê --}}
-            <li>
+            <li id = "thongke">
                 <a href="{{ route('fee.statistic',['month'=>0])}}">
                     <i class="pe-7s-graph3" ></i>
                     <p>Thống kê</p>
@@ -78,21 +79,27 @@
             </li>
             
             {{-- danh sách nợ học phí--}}
-            <li>
+            <li id= "no">
                 <a href="{{ route('fee.listowefee', ['month'=>0]) }}">
                     <i class="pe-7s-delete-user" ></i> 
                     <p>Danh sách nợ học phí</p>
                 </a>
             </li>
             {{-- lớp --}}
-            <li>
+            <li id="lop">
                 <a href="{{ route('class.index') }}">
                     <i class="pe-7s-albums"></i>
                     <p>Lớp</p>
                 </a>
             </li>
             {{-- khóa --}}
-            <li>
+            <li id="khoa">
+                <a href="{{route('course.index')}}">
+                    <i class="pe-7s-bookmarks"></i>
+                    <p>Khóa</p>
+                </a>
+            </li>
+            {{-- <li>
                 <a data-toggle="collapse" href="#componentsExamples">
                     <i class="pe-7s-bookmarks"></i>
                     <p>khóa
@@ -116,12 +123,12 @@
                         
                     </ul>
                 </div>
-            </li>
+            </li> --}}
             
             {{-- Ngành--}}
-            <li>
+            <li id="nganh">
                 <a href="{{route('major.index')}}">
-                    <i class="pe-7s-graph1"></i>
+                    <i class="pe-7s-box2"></i>
                     <p>Ngành</p>
                 </a>
             </li>
@@ -134,14 +141,14 @@
                 </a>
             </li> --}}
             {{-- Học Bổng --}}
-            <li>
+            <li id="hocbong">
                 <a href="{{ route('scholarship.index') }}">
                     <i class="pe-7s-gift"></i>
                     <p>Học bổng</p>
                 </a>
             </li>
             {{-- phương thức đóng học --}}
-            <li>
+            <li id="phuongthuc"> 
                 <a href="{{ route('payment.index') }}">
                     <i class="pe-7s-network"></i>
                     <p>phương thức đóng học</p>

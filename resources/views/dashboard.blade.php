@@ -2,6 +2,12 @@
 @extends('layouts.layout')
 
 @section('main')
+<style>
+
+    #dashboard>a{
+        background: #d0e4ff4a;
+    }
+</style>
 <div class="main-content">
     <div class="container-fluid">
 
