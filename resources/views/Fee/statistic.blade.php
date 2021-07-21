@@ -41,7 +41,7 @@
               
               
             </ul>
-             <a class="btn btn-warning  btn-fill" style="margin-right: 25px;margin-left: 5px;" href="{{ route('fee.exportstatistic', ['month'=>$month]) }}">Xuất danh sách</a>
+             <a class="btn btn-warning  btn-fill" style="margin-right: 25px;margin-left: 5px;" href="{{ route('fee.exportstatistic', ['month'=>$month]) }}">Xuất file</a>
         </div>
    
        
@@ -56,8 +56,8 @@
             
             <th  class="text-center">Người nộp</th>
                 <th  data-sortable="true">Ghi chú</th>
-                <th  data-sortable="true">Ngày nộp</th>
-                <th  data-sortable="true">Số tiền</th>
+                <th data-field="dateBirth"  data-sortable="true">Ngày nộp</th>
+                <th data-field="number " data-sortable="true">Số tiền</th>
                 <th  data-sortable="true">Đợt</th>
                 <th >Hình thức đóng</th>
             <th data-field="actions" >Actions</th>

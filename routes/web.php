@@ -45,11 +45,12 @@ Route::middleware([CheckLoged::class])->group(function () {
 });
 
 //for students 
-// Route::prefix('student')->name('student.')->group(function () {
+
 Route::get('/student/{id}', [FeeController::class, 'Student'])->name('student');
 Route::get('/detaiFeeForstudent/{id}', [FeeController::class, 'detaiFeeForstudent'])->name('detaiFeeForstudent');
 Route::get('/detailSubFeeForstudent/{id}', [FeeController::class, 'detailSubFeeForstudent'])->name('detailSubFeeForstudent');
-// });
+
+
 
 // checklogin
 Route::middleware([CheckLogin::class])->group(function () {
