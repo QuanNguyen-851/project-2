@@ -42,7 +42,10 @@ BUỘC THÔI HỌC<br>
 @endif
 
 Mọi thắc mắc xin vui lòng liên hệ với cô An Thị Hiên tại P207 hoặc gửi tới hòm thư havt@bkacad.edu.vn để được giải đáp<br>
-
+{{-- <a class="btn btn-primary" href="{{ route('student', $info->id) }}">lịch sử</a> --}}
+@component('mail::button', ['url' => "http://127.0.0.1:8000/student/$info->id"])
+lịch sử
+@endcomponent
 
 
 Trân trọng <br>
