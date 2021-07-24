@@ -12,6 +12,7 @@ use App\Models\Scholarship;
 use App\Models\Student as ModelsStudent;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Student;
 
@@ -31,7 +32,13 @@ class StudentController extends Controller
             $student[$i] = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
                 ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
                 ->join('course', 'course.id', '=', 'classbk.idCourse')
-                ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
+                ->select(
+                    [
+                        'student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse',
+                        DB::raw('(SELECT MAX(fee.countPay)  FROM fee where fee.idStudent = student.id) as count'),
+                    ]
+
+                )
                 ->where([
                     ['student.name', 'LIKE', "%$search%"],
                     ['student.disable', '!=', '1'],
@@ -47,7 +54,14 @@ class StudentController extends Controller
         $allstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
             ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
             ->join('course', 'course.id', '=', 'classbk.idCourse')
-            ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
+            // ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
+            ->select(
+                [
+                    'student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse',
+                    DB::raw('(SELECT MAX(fee.countPay)  FROM fee where fee.idStudent = student.id) as count'),
+                ]
+
+            )
             ->where([
                 ['student.name', 'LIKE', "%$search%"],
                 ['student.disable', '!=', '1'],
@@ -57,10 +71,17 @@ class StudentController extends Controller
                 ['student.disable', '!=', '1'],
             ])
             ->paginate(100);
+        // dd($allstudents);
         $hidedstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
             ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
             ->join('course', 'course.id', '=', 'classbk.idCourse')
-            ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
+            ->select(
+                [
+                    'student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse',
+                    DB::raw('(SELECT MAX(fee.countPay)  FROM fee where fee.idStudent = student.id) as count'),
+                ]
+
+            )
             // ->where('student.name', 'LIKE', "%$search%")
             // ->where('student.disable', '1')
             ->where([

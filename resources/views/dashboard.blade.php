@@ -11,7 +11,7 @@
 <div class="main-content">
     <div class="container-fluid">
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12">
                 <div class="card ">
                     <div class="header">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
 
@@ -127,208 +127,139 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Email Statistics</h4>
-                        <p class="category">Last Campaign Performance</p>
+                        <h4 class="title">Tỉ lệ nợ học phí</h4>
+                        
                     </div>
                     <div class="content">
-                        <div id="chartEmail" class="ct-chart "></div>
-                    </div>
+                        <div id="chartPreferences" class="ct-chart "></div>
+                    </div><hr>
                     <div class="footer">
-                        <div class="legend">
-                            <i class="fa fa-circle text-info"></i> Apple
-                            <i class="fa fa-circle text-success"></i> Samsung
-                            <i class="fa fa-circle text-warning"></i> BlackBerry
-                            <i class="fa fa-circle text-danger"></i> Windows Phone
+                        <div class="legend"> 
+                            <i class="fa fa-circle text-info"></i> Hoàn thành<br>
+                            <i style="color:#9368e9" class="fa fa-circle"></i> từ 1 đến 5 đợt<br>
+                            <i class="fa fa-circle text-warning"></i> 6 đợt <br>
+                            <i class="fa fa-circle text-danger"></i> 7 đợt trở lên<br>
                         </div>
-                        <hr>
-                        <div class="stats">
+                        
+                        {{-- <div class="stats">
                             <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>
             </div>
 
             <div class="col-md-8">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Users Behavior</h4>
-                        <p class="category">24 Hours performance</p>
-                    </div>
-                    <div class="content">
-                        <div id="chartHours" class="ct-chart"></div>
-                    </div>
-                    <div class="footer">
-                        <div class="legend">
-                            <i class="fa fa-circle text-info"></i> Open
-                            <i class="fa fa-circle text-danger"></i> Click
-                            <i class="fa fa-circle text-warning"></i> Click Second Time
-                        </div>
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-history"></i> Updated 3 minutes ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="row">
-            <div class="col-md-6">
                 <div class="card ">
                     <div class="header">
-                        <h4 class="title">2014 Sales</h4>
-                        <p class="category">All products including Taxes</p>
+                        @php
+                             date_default_timezone_set('Asia/Ho_Chi_Minh');
+                                $year = date('Y', time());
+                        @endphp
+                        <h4 class="title">Doanh số năm {{$year}} </h4>
+                        {{-- <p class="category">(Triệu/tháng)</p> --}}
                     </div>
                     <div class="content">
-                        <div id="chartActivity" class="ct-chart"></div>
+                       <a style="font-size: 10px;color: gray; margin-left: 5px;">(Triệu VNĐ)</a>
+                        <div id="chartViews" style="margin-top: 0px;" class="ct-chart"></div>
                     </div>
-                    <div class="footer">
+                    {{-- <div class="footer">
                         <div class="legend">
-                            <i class="fa fa-circle text-info"></i> Tesla Model S
-                            <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                            <i class="fa fa-circle text-info"></i> Doanh thu
+                             <i class="fa fa-circle text-danger"></i> BMW 5 Series
                         </div>
                         <hr>
                         <div class="stats">
                             <i class="fa fa-check"></i> Data information certified
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card ">
-                    <div class="header">
-                        <h4 class="title">Tasks</h4>
-                        <p class="category">Backend development</p>
-                    </div>
-                    <div class="content">
-                        <div class="table-full-width">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox">
-                                                    <input id="checkbox30" type="checkbox">
-                                                    <label for="checkbox30"></label>
-                                                </div>
-                                        </td>
-                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox">
-                                                    <input id="checkbox32" type="checkbox">
-                                                    <label for="checkbox32"></label>
-                                                </div>
-                                        </td>
-                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox">
-                                                    <input id="checkbox33" type="checkbox">
-                                                    <label for="checkbox33"></label>
-                                                </div>
-                                        </td>
-                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-</td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox">
-                                                    <input id="checkbox35" type="checkbox" checked>
-                                                    <label for="checkbox35"></label>
-                                                </div>
-                                        </td>
-                                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox">
-                                                    <input id="checkbox38" type="checkbox">
-                                                    <label for="checkbox38"></label>
-                                                </div>
-                                        </td>
-                                        <td>Read "Following makes Medium better"</td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="checkbox">
-                                                    <input id="checkbox40" type="checkbox" checked>
-                                                    <label for="checkbox40"></label>
-                                                </div>
-                                        </td>
-                                        <td>Unfollow 5 enemies from twitter</td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-history"></i> Updated 3 minutes ago
-                        </div>
-                    </div>
-
+                    </div>  --}}
                 </div>
             </div>
         </div>
+
+
+
+    
 
 
 
     </div>
 </div>
 
+<script>
+type = ['', 'info', 'success', 'warning', 'danger'];
+var owe5 = {{$owe5}} , owe6= {{$owe6}},owe7= {{$owe7}};
+var ok = 100 - owe5 - owe6 - owe7; 
+var time = new Date();
+ var year= time.getFullYear();
+ 
+ var array = <?php echo json_encode($array); ?>;
+console.log(array);
+ 
+demo = {
+    
+    initDashboardPageCharts: function () {
+        var dataPreferences = {
+        series: [
+            [25, 30, 20, 25]
+        ]
+        };
+
+        var optionsPreferences = {
+        donut: true,
+        donutWidth: 40,
+        startAngle: 0,
+        height: "245px",
+        total: 100,
+        showLabel: false,
+        axisX: {
+            showGrid: false
+        }
+        };
+
+        Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
+
+        Chartist.Pie('#chartPreferences', {
+        labels: [ ok+"%", owe7+"%", owe6+"%", owe5+"%"],
+        series: [ok,owe7, owe6, owe5]
+        }); 
+//biểu đồ cột
+       
+        var dataViews = {
+        labels: [
+            "01/"+year, "02/"+year, "03/"+year, "04/"+year, "05/"+year, "06/"+year, "07/"+year, "08/"+year, "09/"+year, "10/"+year, "11/"+year, "12/"+year
+           
+        ],
+        series: [
+            [array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12]]
+      ]
+    };
+
+    var optionsViews = {
+      seriesBarDistance: 10,
+      classNames: {
+        bar: 'ct-bar ct-azure'
+      },
+      axisX: {
+        showGrid: false
+      }
+    };
+
+    var responsiveOptionsViews = [
+      ['screen and (max-width: 640px)', {
+        seriesBarDistance: 5,
+        axisX: {
+          labelInterpolationFnc: function (value) {
+            return value[0];
+          }
+        }
+      }]
+    ];
+
+    Chartist.Bar('#chartViews', dataViews, optionsViews, responsiveOptionsViews);
+ 
+    },
+}
+
+</script>
     @endsection

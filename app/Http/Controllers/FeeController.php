@@ -119,13 +119,13 @@ class FeeController extends Controller
         // $month = $request->month;
         if ($month == 5) {
             //từ 1 đến 5 tháng
-            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <=5 and `student`.`fee` > ? and `student`.`disable` != ?) ', ['0', '1', '0', '1']);
+            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <=5 and `student`.`fee` > ? and `student`.`disable` != ?) ', ['0', '1']);
         } else if ($month == 6) {
             //6 tháng
-            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? )', ['0', '1', '0', '1']);
+            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? )', ['0', '1']);
         } else if ($month == 7) {
             //7 tháng
-            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >= 7   and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1', '0', '1']);
+            $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >= 7   and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1']);
         } else {
             //tất cả
             $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >0 and `student`.`fee` > ? and `student`.`disable` != ?) or (`course`.`countSubFeeMustPay` - subfee.countPay > ? 
@@ -207,39 +207,64 @@ class FeeController extends Controller
     public function statistic($month)
     {
         date_default_timezone_set('Asia/Ho_Chi_Minh');
-        $date = date('m', time());
+
         if ($month == 1) {
+            $date = date('Y-m-d', time());
+            $month1 = strtotime(date("Y-m-d", strtotime($date)) . " -1 month");
+            $month1 = strftime("%Y-%m", $month1);
             $fee = Fee::join('student', 'fee.idStudent', '=', 'student.id')
                 ->join('payment', 'payment.id', '=', 'fee.idMethod')
                 ->select('student.*', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
-                ->whereraw('DATE_FORMAT(fee.date, "%m") = ?', [$date - 1])
+                ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") = ?', [$month1])
                 // ->select('fee.id')
                 ->get();
             $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
                 ->select('student.*', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
-                ->whereraw('DATE_FORMAT(subfee.date, "%m") = ?', [$date - 1])
+                ->whereraw('DATE_FORMAT(subfee.date, "%Y-%m") = ?', [$month1])
                 ->get();
         } elseif ($month == 3) {
+            $date = date('Y-m-d', time());
+            $month3 = strtotime(date("Y-m-d", strtotime($date)) . " -3 month");
+            $month3 = strftime("%Y-%m", $month3);
+            $date2 = date('Y-m', time());
+            // dd($month3);
+
             $fee = Fee::join('student', 'fee.idStudent', '=', 'student.id')
                 ->join('payment', 'payment.id', '=', 'fee.idMethod')
                 ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
-                ->whereraw('DATE_FORMAT(fee.date, "%m") < ? and DATE_FORMAT(fee.date, "%m") >= ? ', [$date, $date - 3])
+                ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") < ? and DATE_FORMAT(fee.date, "%Y-%m") >= ? ', [$date2, $month3])
+
+
+                ->get();
+            $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
+                ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
+                ->whereraw('DATE_FORMAT(subfee.date, "%Y-%m") < ? and DATE_FORMAT(subfee.date, "%Y-%m") >= ?',  [$date2, $month3])
+
+                ->get();
+        } elseif ($month == "all") {
+            //lấy tất
+            $fee = Fee::join('student', 'fee.idStudent', '=', 'student.id')
+                ->join('payment', 'payment.id', '=', 'fee.idMethod')
+                ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
+
                 // ->select('fee.id')
                 ->get();
             $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
                 ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
-                ->whereraw('DATE_FORMAT(subfee.date, "%m") < ? and DATE_FORMAT(subfee.date, "%m") >= ?',  [$date, $date - 3])
+
                 ->get();
         } else {
+            // tháng này
+            $date = date('Y-m', time());
             $fee = Fee::join('student', 'fee.idStudent', '=', 'student.id')
                 ->join('payment', 'payment.id', '=', 'fee.idMethod')
                 ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
-                ->whereraw('DATE_FORMAT(fee.date, "%m") = ?', [$date])
+                ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") = ?', [$date])
                 // ->select('fee.id')
                 ->get();
             $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
                 ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
-                ->whereraw('DATE_FORMAT(subfee.date, "%m") = ?', [$date])
+                ->whereraw('DATE_FORMAT(subfee.date, "%Y-%m") = ?', [$date])
                 ->get();
         }
         $sumfee = 0;

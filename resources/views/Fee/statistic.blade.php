@@ -28,8 +28,11 @@
                     Tháng {{$date -1}}
                 @elseif($month==3)
                     3 tháng gần nhất
+                    @elseif($month=="all")
+                     Tất cả 
                 @else
                     Tháng này 
+                
                 @endif
               <span class="caret"></span>
             </button>
@@ -38,6 +41,7 @@
             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.statistic',['month'=>0])}}">Tháng này </a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.statistic',['month'=>1])}}">Tháng {{$date-1}}</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.statistic',['month'=>3])}}">3 tháng gần đây</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.statistic',['month'=>"all"])}}">Tất cả</a></li>
               
               
             </ul>

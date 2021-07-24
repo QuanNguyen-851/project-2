@@ -56,9 +56,12 @@ Route::get('/detailSubFeeForstudent/{id}', [FeeController::class, 'detailSubFeeF
 Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/logout', [AuthendController::class, 'logout'])->name('logout');
     //dashboad
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+
+    //     return view('dashboard');
+    // })->name('dashboard');
+
+    Route::get('/dashboard', [AuthendController::class, 'dashboard'])->name('dashboard');
     // STUDENT
 
     Route::prefix('students')->name('students.')->group(function () {

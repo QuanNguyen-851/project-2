@@ -76,7 +76,8 @@
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
                                                     <th class="text-center" >Học phí 1 đợt</th>
-                                                    <th  >
+                                                    <th class="text-center" >Đợt đã đóng</th>
+                                                    <th >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                         <i class="
                                                         pe-7s-add-user
@@ -98,6 +99,7 @@
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
+                                                    <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                     <td class="td-actions text-right">
                                                         <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a>
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
@@ -134,6 +136,7 @@
                                                         <th class="text-center">ngày sinh</th>
                                                         <th  class="text-center">mức học bổng</th>
                                                         <th class="text-center" >Học phí 1 đợt</th>
+                                                        <th class="text-center" >Đợt đã đóng</th>
                                                         <th  >
                                                             <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                                 <i class="
@@ -156,8 +159,9 @@
                                                         <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                         <th class="text-center"> {{$item->scholarship}}</th>
                                                         <th class="text-center" >{{ number_format($item->fee)}}VND</th>
+                                                        <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                         <td class="td-actions text-right">
-                                                            <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
+                                                            <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a>
                                                             <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
@@ -187,6 +191,7 @@
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
                                                     <th class="text-center" >Học phí 1 đợt</th>
+                                                    <th class="text-center" >Đợt đã đóng</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                             <i class="
@@ -209,8 +214,9 @@
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
+                                                    <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary "> Lịch sử</a>
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
@@ -239,6 +245,7 @@
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
                                                     <th class="text-center" >Học phí 1 đợt</th>
+                                                    <th class="text-center" >Đợt đã đóng</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                             <i class="
@@ -261,8 +268,9 @@
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
+                                                    <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary "> Lịch sử</a>
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
@@ -290,6 +298,7 @@
                                                     <th class="text-center">ngày sinh</th>
                                                     <th  class="text-center">mức học bổng</th>
                                                     <th class="text-center" >Học phí 1 đợt</th>
+                                                    <th class="text-center" >Đợt đã đóng</th>
                                                     <th  >
                                                         <a href="{{ route('students.create') }}" class="btn btn-primary btn-fill" style="float: right;margin-right: 5px;">
                                                             <i class="
@@ -316,8 +325,9 @@
                                                     <th class="text-center">{{date_format($date,"d/m/Y")}}</th>
                                                     <th class="text-center"> {{$item->scholarship}}</th>
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
+                                                    <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử đóng học</a>
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary "> Lịch sử</a>
                                                          
                                                         {{-- <a rel="tooltip" title="Unhide" class="btn btn-warning btn-link btn-sm" href="{{ route('students.unhide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
                                                             <i class="fa fa-edit"></i>

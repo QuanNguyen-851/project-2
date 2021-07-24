@@ -58,21 +58,21 @@
 
         <ul class="nav">
             <li id = "dashboard">
-                <a  href="/">
+                <a style="border-radius: 25px;"  href="/">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             {{-- sinh viên --}}
             <li id = "sinhvien">
-                <a  href="{{ route('students.index') }}">
+                <a  style="border-radius: 25px;"  href="{{ route('students.index') }}">
                     <i class="pe-7s-study"></i>
                     <p>Sinh Viên</p>
                 </a>
             </li>
             {{-- thống kê --}}
             <li id = "thongke">
-                <a href="{{ route('fee.statistic',['month'=>0])}}">
+                <a  style="border-radius: 25px;"  href="{{ route('fee.statistic',['month'=>0])}}">
                     <i class="pe-7s-graph3" ></i>
                     <p>Thống kê</p>
                 </a>
@@ -80,21 +80,21 @@
             
             {{-- danh sách nợ học phí--}}
             <li id= "no">
-                <a href="{{ route('fee.listowefee', ['month'=>0]) }}">
+                <a  style="border-radius: 25px;"  href="{{ route('fee.listowefee', ['month'=>0]) }}">
                     <i class="pe-7s-delete-user" ></i> 
                     <p>Danh sách nợ học phí</p>
                 </a>
             </li>
             {{-- lớp --}}
             <li id="lop">
-                <a href="{{ route('class.index') }}">
+                <a  style="border-radius: 25px;"  href="{{ route('class.index') }}">
                     <i class="pe-7s-albums"></i>
                     <p>Lớp</p>
                 </a>
             </li>
             {{-- khóa --}}
-            <li id="khoa">
-                <a href="{{route('course.index')}}">
+            <li   id="khoa">
+                <a style="border-radius: 25px;"href="{{route('course.index')}}">
                     <i class="pe-7s-bookmarks"></i>
                     <p>Khóa</p>
                 </a>
@@ -127,7 +127,7 @@
             
             {{-- Ngành--}}
             <li id="nganh">
-                <a href="{{route('major.index')}}">
+                <a  style="border-radius: 25px;"  href="{{route('major.index')}}">
                     <i class="pe-7s-box2"></i>
                     <p>Ngành</p>
                 </a>
@@ -142,13 +142,13 @@
             </li> --}}
             {{-- Học Bổng --}}
             <li id="hocbong">
-                <a href="{{ route('scholarship.index') }}">
+                <a  style="border-radius: 25px;"  href="{{ route('scholarship.index') }}">
                     <i class="pe-7s-gift"></i>
                     <p>Học bổng</p>
                 </a>
             </li>
             {{-- phương thức đóng học --}}
-            <li id="phuongthuc"> 
+            <li  style="border-radius: 25px;"  id="phuongthuc"> 
                 <a href="{{ route('payment.index') }}">
                     <i class="pe-7s-network"></i>
                     <p>phương thức đóng học</p>
