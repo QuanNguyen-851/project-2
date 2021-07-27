@@ -19,28 +19,33 @@ class AuthendController extends Controller
         //     danh sach sv
         $students = Student::where('student.disable', '!=', '1')->count();
         //     số sinh viên nợ 1-5 tháng
-        $fee =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <=5 and `student`.`fee` > ? and `student`.`disable` != ?) ', ['0', '1', '0', '1']);
+        $fee =  DB::select('SELECT student.*  FROM `fee`INNER JOIN student on student.id = fee.idStudent INNER JOIN classbk on student.idClass = classbk.id INNER JOIN course on classbk.idCourse = course.id  INNER JOIN payment ON fee.idMethod = payment.id where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id ) and (`course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <=5 and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1']);
         $owe5 = 0;
         foreach ($fee as $item) {
             $owe5++;
         }
         $o5 = round($owe5 / $students * 100);
         //    số sinh viên nợ 6 tháng
-        $fee6 =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? )', ['0', '1', '0', '1']);
+        $fee6 =   DB::select('SELECT student.* FROM `fee`INNER JOIN student on student.id = fee.idStudent INNER JOIN classbk on student.idClass = classbk.id INNER JOIN course on classbk.idCourse = course.id INNER JOIN payment ON fee.idMethod = payment.id where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id ) and  (`course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? )', ['0', '1']);
         $owe6 = 0;
         foreach ($fee6 as $item) {
             $owe6++;
         }
         $o6 = round($owe6 / $students * 100);
         //   số sinh viên nợ >7 tháng   
-        $fee7 =  DB::select('select DISTINCT `student`.`id` from `student` inner join `fee` on `Student`.`id` = `fee`.`idStudent` inner join `classbk` on `student`.`idClass` = `classbk`.`id` inner join `course` on `course`.`id` = `classbk`.`idCourse` INNER JOIN subfee on student.id = subfee.idStudent where (`course`.`countMustPay` - fee.countPay >= 7   and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1', '0', '1']);
+        $fee7 =   DB::select('SELECT student.* FROM `fee`INNER JOIN student on student.id = fee.idStudent
+        INNER JOIN classbk on student.idClass = classbk.id 
+        INNER JOIN course on classbk.idCourse = course.id 
+        -- INNER join subfee on subfee.idStudent = student.id
+        INNER JOIN payment ON fee.idMethod = payment.id
+        where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id  ) and ( course.countMustPay- fee.countPay>7  )');
         $owe7 = 0;
         foreach ($fee7 as $item) {
             $owe7++;
         }
         $o7 = round($owe7 / $students * 100);
 
-
+        // dd($fee, $fee6, $fee7);
 
         //BIỂU ĐỒ CỘT
         date_default_timezone_set('Asia/Ho_Chi_Minh');

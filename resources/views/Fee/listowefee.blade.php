@@ -13,7 +13,7 @@
     @endphp
     
 <div class="card" style=" margin-bottom: 5px;">
-<h2 style="margin-bottom: -5px;">Danh sách nợ học phí  </h2><a>(Danh sách được tính đến {{$date}})</a>
+<h2 style="margin-bottom: -5px;margin-left: 15px;">Danh sách nợ học phí  </h2><a style="margin-left: 15px;">(Danh sách được tính đến {{$date}})</a>
 <div style=" height: 30px;">
     <div class="dropdown">
 
