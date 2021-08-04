@@ -11,6 +11,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\wordtest;
 use App\Http\Middleware\Checkhasrand;
 use App\Http\Middleware\CheckLoged;
 use App\Http\Middleware\CheckLogin;
@@ -28,6 +29,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // checkloged
+
+
 Route::middleware([CheckLoged::class])->group(function () {
     Route::get('/', [AuthendController::class, 'login'])->name('login');
     Route::post('/loginProcess', [AuthendController::class, 'loginProcess'])->name('loginProcess');
@@ -88,6 +91,8 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::get('/warningMail', [SendMailController::class, 'warningMail'])->name('warningMail');
         Route::get('/{month}/statistic', [FeeController::class, 'statistic'])->name('statistic');
         Route::get('/{month}/exportstatistic', [FeeController::class, 'exportstatistic'])->name('exportstatistic');
+        Route::get('/{id}/exportwordfee', [FeeController::class, 'exportwordfee'])->name('exportwordfee');
+        Route::get('/{id}/exportwordsubfee', [FeeController::class, 'exportwordsubfee'])->name('exportwordsubfee');
     });
 
 

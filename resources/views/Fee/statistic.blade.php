@@ -71,7 +71,7 @@
             
             @foreach ($fee as $item)
                 <tr>  
-                <td>{{"HP".$item->idfee}}</td>          
+                <td>{{"HP".$item->idFee}}</td>          
                 <td>{{"BKC".sprintf("%03d", $item->id)}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->payer}}</td>

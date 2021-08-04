@@ -13,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class FeeController extends Controller
 {
@@ -298,12 +299,10 @@ class FeeController extends Controller
         foreach ($subfee as $item) {
             $sumsubfee += $item->payfee;
         }
-
         return view('Fee.statistic', [
             "month" => $month,
             "fee" => $fee,
             "sumfee" => $sumfee,
-
             "subfee" => $subfee,
             "sumsubfee" => $sumsubfee,
         ]);
@@ -406,5 +405,54 @@ class FeeController extends Controller
         return view('Student.detailSubFeeForStudent', [
             "detail" => $detail,
         ]);
+    }
+
+    public function exportwordfee($id)
+
+    {
+        $fee = Fee::where('fee.id', $id)
+            ->join('student', 'fee.idStudent', '=', 'student.id')
+            ->join('classbk', 'student.idClass', '=', 'classbk.id')
+            ->select('fee.*', 'student.name', 'student.dateBirth', 'student.address')
+            ->first();
+        $templateProcessor = new TemplateProcessor('word-templade/fee.docx');
+
+        $templateProcessor->setValue('id', $fee->id);
+        $templateProcessor->setValue('day', date_format(date_create($fee->date), "d"));
+        $templateProcessor->setValue('month', date_format(date_create($fee->date), "m"));
+        $templateProcessor->setValue('year', date_format(date_create($fee->date), "Y"));
+        $templateProcessor->setValue('payer', $fee->payer);
+        $templateProcessor->setValue('dateBirth', date_format(date_create($fee->dateBirth), "d.m.Y"));
+        $templateProcessor->setValue('address', $fee->address);
+        $templateProcessor->setValue('note', $fee->note);
+        $templateProcessor->setValue('fee', number_format($fee->fee));
+
+        $fileName = "phiếu thu " . $fee->name;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function exportwordsubfee($id)
+
+    {
+        $subfee = Subfee::where('subfee.id', $id)
+            ->join('student', 'subfee.idStudent', '=', 'student.id')
+            ->join('classbk', 'student.idClass', '=', 'classbk.id')
+            ->select('subfee.*', 'student.name', 'student.dateBirth', 'student.address')
+            ->first();
+        $templateProcessor = new TemplateProcessor('word-templade/subfee.docx');
+
+        $templateProcessor->setValue('id', $subfee->id);
+        $templateProcessor->setValue('day', date_format(date_create($subfee->date), "d"));
+        $templateProcessor->setValue('month', date_format(date_create($subfee->date), "m"));
+        $templateProcessor->setValue('year', date_format(date_create($subfee->date), "Y"));
+        $templateProcessor->setValue('payer', $subfee->payer);
+        $templateProcessor->setValue('dateBirth', date_format(date_create($subfee->dateBirth), "d.m.Y"));
+        $templateProcessor->setValue('address', $subfee->address);
+        $templateProcessor->setValue('note', $subfee->note);
+        $templateProcessor->setValue('fee', number_format($subfee->fee));
+
+        $fileName = "phiếu thu " . $subfee->name;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
 }

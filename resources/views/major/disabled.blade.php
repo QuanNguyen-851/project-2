@@ -14,7 +14,7 @@
                 <th class="text-center">#</th>
                 <th>Tên</th>
                 <th>Tên rút gọn</th>
-                <th>Tổng học phí</th>
+                <th>Học phí</th>
                 <th></th>
             </tr>
         </thead>

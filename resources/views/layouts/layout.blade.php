@@ -32,11 +32,11 @@
         
         {{-- thanh sidebar bên trái --}}
             @include('layouts.sidebar') 
-        <div class="main-panel" style="background-color: #507ada0d" >
+        <div class="main-panel" style="background-color: #507ada0d; background-image: url({{ asset('assets') }}/img/full-screen-image-4.jpg);"  >
            
             {{-- thanh navbar trên cùng --}}
             @include('layouts.navbar')
-            <div class="main-content">
+            <div class="main-content" >
                 <div class="container-fluid">
                     {{-- cái thay đổi --}}
                         @yield('main')

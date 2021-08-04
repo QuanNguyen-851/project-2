@@ -20,7 +20,7 @@
         <th data-field="id" class="text-center">#</th>
     	<th data-field="name" data-sortable="true">Tên Ngành</th>
     	<th data-field="salary" data-sortable="true">Tên rút gọn</th>
-    	<th data-field="country" data-sortable="true">Tổng học phí phải đóng</th>
+    	<th data-field="country" data-sortable="true">Học phí</th>
     	<th>Action</th>
     </thead>
     <tbody>

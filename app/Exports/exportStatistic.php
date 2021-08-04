@@ -35,7 +35,7 @@ class exportStatistic implements
             date_format(date_create($fee->date), "d/m/Y"),
             $fee->countPay,
             ($fee->payment == null) ? "-" : $fee->payment,
-            ($fee->payfee),
+            $fee->payfee,
         ];
         // dd($data);
         return $data;
@@ -76,7 +76,7 @@ class exportStatistic implements
             $month1 = strftime("%Y-%m", $month1);
             $fee = ModelsFee::join('student', 'fee.idStudent', '=', 'student.id')
                 ->join('payment', 'payment.id', '=', 'fee.idMethod')
-                ->select('fee.id as idFee', 'student.id', 'student.name', 'fee.payer', 'fee.note', 'fee.date', 'fee.fee as payfeee', 'fee.countPay', 'payment.name as payment')
+                ->select('fee.id as idFee', 'student.id', 'student.name', 'fee.payer', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'payment.name as payment')
                 ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") = ?', [$month1])
                 // ->select('fee.id')
                 ->get();
@@ -146,6 +146,7 @@ class exportStatistic implements
         }
         // $all = [];
         // $all = array_merge($fee, $subfee);
+        // dd($all);
         // dd($all);
         return
             $all;

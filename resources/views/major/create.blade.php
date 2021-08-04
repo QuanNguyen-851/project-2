@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">Tổng học phí <star>*</star></label>
+                    <label class="control-label">Học phí <star>*</star></label>
                     <input class="form-control"
                            name="fee"
                            id="registerPassword"

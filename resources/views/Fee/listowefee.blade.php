@@ -31,10 +31,18 @@
     </button>
   
     <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.listowefee',['month'=>0]) }}">Tất cả </a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.listowefee',['month'=>5]) }}">Nợ từ 1-5 tháng (Danh sách cấm thi)</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.listowefee',['month'=>6]) }}">Nợ 6 tháng (Danh sách đình chỉ 30 ngày)</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('fee.listowefee',['month'=>7]) }}">Nợ >7 tháng (Buộc thôi học)</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" 
+        href="{{ route('fee.listowefee',['month'=>0]) }}"
+        >Tất cả </a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1"
+         href="{{ route('fee.listowefee',['month'=>5]) }}"
+         >Nợ từ 1-5 tháng (Danh sách cấm thi)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1"
+         href="{{ route('fee.listowefee',['month'=>6]) }}"
+         >Nợ 6 tháng (Danh sách đình chỉ 30 ngày)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" 
+        href="{{ route('fee.listowefee',['month'=>7]) }}"
+        >Nợ >7 tháng (Buộc thôi học)</a></li>
       
     </ul>
      <a id="sendmail"  href="{{ route('fee.warningMail') }}" class="btn btn-primary btn-round  btn-fill" style="float: right;margin-right: 10px;">
@@ -44,25 +52,7 @@
         <i class="fa fa-spinner fa-spin"></i>
         Đang gửi vui lòng chờ</a>
   </div>
-   
-    
-    
     </div>
-    {{-- <form action="{{ route('fee.listowefee') }}" method="get">   
-        <div class="col-md-4" style="width: 20%;    float: left;">
-                
-                <div class="form-group">
-                    <select name="month" class="selectpicker" id ="check" data-style="btn-default btn-block" data-menu-style="dropdown-blue" >
-                        <option value="all" href="#" >Tất cả</option>
-                        <option value="5" @if ($month == 5) selected @endif >Nợ từ 1-5 tháng (Danh sách cấm thi)</option>
-                        <option value="6"@if ($month == 6) selected @endif>Nợ 6 tháng (Danh sách đình chỉ 30 ngày)</option>
-                        <option value="7"@if ($month == 7) selected @endif>Nợ >7 tháng (Buộc thôi học)</option> 
-                    </select>
-            </div>
-        </div>    
-        <button class="btn btn-primary"  style="float: left;">Đồng ý</button>
-
-    </form> --}}
  <div style="margin:10px">
      <a>Số sinh viên: {{$count}} </a>&emsp; 
      <a style="color:black;">Nợ học phí : {{number_format($sum)."VNĐ"}}</a>&emsp; 
@@ -72,7 +62,7 @@
 
 
 </div>
-<div class="card">
+<div class="card" >
     <div class="toolbar">
         <!--   Here you can write extra buttons/actions for the toolbar  -->
    
@@ -110,7 +100,7 @@
 
         </tbody>
     </table>
-  </div>
+</div>
   
  
 

@@ -18,6 +18,7 @@
             <P style="color:red">Số tiền: {{number_format($detail->fee)."VNĐ"}}</P>
             <p>Người lập phiếu : {{$detail->accountant}}</p>
             <a class="btn btn-primary" href="{{ route('fee.studentfee', $detail->idStudent) }}"><i class="pe-7s-back" ></i> trở về</a>
+            <a class="btn btn-warning" style="margin-left: 35%;" href="{{ route('fee.exportwordfee', $detail->id) }}">Lập phiếu</a>
         </div>
         
     </div>
