@@ -23,7 +23,12 @@
              
             </div> 
             <div class="col-sm-4 col-md-offset-3">
-            <button type="submit" class="btn btn-info btn-fill pull-right">Đồng ý</button></div>
+            <button type="submit" class="btn btn-info btn-fill pull-right">Đồng ý</button>
+             </div><br>
+            <div style="width: 100%;margin-top: 20px;text-align: left;">
+                <a  class="btn btn-warning" href="{{ route('fee.listowefee', $month) }}"> <i class="pe-7s-back"></i> Trở về</a>
+            </div>
+           
         </div>
     </div>
     </form>

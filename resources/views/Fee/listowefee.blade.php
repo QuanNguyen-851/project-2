@@ -29,7 +29,6 @@
       @endif
       <span class="caret"></span>
     </button>
-  
     <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
     <li role="presentation"><a role="menuitem" tabindex="-1" 
         href="{{ route('fee.listowefee',['month'=>0]) }}"
@@ -45,14 +44,15 @@
         >Nợ >7 tháng (Buộc thôi học)</a></li>
       
     </ul>
-     <a id="sendmail"  href="{{ route('fee.warningMail') }}" class="btn btn-primary btn-round  btn-fill" style="float: right;margin-right: 10px;">
+     <a id="sendmail"  href="{{ route('fee.warningMail') }}" class="btn btn-primary btn-round  btn-fill" style="float: right;margin-right: 10px;" 
+     >
         
         Gửi mail thông báo</a>
     <a id="load"  class="btn btn-primary btn-round btn-fill" style="float: right;margin-right: 10px;display:none;">
         <i class="fa fa-spinner fa-spin"></i>
         Đang gửi vui lòng chờ</a>
-  </div>
     </div>
+</div>
  <div style="margin:10px">
      <a>Số sinh viên: {{$count}} </a>&emsp; 
      <a style="color:black;">Nợ học phí : {{number_format($sum)."VNĐ"}}</a>&emsp; 
@@ -68,7 +68,7 @@
    
         <a class="btn btn-warning  btn-fill" style="margin-right: 25px;" href="{{ route('fee.exportlistowefee', $month) }}">Xuất danh sách</a>
     </div>
-    <table id="bootstrap-table" class="table">
+    <table id="bootstrap-table" class="table" >
        
         <thead>
             <th data-field="id" class="text-center">ID </th>
@@ -83,7 +83,7 @@
         </thead>
         
         <tbody>
-            
+           
             @foreach ($studentowefee as $item)
                 <tr>            
                 <td>{{"BKC".sprintf("%03d", $item->id)}}</td>
@@ -97,22 +97,19 @@
                 <td> <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a></td>
                 </tr>
             @endforeach
-
+             
         </tbody>
     </table>
 </div>
-  
- 
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
   $(document).ready(function(){
     $("#sendmail").click(function(){
-      $("#sendmail").hide();
-      $("#load").show();
+        alert("Thông báo sẽ được gửi đến tất cả sinh viên đang còn nợ học phí. Quá trình sẽ mất vài phút xin vui lòng chờ! ");
+           $("#sendmail").hide();
+             $("#load").show();
     });
   });
   </script>
-
 
 @endsection

@@ -49,6 +49,11 @@ class StudentController extends Controller
                     ['student.disable', '!=', '1'],
                     ['course.id', '=', $course[$i]->id],
                 ])
+                ->orwhere([
+                    ['student.id', 'LIKE', "%$search%"],
+                    ['student.disable', '!=', '1'],
+                    ['course.id', '=', $course[$i]->id],
+                ])
                 ->get();
         }
         $allstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
@@ -68,6 +73,10 @@ class StudentController extends Controller
             ])
             ->orwhere([
                 ['classbk.name', 'LIKE', "%$search%"],
+                ['student.disable', '!=', '1'],
+            ])
+            ->orwhere([
+                ['student.id', 'LIKE', "%$search%"],
                 ['student.disable', '!=', '1'],
             ])
             ->paginate(100);
@@ -92,6 +101,11 @@ class StudentController extends Controller
                 ['classbk.name', 'LIKE', "%$search%"],
                 ['student.disable', '1'],
             ])
+            ->orwhere([
+                ['student.id', 'LIKE', "%$search%"],
+                ['student.disable', '1'],
+            ])
+
             ->paginate(100);
 
         return view('Student.index', [

@@ -85,11 +85,11 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::get('/{id}/studentfee', [FeeController::class, 'studentfee'])->name('studentfee');
         Route::get('/{id}/detailStuddentFee', [FeeController::class, 'detailStuddentFee'])->name('detailStuddentFee');
         Route::get('/{id}/detailStudentSubFee', [FeeController::class, 'detailStudentSubFee'])->name('detailStudentSubFee');
-        Route::get('/{month}/listowefee', [FeeController::class, 'listowefee'])->name('listowefee');
+        Route::get('/listowefee{month}', [FeeController::class, 'listowefee'])->name('listowefee');
         Route::get('/{month}/exportlistowefee', [FeeController::class, 'exportlistowefee'])->name('exportlistowefee');
         Route::post('/exportalllistowefeeprocess', [FeeController::class, 'exportalllistowefeeprocess'])->name('exportalllistowefeeprocess');
         Route::get('/warningMail', [SendMailController::class, 'warningMail'])->name('warningMail');
-        Route::get('/{month}/statistic', [FeeController::class, 'statistic'])->name('statistic');
+        Route::get('/statistic{month}', [FeeController::class, 'statistic'])->name('statistic');
         Route::get('/{month}/exportstatistic', [FeeController::class, 'exportstatistic'])->name('exportstatistic');
         Route::get('/{id}/exportwordfee', [FeeController::class, 'exportwordfee'])->name('exportwordfee');
         Route::get('/{id}/exportwordsubfee', [FeeController::class, 'exportwordsubfee'])->name('exportwordsubfee');
