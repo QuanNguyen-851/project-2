@@ -287,20 +287,6 @@ class StudentController extends Controller
     {
         //
     }
-    // public function hide($id)
-    // {
-    //     ModelsStudent::where('id', $id)->update([
-    //         "disable" => 1,
-    //     ]);
-    //     return redirect(Route('students.index'));
-    // }
-    // public function unhide($id)
-    // {
-    //     ModelsStudent::where('id', $id)->update([
-    //         "disable" => 0,
-    //     ]);
-    //     return redirect(Route('students.index'));
-    // }
 
     public function importStudents()
     {
@@ -339,5 +325,31 @@ class StudentController extends Controller
     {
 
         return Excel::download(new exampleFileStudentsExport, 'exampleFileStudents.xlsx');
+    }
+    public function searchForStudent()
+    {
+        return view('Student.forstudent');
+    }
+    public function checksearchForStudent(request $req)
+    {
+        $str = substr($req->id, 3);
+
+        try {
+            $student = ModelsStudent::where('id', $str)->firstorFail();
+            // dd($student->id);
+            return redirect()->route('student', [$student->id]);
+        } catch (Exception $e) {
+            return redirect()->route('searchForStudent')->with('err', "Không tìm thấy mã sinh viên vui lòng nhập lại");
+        }
+    }
+    public function testError($id)
+    {
+        $str = substr($id, 3);
+        try {
+            $student = ModelsStudent::where('id', $str)->firstorFail();
+            return " ";
+        } catch (Exception $e) {
+            return "Không tìm thấy mã sinh viên vui lòng nhập lại";
+        }
     }
 }

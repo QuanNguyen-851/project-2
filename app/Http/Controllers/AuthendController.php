@@ -15,73 +15,87 @@ class AuthendController extends Controller
 {
     public function dashboard()
     {
-        // BIỂU ĐỒ TRÒN
-        //     danh sach sv
-        $students = Student::where('student.disable', '!=', '1')->count();
-        //     số sinh viên nợ 1-5 tháng
-        $fee =  DB::select('SELECT student.*  FROM `fee`INNER JOIN student on student.id = fee.idStudent INNER JOIN classbk on student.idClass = classbk.id INNER JOIN course on classbk.idCourse = course.id  INNER JOIN payment ON fee.idMethod = payment.id where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id ) and (`course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <=5 and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1']);
-        $owe5 = 0;
-        foreach ($fee as $item) {
-            $owe5++;
+        try {
+            // BIỂU ĐỒ TRÒN
+            //     danh sach sv
+            $students = Student::where('student.disable', '!=', '1')->count();
+            //     số sinh viên nợ 1-5 tháng
+            $fee =  DB::select('SELECT student.*  FROM `fee`INNER JOIN student on student.id = fee.idStudent INNER JOIN classbk on student.idClass = classbk.id INNER JOIN course on classbk.idCourse = course.id  INNER JOIN payment ON fee.idMethod = payment.id where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id ) and (`course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <=5 and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1']);
+            $owe5 = 0;
+            foreach ($fee as $item) {
+                $owe5++;
+            }
+            $o5 = round($owe5 / $students * 100);
+            //    số sinh viên nợ 6 tháng
+            $fee6 =   DB::select('SELECT student.* FROM `fee`INNER JOIN student on student.id = fee.idStudent INNER JOIN classbk on student.idClass = classbk.id INNER JOIN course on classbk.idCourse = course.id INNER JOIN payment ON fee.idMethod = payment.id where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id ) and  (`course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? )', ['0', '1']);
+            $owe6 = 0;
+            foreach ($fee6 as $item) {
+                $owe6++;
+            }
+            $o6 = round($owe6 / $students * 100);
+            //   số sinh viên nợ >7 tháng   
+            $fee7 =   DB::select('SELECT student.* FROM `fee`INNER JOIN student on student.id = fee.idStudent
+            INNER JOIN classbk on student.idClass = classbk.id 
+            INNER JOIN course on classbk.idCourse = course.id 
+            -- INNER join subfee on subfee.idStudent = student.id
+            INNER JOIN payment ON fee.idMethod = payment.id
+            where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id  ) and ( course.countMustPay- fee.countPay>7  )');
+            $owe7 = 0;
+            foreach ($fee7 as $item) {
+                $owe7++;
+            }
+            $o7 = round($owe7 / $students * 100);
+        } catch (Exception $e) {
+            $o5 = 0;
+            $o6 = 0;
+            $o7 = 0;
         }
-        $o5 = round($owe5 / $students * 100);
-        //    số sinh viên nợ 6 tháng
-        $fee6 =   DB::select('SELECT student.* FROM `fee`INNER JOIN student on student.id = fee.idStudent INNER JOIN classbk on student.idClass = classbk.id INNER JOIN course on classbk.idCourse = course.id INNER JOIN payment ON fee.idMethod = payment.id where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id ) and  (`course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? )', ['0', '1']);
-        $owe6 = 0;
-        foreach ($fee6 as $item) {
-            $owe6++;
-        }
-        $o6 = round($owe6 / $students * 100);
-        //   số sinh viên nợ >7 tháng   
-        $fee7 =   DB::select('SELECT student.* FROM `fee`INNER JOIN student on student.id = fee.idStudent
-        INNER JOIN classbk on student.idClass = classbk.id 
-        INNER JOIN course on classbk.idCourse = course.id 
-        -- INNER join subfee on subfee.idStudent = student.id
-        INNER JOIN payment ON fee.idMethod = payment.id
-        where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id  ) and ( course.countMustPay- fee.countPay>7  )');
-        $owe7 = 0;
-        foreach ($fee7 as $item) {
-            $owe7++;
-        }
-        $o7 = round($owe7 / $students * 100);
 
         // dd($fee, $fee6, $fee7);
 
         //BIỂU ĐỒ CỘT
-        date_default_timezone_set('Asia/Ho_Chi_Minh');
-        $year = date('Y', time());
-        $array = [];
-        for ($i = 1; $i <= 12; $i++) {
-            // $i = 6;
+        try {
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $year = date('Y', time());
+            $array = [];
+            for ($i = 1; $i <= 12; $i++) {
+                // $i = 6;
 
-            $date = $year . "-" . sprintf("%02d", $i);
+                $date = $year . "-" . sprintf("%02d", $i);
 
-            $f1 = Fee::join('student', 'fee.idStudent', '=', 'student.id')
-                ->join('payment', 'payment.id', '=', 'fee.idMethod')
-                ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
-                ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") = ?', [$date])
-                // ->select('fee.id')
-                ->get();
-            $subfee1 = ModelsSubFee::join('student', 'student.id', '=', 'subfee.idStudent')
-                ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
-                ->whereraw('DATE_FORMAT(subfee.date, "%Y-%m") = ?', [$date])
-                ->get();
+                $f1 = Fee::join('student', 'fee.idStudent', '=', 'student.id')
+                    ->join('payment', 'payment.id', '=', 'fee.idMethod')
+                    ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
+                    ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") = ?', [$date])
+                    // ->select('fee.id')
+                    ->get();
+                $subfee1 = ModelsSubFee::join('student', 'student.id', '=', 'subfee.idStudent')
+                    ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
+                    ->whereraw('DATE_FORMAT(subfee.date, "%Y-%m") = ?', [$date])
+                    ->get();
 
-            $sumfee = 0;
-            $sumsubfee = 0;
-            foreach ($f1 as $item) {
-                $sumfee += $item->payfee;
+                $sumfee = 0;
+                $sumsubfee = 0;
+                foreach ($f1 as $item) {
+                    $sumfee += $item->payfee;
+                }
+                foreach ($subfee1 as $item) {
+                    $sumsubfee += $item->payfee;
+                }
+
+                // $array["key"] = ($sumfee + $sumsubfee);
+
+                $array[$i]  = (($sumfee + $sumsubfee) / 1000000);
             }
-            foreach ($subfee1 as $item) {
-                $sumsubfee += $item->payfee;
+        } catch (Exception $e) {
+            for ($i = 1; $i <= 12; $i++) {
+                $array[$i] = 0;
             }
-
-            // $array["key"] = ($sumfee + $sumsubfee);
-
-            $array[$i]  = (($sumfee + $sumsubfee) / 1000000);
         }
+
+
         return view('dashboard', [
-            "all" => $students,
+            // "all" => $students,
             "owe5" => $o5,
             "owe7" => $o7,
             "owe6" => $o6,
@@ -103,7 +117,7 @@ class AuthendController extends Controller
                 ['permission', '1'],
             ])
                 ->firstorFail();
-            $request->session()->put('name', $checklogin->name);
+            $request->session()->put('name', $checklogin->name); //tạo session
             $request->session()->put('id', $checklogin->id);
             return redirect()->route('dashboard');
         } catch (Exception $e) {

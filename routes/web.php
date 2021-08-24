@@ -30,14 +30,12 @@ use Illuminate\Support\Facades\Route;
 */
 // checkloged
 
-
 Route::middleware([CheckLoged::class])->group(function () {
     Route::get('/', [AuthendController::class, 'login'])->name('login');
     Route::post('/loginProcess', [AuthendController::class, 'loginProcess'])->name('loginProcess');
     Route::get('/foget', [AuthendController::class, 'foget'])->name('foget'); //trang nhập email
     Route::post('/findaccount', [AuthendController::class, 'findaccount'])->name('findaccount'); //check email
     Route::middleware([Checkhasrand::class])->group(function () {
-
         Route::get('/fogetpass', [SendMailController::class, 'fogetpass'])->name('fogetpass'); // gửi mail mã xác nhận
         Route::get('/checkrand', [AuthendController::class, 'checkrand'])->name('checkrand'); //trang xác nhận
         Route::post('/checkrandprocess', [AuthendController::class, 'checkrandprocess'])->name('checkrandprocess'); //check rand
@@ -48,22 +46,16 @@ Route::middleware([CheckLoged::class])->group(function () {
 });
 
 //for students 
-
 Route::get('/student/{id}', [FeeController::class, 'Student'])->name('student');
 Route::get('/detaiFeeForstudent/{id}', [FeeController::class, 'detaiFeeForstudent'])->name('detaiFeeForstudent');
 Route::get('/detailSubFeeForstudent/{id}', [FeeController::class, 'detailSubFeeForstudent'])->name('detailSubFeeForstudent');
-
-
+Route::get('/studentBKACAD', [StudentController::class, 'searchForStudent'])->name('searchForStudent');
+Route::post('/checking', [StudentController::class, 'checksearchForStudent'])->name('checksearchForStudent');
+Route::get('/checking/{id}', [StudentController::class, 'testError'])->name('testError');
 
 // checklogin
 Route::middleware([CheckLogin::class])->group(function () {
     Route::get('/logout', [AuthendController::class, 'logout'])->name('logout');
-    //dashboad
-    // Route::get('/dashboard', function () {
-
-    //     return view('dashboard');
-    // })->name('dashboard');
-
     Route::get('/dashboard', [AuthendController::class, 'dashboard'])->name('dashboard');
     // STUDENT
 

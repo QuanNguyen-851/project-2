@@ -20,7 +20,7 @@ class CheckLogin
         if ($request->session()->exists('id')) { //check login
             $em = Employee::where('id', $request->session()->get('id'))->first();
             if ($em->block == 1) { //check bị chặn
-                $request = session()->flush();
+                $request = session()->flush(); // nếu đang đăng nhập mà bị chặn thì lập tức xóa session 
                 return redirect()->route('login')->with('notlogin', "Bạn đã bị chặn");
             } else {
                 return $next($request);

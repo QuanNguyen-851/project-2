@@ -33,9 +33,6 @@
                                         pe-7s-next-2
                                         " > xuất danh sách sinh viên </i>
                                     </a>
-
-
-
                                     <li class=" active">
                                         <a href="#settings" class=" active" data-toggle="tab">Tất cả </a>
                                     </li>
@@ -105,24 +102,15 @@
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        
-                                                            {{-- <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
-                                                                <i class="fa fa-times"></i>
-                                                            </a> --}}
-
                                                     </td>
                                                 </tr>    
                                                 @endforeach
-                                                
-    
                                             </tbody>
                                         </table> 
                                         <div style="text-align: center;">
                                         {{ $listall->appends(['search'=>$search])->links('pagination::bootstrap-4') }}
                                         </div>
-
                                     </div>
-                                   
                                      {{-- năm 3  --}}
                                      @if (isset($list[2]))
                                          <div id="agency" class="tab-pane ">
@@ -165,9 +153,7 @@
                                                             <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
-                                                            {{-- <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
-                                                                <i class="fa fa-times"></i>
-                                                            </a> --}}
+                                              
                                                         </td>
                                                     </tr>    
                                                     @endforeach
@@ -220,9 +206,7 @@
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        {{-- <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
-                                                            <i class="fa fa-times"></i>
-                                                        </a> --}}
+                                               
                                                     </td>
                                                 </tr>    
                                                 @endforeach
@@ -274,14 +258,10 @@
                                                         <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        {{-- <a rel="tooltip" title="Hide" class="btn btn-danger btn-link btn-sm" href="{{ route('students.hide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
-                                                            <i class="fa fa-times"></i>
-                                                        </a> --}}
+                                                    
                                                     </td>
                                                 </tr>    
                                                 @endforeach
-                                                
-
                                             </tbody>
                                         </table> 
                                     </div>
@@ -328,16 +308,9 @@
                                                     <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                     <td class="td-actions text-right">
                                                         <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary "> Lịch sử</a>
-                                                         
-                                                        {{-- <a rel="tooltip" title="Unhide" class="btn btn-warning btn-link btn-sm" href="{{ route('students.unhide', $item->id)}}" onclick="return confirm('bạn chắc chứ ! ')">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a> --}}
-
                                                     </td>
                                                 </tr>    
                                                 @endforeach
-                                                
-
                                             </tbody>
                                         </table> 
                                     </div>  

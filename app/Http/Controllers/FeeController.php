@@ -113,7 +113,7 @@ class FeeController extends Controller
 
         ]);
     }
-    // public function listowefee(Request $request)
+
     public function listowefee($month)
     {
         // lấy các bản ghi mới nhất của các sinh viên
