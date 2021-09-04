@@ -59,7 +59,7 @@ class StudentController extends Controller
         $allstudents = ModelsStudent::join('classbk', 'student.idClass', '=', 'classbk.id')
             ->join('scholarship', 'scholarship.id', '=', 'student.idStudentShip')
             ->join('course', 'course.id', '=', 'classbk.idCourse')
-            // ->select('student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse')
+
             ->select(
                 [
                     'student.*', 'classbk.name as classname', 'scholarship.name as scholarship', 'course.name as course', 'course.id as idcorse',
@@ -188,7 +188,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = ModelsStudent::find($id);
+
+        // $student = ModelsStudent::find($id);
     }
 
     /**
@@ -210,7 +211,6 @@ class StudentController extends Controller
             ->find($id);
         $class = Classroom::where('disable', '!=', '1')->get();
         $scholarship = Scholarship::all();
-
 
 
 

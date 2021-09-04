@@ -12,7 +12,6 @@
     </h1>
   <div class="card">
         <div class="table-responsive">
-            
                 <div class="row">
                             <div class="content">
                                 <ul role="tablist" class="nav nav-tabs">

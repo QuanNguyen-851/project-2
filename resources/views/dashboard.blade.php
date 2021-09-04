@@ -28,9 +28,7 @@
                             <i class="fa fa-circle text-danger"></i> 7 đợt trở lên<br>
                         </div>
                         
-                        {{-- <div class="stats">
-                            <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-                        </div> --}}
+                        
                     </div>
 
                 </div>
@@ -50,16 +48,7 @@
                        <a style="font-size: 10px;color: gray; margin-left: 5px;">(Triệu VNĐ)</a>
                         <div id="chartViews" style="margin-top: 0px;" class="ct-chart"></div>
                     </div>
-                    {{-- <div class="footer">
-                        <div class="legend">
-                            <i class="fa fa-circle text-info"></i> Doanh thu
-                             <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                        </div>
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-check"></i> Data information certified
-                        </div>
-                    </div>  --}}
+                  
                 </div>
             </div>
         </div>
@@ -81,7 +70,7 @@ var time = new Date();
  var year= time.getFullYear();
  
  var array = <?php echo json_encode($array); ?>;
-console.log(array);
+
  
 demo = {
     
