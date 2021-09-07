@@ -1,11 +1,10 @@
-@extends('layouts.layout');
+@extends('layouts.layout')
 @section('main')
 
 <form action="{{ route('students.update', $student->id) }}" method="POST" id="updatevalidateform">
     @csrf
     @method("PUT")
     <div class="col-md-6" >
-
         <div class="card">
             <div class="header">Thông tin sinh viên</div>
                 <div class="content">
