@@ -112,15 +112,28 @@ class ClassController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
         try {
-            $class = Classroom::where('name', $request->class)->firstorFail();
-            return redirect()->route('class.edit', [
-                $id,
-            ])->with('err', "Lớp này đã tồn tại");
+            $class = Classroom::select('name')->where('name', $request->class)->firstorFail();
+
+            if ($request->class == $class->name) {
+                Classroom::where('id', $id)->update([
+                    "name" => $request->get('class'),
+                    "major" => $request->get('major'),
+                    "course" => $request->get('course'),
+                ]);
+                return redirect()->route('class.index');
+            } else {
+                return redirect()->route('class.edit', [
+                    $id,
+                ])->with('err', "Lớp này đã tồn tại");
+            }
         } catch (Exception $e) {
 
             Classroom::where('id', $id)->update([
                 "name" => $request->get('class'),
+                "idMajor" => $request->get('major'),
+                "idCourse" => $request->get('course'),
             ]);
             return redirect()->route('class.index');
         }

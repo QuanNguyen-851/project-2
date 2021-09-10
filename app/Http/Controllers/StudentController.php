@@ -209,7 +209,12 @@ class StudentController extends Controller
             ->where('student.disable', '!=', '1')
 
             ->find($id);
-        $class = Classroom::where('disable', '!=', '1')->get();
+
+        $class = Classroom::join('course', 'course.id', '=', 'classbk.idCourse')
+            ->where('classbk.disable', '!=', '1')
+            ->where('course.id', $student->idcorse)
+            ->select('classbk.name')
+            ->get();
         $scholarship = Scholarship::all();
 
 

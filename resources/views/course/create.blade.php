@@ -20,6 +20,7 @@
                 <div class="form-group">
                     <label class="control-label">year <star>*</star></label>
                     <input class="form-control"
+                            placeholder="VD: 2019-2022"
                            name="year"
                            id="registerPassword"
                            type="text"
