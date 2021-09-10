@@ -68,7 +68,6 @@
         </thead>
         
         <tbody>
-            
             @foreach ($fee as $item)
                 <tr>  
                 <td>{{"HP".$item->idFee}}</td>          

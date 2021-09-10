@@ -10,7 +10,7 @@
                 {{-- lớp --}}
                 <div class="form-group">
                     <label class="col-sm-2 control-label">lớp</label>
-                
+                        
                         <input class="form-control"
                             type="text"
                             name="class"
@@ -19,6 +19,8 @@
                         <span style=" color: red;font-size: 12px;margin-left: 44px;">
                            @if (Session::has('err'))
                                {{Session::get('err')}}
+                            @else
+                            để thêm lớp tạm thời yêu cầu: tên lớp + "tạm thời"
                            @endif
                         </span>
                 </div>
