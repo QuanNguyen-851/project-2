@@ -50,7 +50,7 @@
                 </div>
             
                      <div style="text-align: center;" >
-                        <button type="submit" class="btn btn-primary btn-fill">Thêm </button> 
+                        <button type="submit" class="btn btn-primary btn-fill">Đồng ý </button> 
                     </div>
         </div>
     </div>
