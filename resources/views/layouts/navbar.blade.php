@@ -16,7 +16,8 @@
             <a class="navbar-brand" href="#">MINISTRY</a>
         </div>
         <div class="collapse navbar-collapse">
-            
+            <a style="margin-right: 12px;margin-left: 21cm;" onclick="return confirm('Việc này sẽ không thể thay đổi được bạn xác nhận chứ ?')" href="{{ route('fee.addcount') }}" class="btn btn-success" type="button">Đợt mới</a>
+            <a style="margin-right:25px" onclick="return confirm('Việc này sẽ không thể thay đổi được bạn xác nhận chứ ?')" href="{{ route('fee.subaddcount') }}" class="btn btn-success" type="button">kỳ mới</a>
             <ul class="nav navbar-nav navbar-right">
                 
 

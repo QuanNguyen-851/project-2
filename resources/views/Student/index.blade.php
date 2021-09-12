@@ -88,7 +88,6 @@
                                                     <th class="text-center">{{$item->classname}}</th>
                                                     <th class="text-center">{{$item->name}}</th>
                                                     <th class="text-center">{{$item->GenderName}}</th>
-                                                   
                                                     @php
                                                         $date=date_create($item->dateBirth);
                                                     @endphp
@@ -97,9 +96,12 @@
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a>
-                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" rel="tooltip" title="Lịch sư dóng học" class="btn btn-primary btn-link btn-sm"  ><i class="fa fa-history"></i></a>
+                                                        <a rel="tooltip" title="Thông tin sinh viên" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a rel="tooltip" title="Đóng học" class="btn btn-warning btn-link btn-sm" href="{{ route('fee.show', $item->id) }}">
+                                                            <i class="fa fa-money"></i>
                                                         </a>
                                                     </td>
                                                 </tr>    
@@ -148,9 +150,12 @@
                                                         <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                         <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                         <td class="td-actions text-right">
-                                                            <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a>
-                                                            <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
+                                                            <a href="{{ route('fee.studentfee', $item->id) }}" rel="tooltip" title="Lịch sư dóng học" class="btn btn-primary btn-link btn-sm"  ><i class="fa fa-history"></i></a>
+                                                            <a rel="tooltip" title="Thông tin sinh viên" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                                 <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a rel="tooltip" title="Đóng học" class="btn btn-warning btn-link btn-sm" href="{{ route('fee.show', $item->id) }}">
+                                                                <i class="fa fa-money"></i>
                                                             </a>
                                               
                                                         </td>
@@ -201,9 +206,12 @@
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary "> Lịch sử</a>
-                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" rel="tooltip" title="Lịch sư dóng học" class="btn btn-primary btn-link btn-sm"  ><i class="fa fa-history"></i></a>
+                                                        <a rel="tooltip" title="Thông tin sinh viên" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a rel="tooltip" title="Đóng học" class="btn btn-warning btn-link btn-sm" href="{{ route('fee.show', $item->id) }}">
+                                                            <i class="fa fa-money"></i>
                                                         </a>
                                                
                                                     </td>
@@ -253,9 +261,12 @@
                                                     <th class="text-center" >{{ number_format($item->fee)}}VND</th>
                                                     <th class="text-center" >{{($item->count===null)? 0: $item->count. "/30"}}</th>
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary "> Lịch sử</a>
-                                                        <a rel="tooltip" title="Edit Profile" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
+                                                        <a href="{{ route('fee.studentfee', $item->id) }}" rel="tooltip" title="Lịch sư dóng học" class="btn btn-primary btn-link btn-sm"  ><i class="fa fa-history"></i></a>
+                                                        <a rel="tooltip" title="Thông tin sinh viên" class="btn btn-success btn-link btn-sm" href="{{ route('students.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a rel="tooltip" title="Đóng học" class="btn btn-warning btn-link btn-sm" href="{{ route('fee.show', $item->id) }}">
+                                                            <i class="fa fa-money"></i>
                                                         </a>
                                                     
                                                     </td>

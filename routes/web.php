@@ -7,10 +7,12 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\majorController;
+use App\Http\Controllers\PayFeeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubPayFeeController;
 use App\Http\Controllers\wordtest;
 use App\Http\Middleware\Checkhasrand;
 use App\Http\Middleware\CheckLoged;
@@ -85,8 +87,11 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::get('/{month}/exportstatistic', [FeeController::class, 'exportstatistic'])->name('exportstatistic');
         Route::get('/{id}/exportwordfee', [FeeController::class, 'exportwordfee'])->name('exportwordfee');
         Route::get('/{id}/exportwordsubfee', [FeeController::class, 'exportwordsubfee'])->name('exportwordsubfee');
+        Route::get('/addcount', [PayFeeController::class, 'addcount'])->name('addcount');
+        Route::get('/subaddcount', [SubPayFeeController::class, 'addcount'])->name('subaddcount');
     });
-
+    Route::resource('fee', PayFeeController::class);
+    Route::resource('subfee', SubPayFeeController::class);
 
     //CLASS
 

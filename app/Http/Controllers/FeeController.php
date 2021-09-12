@@ -7,6 +7,7 @@ use App\Exports\exportStatistic;
 use App\Exports\exportStudentOwe;
 use App\Models\Classroom;
 use App\Models\Fee;
+use App\Models\Payment;
 use App\Models\Student;
 use App\Models\SubFee;
 use Exception;
@@ -388,7 +389,6 @@ class FeeController extends Controller
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
     public function exportwordsubfee($id)
-
     {
         $subfee = Subfee::where('subfee.id', $id)
             ->join('student', 'subfee.idStudent', '=', 'student.id')

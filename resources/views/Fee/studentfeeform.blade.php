@@ -25,7 +25,9 @@
         
         </tr>
         <tr>
-            <td colspan="4"></td>
+            <td colspan="4">
+                <a style="float: right;" class="btn btn-primary" href="{{ route('fee.show', $student->id) }}">Đóng học phí</a>
+            </td>
         <td style="color:red">tổng: {{ number_format($owe + $owesub)."VNĐ" }}</td>
         </tr>
 
@@ -76,6 +78,11 @@
                     <a  href="{{ route('fee.detailStuddentFee', $item->idFee) }}"  title="Xem chi tiết" class="btn btn-primary">
                         Xem chi tiết
                     </a>
+                    @if ($item->check != 1)
+                    <a  href=""  title="Xem chi tiết" class="btn btn-warning">
+                        Đóng bù
+                    </a>
+                    @endif
                     
                 </td>
             </tr>
@@ -109,7 +116,12 @@
                
                 <a href="{{ route('fee.detailStudentSubFee', $item->idFee) }}"  title="Xem chi tiết" class="btn btn-primary">
                     Xem chi tiết
-                </a>               
+                </a> 
+                @if ($item->check != 1)
+                    <a  href=""  title="Xem chi tiết" class="btn btn-warning">
+                        Đóng bù
+                    </a>
+                    @endif              
             </td>
         </tr>
         @endforeach

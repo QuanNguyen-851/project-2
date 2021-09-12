@@ -149,7 +149,9 @@
                 <td>{{number_format($item->owe). "VNĐ"}}</td>
                 <td>{{number_format($item->owesub). "VNĐ"}}</td>
                 <td>{{number_format($item->owe + $item->owesub). "VNĐ"}}</td>
-                <td> <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a></td>
+                <td> <a href="{{ route('fee.studentfee', $item->id) }}" class="btn btn-primary ">Lịch sử</a>
+                    <a href="{{ route('fee.show', $item->id) }}" class="btn btn-warning ">Đóng học</a>
+                </td>
                 </tr>
             @endforeach
              

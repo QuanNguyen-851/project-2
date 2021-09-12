@@ -82,7 +82,7 @@
                 {{number_format($item->payfee)."VNĐ"}}
                 @if ($item->check != 1)
                         <a style="    color: #ffa50c;">(thiếu)</a>
-                    @endif
+                @endif
                 </td>
                 <td style="text-align: left">
                     {{$item->countPay}}
@@ -96,6 +96,9 @@
                     <a  href="{{ route('fee.detailStuddentFee', $item->idFee) }}"  title="Xem chi tiết" class="btn btn-primary">
                         Xem chi tiết
                     </a>
+                    @if ($item->check != 1)
+                    <a style="    color: #ffa50c;">(thiếu)</a>
+                     @endif
                     
                 </td>
                 </tr>
