@@ -383,7 +383,7 @@ class FeeController extends Controller
         $templateProcessor->setValue('address', $fee->address);
         $templateProcessor->setValue('note', $fee->note);
         $templateProcessor->setValue('fee', number_format($fee->fee));
-
+        $templateProcessor->setValue('chu', Fee::VndText($fee->fee));
         $fileName = "phiếu thu " . $fee->name;
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
@@ -406,7 +406,11 @@ class FeeController extends Controller
         $templateProcessor->setValue('address', $subfee->address);
         $templateProcessor->setValue('note', $subfee->note);
         $templateProcessor->setValue('fee', number_format($subfee->fee));
+
         //sdkfhkshdf
+
+        $templateProcessor->setValue('chu', Fee::VndText($subfee->fee));
+
         $fileName = "phiếu thu " . $subfee->name;
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);

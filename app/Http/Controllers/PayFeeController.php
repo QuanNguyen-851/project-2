@@ -116,7 +116,21 @@ class PayFeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $method = Payment::Select('payment.*')->get();
+        $info = Fee::join('student', 'idStudent', '=', 'student.id')
+            ->join('payment', 'fee.idMethod', '=', 'payment.id')
+            ->select('fee.*', 'payment.*', 'fee.id as idfee')
+            ->where('fee.id', $id)
+            ->first();
+        $student = Student::select('*')
+            ->where('id', $info->idStudent)
+            ->first();
+        $left = ($student->fee * $info->countPer - ($student->fee * $info->countPer * $info->sale / 100)) - $info->fee;
+        return view('fee.dongbu', [
+            'info' => $info,
+            'method' => $method,
+            'left' => $left
+        ]);
     }
 
     /**
@@ -128,7 +142,18 @@ class PayFeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        (($request->paid + $request->paymore) >= $request->thieu) ? $disable = 1 : $disable = 0;
+        Fee::where('id', $id)
+            ->update([
+                'note' => $request->note,
+                'fee' => $request->paid + $request->paymore,
+                'date' => date('Y-m-d'),
+                'disable' => $disable
+            ]);
+        return view('fee.success', [
+            'id' => $id,
+            'paymore' => $request->paymore,
+        ]);
     }
 
     /**

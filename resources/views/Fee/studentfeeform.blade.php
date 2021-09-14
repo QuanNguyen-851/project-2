@@ -79,7 +79,7 @@
                         Xem chi tiết
                     </a>
                     @if ($item->check != 1)
-                    <a  href=""  title="Xem chi tiết" class="btn btn-warning">
+                    <a  href="{{ route('fee.edit', $item->idFee) }}"  title="Xem chi tiết" class="btn btn-warning">
                         Đóng bù
                     </a>
                     @endif
@@ -117,11 +117,7 @@
                 <a href="{{ route('fee.detailStudentSubFee', $item->idFee) }}"  title="Xem chi tiết" class="btn btn-primary">
                     Xem chi tiết
                 </a> 
-                @if ($item->check != 1)
-                    <a  href=""  title="Xem chi tiết" class="btn btn-warning">
-                        Đóng bù
-                    </a>
-                    @endif              
+                            
             </td>
         </tr>
         @endforeach

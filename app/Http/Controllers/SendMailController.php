@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ForgetpassMail;
 use App\Mail\WarningMail;
 use App\Models\Student;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -33,7 +34,10 @@ class SendMailController extends Controller
 
             Mail::to($owefee->email)->send(new WarningMail($owefee));
         }
-
-        return redirect()->route('fee.listowefee', ['month' => 0])->with('no', "1");
+        try {
+            return redirect()->route('fee.listowefee', ['month' => 0])->with('no', "1");
+        } catch (Exception $e) {
+            echo "lỗi";
+        }
     }
 }

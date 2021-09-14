@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuthendController;
 use App\Http\Controllers\ClassController;
-
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FeeController;
@@ -13,7 +12,6 @@ use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubPayFeeController;
-use App\Http\Controllers\wordtest;
 use App\Http\Middleware\Checkhasrand;
 use App\Http\Middleware\CheckLoged;
 use App\Http\Middleware\CheckLogin;
