@@ -14,7 +14,7 @@
         <div class="header text-center">{{$info->name}} Đóng Phụ Phí Kỳ 1</div>
         @endif
         <div style="width: 100%; height: 20px;" >
-        <a style="float: right;" class="btn btn-primary" href="{{ route('fee.show', $info->id) }}">Chuyển sang đóng học phí</a></div>
+        <a style="float: right;" class="btn btn-warning" href="{{ route('fee.show', $info->id) }}">Chuyển sang đóng học phí</a></div>
         <div class="content">
             <input type="hidden" name="id" value="{{$info->id}}">
             @if(isset($payment))
@@ -38,7 +38,6 @@
                 value="1000000"
                 min="1"
                 max="6000000"
-
                 readonly
 
          />

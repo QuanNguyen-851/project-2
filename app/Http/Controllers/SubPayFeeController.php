@@ -121,7 +121,7 @@ class SubPayFeeController extends Controller
     public function addcount()
     {
         $course = Course::Select('course.*')
-            ->where('countSubFeeMustPay', '<', '30')
+            ->where('countSubFeeMustPay', '<', '6')
             ->where('disable', '=', '0')
             ->get();
         foreach ($course as $course) {

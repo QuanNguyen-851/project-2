@@ -21,7 +21,6 @@ class AuthendController extends Controller
             //     danh sach sv
             $count = DB::select('select count(*) as count from `student` inner join `fee` on `student`.`id` = `fee`.`idStudent` where `student`.`disable` != 1 and `fee`.`id` = (SELECT max(fee.id) from fee where idStudent = student.id )'); // đếm số sinh viên đã có bản ghi biên lai
             $students = $count[0]->count;
-            // dd($students);
             //     số sinh viên nợ 1-5 tháng
             $fee =  DB::select('SELECT student.*  FROM `fee`INNER JOIN student on student.id = fee.idStudent INNER JOIN classbk on student.idClass = classbk.id INNER JOIN course on classbk.idCourse = course.id  INNER JOIN payment ON fee.idMethod = payment.id where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id ) and (`course`.`countMustPay` - fee.countPay >0  and `course`.`countMustPay` - fee.countPay <=5 and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1']);
             $owe5 = 0;
@@ -48,6 +47,7 @@ class AuthendController extends Controller
                 $owe7++;
             }
             $o7 = round($owe7 / $students * 100);
+            // dd($students, $owe5, $owe7, $owe6);
         } catch (Exception $e) {
             $o5 = 0;
             $o6 = 0;
