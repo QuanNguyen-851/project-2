@@ -16,10 +16,10 @@
             <a class="navbar-brand" href="#">MINISTRY</a>
         </div>
         <div class="collapse navbar-collapse">
-            <a style="margin-right: 12px;margin-left: 21cm;" onclick="return confirm('Việc này sẽ không thể thay đổi được bạn xác nhận chứ ?')" href="{{ route('fee.addcount') }}" class="btn btn-success" type="button">Đợt mới</a>
-            <a style="margin-right:25px" onclick="return confirm('Việc này sẽ không thể thay đổi được bạn xác nhận chứ ?')" href="{{ route('fee.subaddcount') }}" class="btn btn-success" type="button">kỳ mới</a>
+            <a style="margin-right: 12px;margin-left: 21cm;" onclick="return confirm('Việc này sẽ không thể thay đổi được bạn xác nhận chứ ?')" href="{{ route('fee.addcount') }}" class="btn btn-success" type="button" title="Cập nhật số đợt phải đóng học phí" >Đợt mới</a>
+            <a style="margin-right:25px" onclick="return confirm('Việc này sẽ không thể thay đổi được bạn xác nhận chứ ?')" href="{{ route('fee.subaddcount') }}" class="btn btn-success" type="button" title="Cập nhật số đợt phải đóng phụ phí (5 tháng một lần)">kỳ mới</a>
             <ul class="nav navbar-nav navbar-right">
-                
+
 
                 <li class="dropdown dropdown-with-icons">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -35,9 +35,9 @@
                                 <i class="pe-7s-mail"></i>Danh sách nhân viên
                             </a>
                         </li>
-                        
+
                         <li class="divider"></li>
-                        
+
                         <li>
                             <a href="{{ route('logout') }}" class="text-danger" onclick="return confirm('Bạn chắc muốn đăng xuất chứ ?')">
                                 <i class="pe-7s-close-circle"></i>
@@ -50,7 +50,7 @@
             </ul>
 
 
-            
+
         </div>
     </div>
 </nav>

@@ -20,7 +20,7 @@
                 <th>Số đợt phải đóng</th>
                 <th>Số đợt phải đóng phụ phí</th>
                 <th class="text-center"><a href="{{route('course.create')}}" class="btn btn-primary">Thêm</a></th>
-                
+
             </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
                     <a href="{{ route('course.edit',$item->id) }}" type="button" rel="tooltip" title="Sửa khóa" class="btn btn-success btn-link btn-sm">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <a href="{{route('course.hide', $item->id) }}" onclick="return confirm('không thể thay đổi một khi chấp nhận')" type="button" rel="tooltip" title="Tốt Nghiệp" class="btn btn-success btn-link btn-sm">
+                    <a href="{{route('course.hide', $item->id) }}" onclick="return confirm('không thể thay đổi một khi chấp nhận')" type="button" rel="tooltip" title="Tốt Nghiệp" class="btn btn-danger btn-link btn-sm">
                         <i class="pe-7s-check"></i>
                     </a>
                 </td>
@@ -43,6 +43,7 @@
            @endforeach
         </tbody>
     </table>
+    <a style="color: red">Lưu ý số đợt học phí phải đóng tối đa là 30 và số đợt phải đóng phụ phí không vượt quá 6</a>
     </div>
 </div>
     @endsection
