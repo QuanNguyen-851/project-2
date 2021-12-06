@@ -213,8 +213,8 @@ class StudentController extends Controller
         $class = Classroom::join('course', 'course.id', '=', 'classbk.idCourse')
             ->where('classbk.disable', '!=', '1')
             ->where('classbk.idMajor', $student->idMajor)
-            ->where('classbk.idCourse','>=', $student->idcorse)
-            ->select('classbk.name')
+            ->where('classbk.idCourse', '>=', $student->idcorse)
+            ->select('classbk.*')
             ->get();
         $scholarship = Scholarship::all();
 

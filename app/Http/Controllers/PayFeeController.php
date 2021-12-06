@@ -7,6 +7,8 @@ use App\Models\Fee;
 use App\Models\Payment;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class PayFeeController extends Controller
 {
@@ -125,7 +127,23 @@ class PayFeeController extends Controller
         $student = Student::select('*')
             ->where('id', $info->idStudent)
             ->first();
-        $left = ($student->fee * $info->countPer - ($student->fee * $info->countPer * $info->sale / 100)) - $info->fee;
+        // $max = Fee::join('student', 'idStudent', '=', 'student.id')
+        //     ->join('payment', 'fee.idMethod', '=', 'payment.id')
+        //     ->select(DB::raw('count(*) as user_count, status'))
+        //     ->where('fee.countPay', '<', $info->countPay)
+        //     ->first();
+        $max = DB::table('fee')
+            ->join('student', 'idStudent', '=', 'student.id')
+            ->join('payment', 'fee.idMethod', '=', 'payment.id')
+            ->select(DB::raw('MAX(fee.countPay) as maxpay'))
+            ->where('fee.countPay', '<', $info->countPay)
+            ->where('idStudent', $info->idStudent)
+            ->first();
+        // $dfs = $max->countPay;
+        // dd($max->maxpay);
+        // dd($info->countPay - $max->maxpay);
+
+        $left = ($student->fee * ($info->countPay - $max->maxpay) - ($student->fee * ($info->countPay - $max->maxpay) * $info->sale / 100)) - $info->fee;
         return view('fee.dongbu', [
             'info' => $info,
             'method' => $method,

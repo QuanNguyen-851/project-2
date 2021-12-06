@@ -8,53 +8,53 @@
         <div class="card">
             <div class="header">Thông tin sinh viên</div>
                 <div class="content">
-                    
+
                         {{-- id --}}
                         <div class="form-group">
                             <label class="col-sm-2 control-label"  >ID</label>
-                            
+
                                 <input class="form-control"
                                     type="text"
                                     readonly
-                                    name="noid"   
+                                    name="noid"
                                     value="{{"BKC".sprintf("%03d", $student->id)}}"
                                 />
-                        
-                        
+
+
                         </div>
                         {{-- lớp --}}
-                        
+
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Lớp</label>
+                            <label class="col-sm-2 control-label">Lớp </label>
                             <select name="class" class="selectpicker"  >
                                 @foreach ($allclass as $item)
-                                
+
                                 <option value="{{$item->id}}"
                                  @php
                                     $in = ($item->id == $student->idclass) ? "selected":" " ;
                                 @endphp
-                                {{$in}}
+                                {{-- {{$in}} --}}
                                 >{{ $item->name}}</option>
                                 @endforeach
-                                
-                            </select>                
+
+                            </select>
                         </div>
-                        
-                        
-                        
+
+
+
                         {{-- Họ và Tên --}}
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Họ Và Tên</label>
-                        
+
                                 <input class="form-control"
                                     type="text"
                                     name="name"
                                     required="required"
                                     value="{{$student->name}}"
-                                    
+
                                 />
-                            
-                        
+
+
                         </div>
                         {{-- Giới tính --}}
                         <div class="form-check form-check-radio">
@@ -68,7 +68,7 @@
                             {{$nam}}
                             >
                                 <span class="form-check-sign"></span>
-                                
+
                                     Nam
                             </label>
                             <label class="form-check-label">
@@ -78,12 +78,12 @@
                                 <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="0"
                                 {{$nu}}>
                                 <span class="form-check-sign"></span>
-                                
+
                                     Nữ
                             </label>
                         </div>
-                        
-                    
+
+
                         {{-- Ngày sinh --}}
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Ngày sinh</label>
@@ -94,7 +94,7 @@
                         {{-- Email --}}
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Email</label>
-                            
+
                                 <input class="form-control"
                                     type="email"
                                     name="email"
@@ -103,31 +103,31 @@
                                     value="{{$student->email}}"
                                 />
                                 <span style=" color: red;font-size: 12px;margin-left: 44px;">
-                                 
+
                                     @if (Session::has('erre'))
                                         {{Session::get('erre')}}
-                                    
+
                                     @endif
                                     </span>
                         </div>
-                        
+
                         {{-- Số Điện thoại --}}
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Điện thoại</label>
                                 <input class="form-control"
                                     type="text"
                                     name="phone"
-                                   
+
                                     required="required"
                                     value="{{$student->phone}}"
                                     minLength="9"
                                     maxLength="10"
                                 />
                                 <span style=" color: red;font-size: 12px;margin-left: 44px;">
-                                    
+
                                     @if (Session::has('errp'))
                                     {{Session::get('errp')}}
-                                
+
                                 @endif
                                     </span>
                         </div>
@@ -140,13 +140,13 @@
                                     required="required"
                                     value="{{$student->address}}"
                                 />
-                            
-                        
+
+
                         </div>
-    
-                    
+
+
                 </div>
-            
+
         </div> <!-- end card -->
 
     </div> <!--  end col-md-6  -->
@@ -154,9 +154,9 @@
     <div class="col-md-6" >
 
         <div class="card">
-            
+
                 <div class="content">
-                    
+
                     {{-- mức học bổng --}}
                     <div class="form-group">
                         <label class="col-sm-2 control-label" style="width: 30%;">Học bổng</label>
@@ -165,20 +165,20 @@
                                 @php
                                     $in = ($item->id==$student->idscholarship) ? "selected":"" ;
                                 @endphp
-                                <option value="{{$item->id}}" 
+                                <option value="{{$item->id}}"
                                 {{$in}}
                                 >{{ $item->name." - ".$item->scholarship."vnd"}}</option>
                                 @endforeach
-                            
-                        
-                        </select>               
+
+
+                        </select>
                     </div>
-                
-                    
+
+
                     {{-- Học phí mỗi đợt --}}
                     {{-- <div class="form-group" >
                         <label class="col-sm-2 control-label">Học phí Mỗi đợt</label>
-                        
+
                         <input class="form-control"
                                 type="text"
                                 name="fee"
@@ -193,10 +193,10 @@
             <div  style="text-align: center;">
                 <button type="submit" name="btn" class="btn btn-fill btn-info">Update</button>
 
-               
+
             </div>
         </div>
-        
+
     </div>
 </form>
 
