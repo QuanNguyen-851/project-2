@@ -25,6 +25,7 @@ class ClassController extends Controller
         $allclass = Classroom::join('major', 'classbk.idMajor', '=', 'major.id')
             ->join('course', 'classbk.idCourse', '=', 'course.id')
             ->where('classbk.disable', '!=', '1')
+            ->where('course.disable', '!=', '1')
             ->select('classbk.*', 'major.name as major', 'major.shortName as shortName', 'course.name as course')
             ->orderBy('classbk.id', 'desc')
             ->get();
