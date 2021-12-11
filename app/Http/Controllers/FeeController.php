@@ -123,18 +123,18 @@ class FeeController extends Controller
         } else if ($month == 6) {
             $studentowefee = DB::select('SELECT student.* ,classbk.name as class,fee.countPay,course.countMustPay,subfee.countPay as countSubFee,course.countSubFeeMustPay,payment.sale,(course.countMustPay - fee.countPay) * student.fee - (course.countMustPay - fee.countPay) * student.fee * payment.sale /100 as owe,(course.countSubFeeMustPay - subfee.countPay)* 1000000 as owesub FROM `fee`INNER JOIN student on student.id = fee.idStudent INNER JOIN classbk on student.idClass = classbk.id INNER JOIN course on classbk.idCourse = course.id INNER join subfee on subfee.idStudent = student.id INNER JOIN payment ON fee.idMethod = payment.id where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id )  and subfee.id = ( SELECT MAX(subfee.id ) FROM subfee WHERE subfee.idStudent = student.id) and  (`course`.`countMustPay` - fee.countPay =6   and `student`.`fee` > ? and `student`.`disable` != ? )', ['0', '1']);
         } else if ($month == 7) {
-            $studentowefee = DB::select('SELECT student.* ,classbk.name as class,fee.countPay,course.countMustPay,subfee.countPay as countSubFee,course.countSubFeeMustPay,payment.sale,(course.countMustPay - fee.countPay) * student.fee - (course.countMustPay - fee.countPay) * student.fee * payment.sale /100 as owe,(course.countSubFeeMustPay - subfee.countPay)* 1000000 as owesub 
-            FROM `fee`INNER JOIN student on student.id = fee.idStudent 
-            INNER JOIN classbk on student.idClass = classbk.id 
-            INNER JOIN course on classbk.idCourse = course.id 
-            INNER join subfee on subfee.idStudent = student.id 
-            INNER JOIN payment ON fee.idMethod = payment.id 
+            $studentowefee = DB::select('SELECT student.* ,classbk.name as class,fee.countPay,course.countMustPay,subfee.countPay as countSubFee,course.countSubFeeMustPay,payment.sale,(course.countMustPay - fee.countPay) * student.fee - (course.countMustPay - fee.countPay) * student.fee * payment.sale /100 as owe,(course.countSubFeeMustPay - subfee.countPay)* 1000000 as owesub
+            FROM `fee`INNER JOIN student on student.id = fee.idStudent
+            INNER JOIN classbk on student.idClass = classbk.id
+            INNER JOIN course on classbk.idCourse = course.id
+            INNER join subfee on subfee.idStudent = student.id
+            INNER JOIN payment ON fee.idMethod = payment.id
             where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id )  and subfee.id = ( SELECT MAX(subfee.id ) FROM subfee WHERE subfee.idStudent = student.id)and  (`course`.`countMustPay` - fee.countPay >= 7   and `student`.`fee` > ? and `student`.`disable` != ?)', ['0', '1']);
         } else {
             $studentowefee = DB::select('SELECT student.* ,classbk.name as class,fee.countPay,course.countMustPay,subfee.countPay as countSubFee,course.countSubFeeMustPay,payment.sale,(course.countMustPay - fee.countPay) * student.fee - (course.countMustPay - fee.countPay) * student.fee * payment.sale /100   as owe,(course.countSubFeeMustPay - subfee.countPay)* 1000000 as owesub
             FROM student INNER JOIN  `fee` on student.id = fee.idStudent
-            INNER JOIN classbk on student.idClass = classbk.id 
-            INNER JOIN course on classbk.idCourse = course.id 
+            INNER JOIN classbk on student.idClass = classbk.id
+            INNER JOIN course on classbk.idCourse = course.id
             INNER join subfee on subfee.idStudent = student.id
             INNER JOIN payment ON fee.idMethod = payment.id
             where student.disable !=1 and fee.id = (SELECT max(fee.id) from fee where idStudent = student.id  )  and subfee.id = ( SELECT MAX(subfee.id ) FROM subfee WHERE subfee.idStudent = student.id) and ( course.countMustPay- fee.countPay>0 or `course`.`countSubFeeMustPay` - subfee.countPay > 0 ) ');
@@ -197,11 +197,13 @@ class FeeController extends Controller
                 ->join('payment', 'payment.id', '=', 'fee.idMethod')
                 ->select('student.*', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
                 ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") = ?', [$month1])
+                ->orderByRaw('fee.date DESC')
                 // ->select('fee.id')
                 ->get();
             $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
                 ->select('student.*', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
                 ->whereraw('DATE_FORMAT(subfee.date, "%Y-%m") = ?', [$month1])
+                ->orderByRaw('subfee.date DESC')
                 ->get();
         } elseif ($month == 3) {
             $date = date('Y-m-d', time());
@@ -214,12 +216,13 @@ class FeeController extends Controller
                 ->join('payment', 'payment.id', '=', 'fee.idMethod')
                 ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
                 ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") < ? and DATE_FORMAT(fee.date, "%Y-%m") >= ? ', [$date2, $month3])
-
+                ->orderByRaw('fee.date DESC')
 
                 ->get();
             $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
                 ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
                 ->whereraw('DATE_FORMAT(subfee.date, "%Y-%m") < ? and DATE_FORMAT(subfee.date, "%Y-%m") >= ?',  [$date2, $month3])
+                ->orderByRaw('subfee.date DESC')
 
                 ->get();
         } elseif ($month == "all") {
@@ -227,11 +230,12 @@ class FeeController extends Controller
             $fee = Fee::join('student', 'fee.idStudent', '=', 'student.id')
                 ->join('payment', 'payment.id', '=', 'fee.idMethod')
                 ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
-
+                ->orderByRaw('fee.date DESC')
                 // ->select('fee.id')
                 ->get();
             $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
                 ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
+                ->orderByRaw('subfee.date DESC')
 
                 ->get();
         } else {
@@ -242,10 +246,12 @@ class FeeController extends Controller
                 ->select('student.*', 'fee.id as idfee', 'fee.note', 'fee.date', 'fee.fee as payfee', 'fee.countPay', 'fee.payer', 'fee.id as idFee', 'payment.name as payment', 'fee.disable as check')
                 ->whereraw('DATE_FORMAT(fee.date, "%Y-%m") = ?', [$date])
                 // ->select('fee.id')
+                ->orderByRaw('fee.date DESC')
                 ->get();
             $subfee = Subfee::join('student', 'student.id', '=', 'subfee.idStudent')
                 ->select('student.*', 'subfee.id as idfee', 'subfee.note', 'subfee.date', 'subfee.fee as payfee', 'subfee.countPay', 'subfee.payer', 'subfee.id as idFee', 'subfee.disable as check')
                 ->whereraw('DATE_FORMAT(subfee.date, "%Y-%m") = ?', [$date])
+                ->orderByRaw('subfee.date DESC')
                 ->get();
         }
         $sumfee = 0;
